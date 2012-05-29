@@ -238,6 +238,9 @@ class Application(object):
         #mAnimationState.setEnabled(True)
         node1 = sceneManager.getRootSceneNode().createChildSceneNode("RobotNode") 
         node1.attachObject(ent1) 
+        node1.attachObject(self.camera)
+        #self.camera.setPosition(-100, 100, 0)
+        #self.camera.lookAt(10000, 0, 0)
 
     def _createFrameListener(self):
         """Creates the FrameListener."""

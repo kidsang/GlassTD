@@ -16,6 +16,7 @@ class FrameListener(ogre.FrameListener, ogre.WindowEventListener):
     def __init__(self, frameWork, bufferedKeys=False, bufferedMouse=False):
         ogre.FrameListener.__init__(self)
         ogre.WindowEventListener.__init__(self)
+        self.frameWork = frameWork
         self.camera = frameWork.camera
         self.renderWindow = frameWork.renderWindow
         self.statisticsOn = True
@@ -166,6 +167,12 @@ class FrameListener(ogre.FrameListener, ogre.WindowEventListener):
 
         if not self.Mouse.buffered() or not self.Keyboard.buffered():
             self._moveCamera()
+            
+        #test animation
+        #mgr = self.frameWork.sceneManager
+        #node = mgr.getSceneNode("RobotNode")
+        #node.translate(0.01,0,0);
+        
         return True
 
                                         
