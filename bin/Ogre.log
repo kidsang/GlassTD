@@ -1,0 +1,78 @@
+18:59:17: Creating resource group General
+18:59:17: Creating resource group Internal
+18:59:17: Creating resource group Autodetect
+18:59:17: SceneManagerFactory for type 'DefaultSceneManager' registered.
+18:59:17: Registering ResourceManager for type Material
+18:59:17: Registering ResourceManager for type Mesh
+18:59:17: Registering ResourceManager for type Skeleton
+18:59:17: MovableObjectFactory for type 'ParticleSystem' registered.
+18:59:17: OverlayElementFactory for type Panel registered.
+18:59:17: OverlayElementFactory for type BorderPanel registered.
+18:59:17: OverlayElementFactory for type TextArea registered.
+18:59:17: Registering ResourceManager for type Font
+18:59:17: ArchiveFactory for archive type FileSystem registered.
+18:59:17: ArchiveFactory for archive type Zip registered.
+18:59:17: DDS codec registering
+18:59:17: FreeImage version: 3.13.1
+18:59:17: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
+18:59:17: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi,exr,j2k,j2c,jp2,pfm,pct,pict,pic,bay,bmq,cr2,crw,cs1,dc2,dcr,dng,erf,fff,hdr,k25,kdc,mdc,mos,mrw,nef,orf,pef,pxn,raf,raw,rdc,sr2,srf,arw,3fr,cine,ia,kc2,mef,nrw,qtk,rw2,sti,drf,dsc,ptx,cap,iiq,rwz
+18:59:17: Registering ResourceManager for type HighLevelGpuProgram
+18:59:17: Registering ResourceManager for type Compositor
+18:59:17: MovableObjectFactory for type 'Entity' registered.
+18:59:17: MovableObjectFactory for type 'Light' registered.
+18:59:17: MovableObjectFactory for type 'BillboardSet' registered.
+18:59:17: MovableObjectFactory for type 'ManualObject' registered.
+18:59:17: MovableObjectFactory for type 'BillboardChain' registered.
+18:59:17: MovableObjectFactory for type 'RibbonTrail' registered.
+18:59:17: Loading library .\RenderSystem_Direct3D9_d
+18:59:17: Installing plugin: D3D9 RenderSystem
+18:59:17: D3D9 : Direct3D9 Rendering Subsystem created.
+18:59:17: D3D9: Driver Detection Starts
+18:59:17: D3D9: Driver Detection Ends
+18:59:17: Plugin successfully installed
+18:59:17: Loading library .\RenderSystem_GL_d
+18:59:17: Installing plugin: GL RenderSystem
+18:59:17: OpenGL Rendering Subsystem created.
+18:59:17: Plugin successfully installed
+18:59:17: Loading library .\Plugin_ParticleFX_d
+18:59:17: Installing plugin: ParticleFX
+18:59:17: Particle Emitter Type 'Point' registered
+18:59:17: Particle Emitter Type 'Box' registered
+18:59:17: Particle Emitter Type 'Ellipsoid' registered
+18:59:17: Particle Emitter Type 'Cylinder' registered
+18:59:17: Particle Emitter Type 'Ring' registered
+18:59:17: Particle Emitter Type 'HollowEllipsoid' registered
+18:59:17: Particle Affector Type 'LinearForce' registered
+18:59:17: Particle Affector Type 'ColourFader' registered
+18:59:17: Particle Affector Type 'ColourFader2' registered
+18:59:17: Particle Affector Type 'ColourImage' registered
+18:59:17: Particle Affector Type 'ColourInterpolator' registered
+18:59:17: Particle Affector Type 'Scaler' registered
+18:59:17: Particle Affector Type 'Rotator' registered
+18:59:17: Particle Affector Type 'DirectionRandomiser' registered
+18:59:17: Particle Affector Type 'DeflectorPlane' registered
+18:59:17: Plugin successfully installed
+18:59:17: *-*-* OGRE Initialising
+18:59:17: *-*-* Version 1.7.3 (Cthugha)
+18:59:17: Creating resource group Essential
+18:59:17: Added resource location '../Media/thumbnails' of type 'FileSystem' to resource group 'Essential'
+18:59:17: OGRE EXCEPTION(7:InternalErrorException): ../Media/packs/SdkTrays.zip - error whilst opening archive: Unable to read zip file. in ZipArchive::checkZzipError at F:\OgreSource\ogre_src_v1-7-3\OgreMain\src\OgreZip.cpp (line 280)
+18:59:19: *-*-* OGRE Shutdown
+18:59:19: Unregistering ResourceManager for type Compositor
+18:59:19: Unregistering ResourceManager for type Font
+18:59:19: Unregistering ResourceManager for type Skeleton
+18:59:19: Unregistering ResourceManager for type Mesh
+18:59:19: Unregistering ResourceManager for type HighLevelGpuProgram
+18:59:19: Uninstalling plugin: ParticleFX
+18:59:19: Plugin successfully uninstalled
+18:59:19: Unloading library .\Plugin_ParticleFX_d
+18:59:19: Uninstalling plugin: GL RenderSystem
+18:59:19: *** Stopping Win32GL Subsystem ***
+18:59:19: Plugin successfully uninstalled
+18:59:19: Unloading library .\RenderSystem_GL_d
+18:59:19: Uninstalling plugin: D3D9 RenderSystem
+18:59:19: D3D9 : Shutting down cleanly.
+18:59:19: D3D9 : Direct3D9 Rendering Subsystem destroyed.
+18:59:19: Plugin successfully uninstalled
+18:59:19: Unloading library .\RenderSystem_Direct3D9_d
+18:59:19: Unregistering ResourceManager for type Material
