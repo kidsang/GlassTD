@@ -21,6 +21,7 @@ import ogre.renderer.OGRE as ogre
 #import ogre.io.OIS as OIS
 ###import OgreRefApp
 from FrameListener import *
+from StageManager import *
 
 def getPluginPath():
     """ Return the absolute path to a valid plugins.cfg file.
@@ -89,6 +90,8 @@ class Application(object):
         self.renderWindow = None
         self.sceneManager = None
         self.world = None
+        # StageManager
+        self.mStageManager = None
         #self.unittest = isUnitTest()
 
     def __del__(self):
@@ -152,6 +155,10 @@ class Application(object):
 
         self._createScene()
         self._createFrameListener()
+        
+        #Stage Manager
+        self.mStageManager = StageManager(self.sceneManager)
+        
         return True
 
     def _setUpResources(self):
@@ -241,6 +248,8 @@ class Application(object):
         node1.attachObject(self.camera)
         #self.camera.setPosition(-100, 100, 0)
         #self.camera.lookAt(10000, 0, 0)
+        
+        
 
     def _createFrameListener(self):
         """Creates the FrameListener."""

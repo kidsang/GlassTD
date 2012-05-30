@@ -12,7 +12,7 @@ class StageManager:
     """
     
     def __init__(self, sceneManager):
-        self.mSceneManager(sceneManager)
+        self.mSceneManager = sceneManager
         self.mStages = {}
         self.mCurrentStage = None
         self.mIsStageInitialized = False
