@@ -30,6 +30,9 @@
     <ClInclude Include="Common.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="TestBullet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\CGlassTD.ico">
@@ -49,6 +52,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TestBullet.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

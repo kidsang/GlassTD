@@ -121,6 +121,7 @@
     <ClInclude Include="CGlassTD.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="res\Resource.h" />
+    <ClInclude Include="TestBullet.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\CGlassTD.ico" />
@@ -132,6 +133,7 @@
     <ClCompile Include="BaseApplication.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="CGlassTD.cpp" />
+    <ClCompile Include="TestBullet.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

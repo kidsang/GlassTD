@@ -1,4 +1,5 @@
 #include "CGlassTD.h"
+#include "TestBullet.h"
 
 //-------------------------------------------------------------------------------------
 CGlassTD::CGlassTD(void)
@@ -7,6 +8,9 @@ CGlassTD::CGlassTD(void)
 //-------------------------------------------------------------------------------------
 CGlassTD::~CGlassTD(void)
 {
+	// Çå¿Õ
+	for (auto iter = mBulletFactoryMap.begin(); iter != mBulletFactoryMap.end(); ++iter)
+		delete (*iter).second;
 }
 
 //-------------------------------------------------------------------------------------
@@ -23,6 +27,11 @@ void CGlassTD::createScene(void)
     // Create a light
     Ogre::Light* l = mSceneMgr->createLight("MainLight");
     l->setPosition(20,80,50);
+
+	// ²âÊÔby kid
+	BulletFactory* bf;
+	bf = new TestBulletFactory();
+	mBulletFactoryMap.insert(std::make_pair(bf->getType(), bf));
 }
 
 bool CGlassTD::frameRenderingQueued( const Ogre::FrameEvent& evt )
