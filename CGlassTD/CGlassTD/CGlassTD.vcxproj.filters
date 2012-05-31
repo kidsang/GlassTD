@@ -27,6 +27,21 @@
     <ClInclude Include="Bullet.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Direction.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractMagazine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Cannon.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="StageManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\CGlassTD.ico">
@@ -46,6 +61,21 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Direction.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractMagazine.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Cannon.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="StageManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
