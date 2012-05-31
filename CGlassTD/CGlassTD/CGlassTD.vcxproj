@@ -122,6 +122,7 @@
     <ClInclude Include="Cannon.h" />
     <ClInclude Include="CGlassTD.h" />
     <ClInclude Include="Direction.h" />
+    <ClInclude Include="Common.h" />
     <ClInclude Include="res\Resource.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StageManager.h" />
