@@ -1,6 +1,8 @@
 #ifndef __Cannon_h_
 #define __Cannon_h_
 
+#include "Bullet.h"
+
 /// езл╗юЮ
 /// @author: LiaoNanhao
 class Cannon

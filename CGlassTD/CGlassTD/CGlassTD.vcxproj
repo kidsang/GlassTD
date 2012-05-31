@@ -116,7 +116,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AbstractMagazine.h" />
+    <ClInclude Include="Magazine.h" />
     <ClInclude Include="BaseApplication.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Cannon.h" />
@@ -134,14 +134,9 @@
     <ResourceCompile Include="res\CGlassTD.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AbstractMagazine.cpp" />
     <ClCompile Include="BaseApplication.cpp" />
     <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="Cannon.cpp" />
     <ClCompile Include="CGlassTD.cpp" />
-    <ClCompile Include="Direction.cpp" />
-    <ClCompile Include="Stage.cpp" />
-    <ClCompile Include="StageManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
