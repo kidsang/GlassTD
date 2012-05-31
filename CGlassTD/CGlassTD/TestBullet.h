@@ -18,7 +18,7 @@ public:
 class TestBulletFactory : public BulletFactory
 {
 public:
-	virtual Bullet* createInstance( SceneManager* mgr, NameValueList args );
+	virtual TestBullet* createInstance( SceneManager* mgr, NameValueList args );
 
 	virtual std::string getType();
 

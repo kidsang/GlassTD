@@ -6,6 +6,7 @@
 #include "BaseApplication.h"
 #include "../res/resource.h"
 #include "Bullet.h"
+#include "TestBullet.h"
 
 /**
  * 文件：CGlassTD
@@ -23,6 +24,10 @@ public:
 	/// 测试用
 	typedef std::hash_map<std::string, BulletFactory*> BulletFactoryMap;
 	BulletFactoryMap mBulletFactoryMap;
+	/// 测试子弹
+	/// 测试用
+	TestBullet* mTestBullet;
+	///
 
 protected:
     virtual void createScene(void);

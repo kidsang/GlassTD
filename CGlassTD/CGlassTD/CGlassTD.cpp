@@ -1,5 +1,5 @@
 #include "CGlassTD.h"
-#include "TestBullet.h"
+#include "Common.h"
 
 //-------------------------------------------------------------------------------------
 CGlassTD::CGlassTD(void)
@@ -11,15 +11,18 @@ CGlassTD::~CGlassTD(void)
 	// Çå¿Õ
 	for (auto iter = mBulletFactoryMap.begin(); iter != mBulletFactoryMap.end(); ++iter)
 		delete (*iter).second;
+
+	// ²âÊÔ
+	delete mTestBullet;
 }
 
 //-------------------------------------------------------------------------------------
 void CGlassTD::createScene(void)
 {
-    Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "ogrehead.mesh");
+    /*Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "sphere.mesh");
 
     Ogre::SceneNode* headNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-    headNode->attachObject(ogreHead);
+    headNode->attachObject(ogreHead);*/
 
     // Set ambient light
     mSceneMgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
@@ -32,6 +35,8 @@ void CGlassTD::createScene(void)
 	BulletFactory* bf;
 	bf = new TestBulletFactory();
 	mBulletFactoryMap.insert(std::make_pair(bf->getType(), bf));
+	TestBulletFactory* tbf = static_cast<TestBulletFactory*>(bf);
+	mTestBullet = tbf->createInstance(mSceneMgr, NameValueList());
 }
 
 bool CGlassTD::frameRenderingQueued( const Ogre::FrameEvent& evt )
