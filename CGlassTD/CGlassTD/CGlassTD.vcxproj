@@ -127,6 +127,7 @@
     <ClInclude Include="Maze.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="ObjectFactory.h" />
+    <ClInclude Include="Position.h" />
     <ClInclude Include="res\Resource.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StageManager.h" />
@@ -134,6 +135,7 @@
     <ClInclude Include="TestStage.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".gitignore" />
     <None Include="res\CGlassTD.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +149,7 @@
     <ClCompile Include="Maze.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="ObjectFactory.cpp" />
+    <ClCompile Include="Position.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StageManager.cpp" />
     <ClCompile Include="TestBullet.cpp" />
