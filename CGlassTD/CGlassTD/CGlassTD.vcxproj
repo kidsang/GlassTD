@@ -123,6 +123,7 @@
     <ClInclude Include="Common.h" />
     <ClInclude Include="Maze.h" />
     <ClInclude Include="ObjectFactory.h" />
+    <ClInclude Include="Position.h" />
     <ClInclude Include="res\Resource.h" />
     <ClInclude Include="TestBullet.h" />
   </ItemGroup>
@@ -139,6 +140,7 @@
     <ClCompile Include="CGlassTD.cpp" />
     <ClCompile Include="Maze.cpp" />
     <ClCompile Include="ObjectFactory.cpp" />
+    <ClCompile Include="Position.cpp" />
     <ClCompile Include="TestBullet.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
