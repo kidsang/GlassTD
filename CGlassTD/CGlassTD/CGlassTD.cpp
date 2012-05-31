@@ -8,12 +8,12 @@ CGlassTD::CGlassTD(void)
 //-------------------------------------------------------------------------------------
 CGlassTD::~CGlassTD(void)
 {
-	// Çå¿Õ
+	// Çå¿Õ×Óµ¯¹¤³§
 	for (auto iter = mBulletFactoryMap.begin(); iter != mBulletFactoryMap.end(); ++iter)
 		delete (*iter).second;
-
-	// ²âÊÔ
-	delete mTestBullet;
+	// Çå¿Õ×Óµ¯
+	for (auto iter = mBulletList.begin(); iter != mBulletList.end(); ++iter)
+		delete (*iter);
 }
 
 //-------------------------------------------------------------------------------------
@@ -37,13 +37,18 @@ void CGlassTD::createScene(void)
 	mBulletFactoryMap.insert(std::make_pair(bf->getType(), bf));
 	TestBulletFactory* tbf = static_cast<TestBulletFactory*>(bf);
 	mTestBullet = tbf->createInstance(mSceneMgr, NameValueList());
+	mBulletList.push_back(mTestBullet);
+	mTestBullet->fire(Ogre::Vector3(0.f), Ogre::Vector3(4, 0, 0));
 }
 
 bool CGlassTD::frameRenderingQueued( const Ogre::FrameEvent& evt )
 {
 	BaseApplication::frameRenderingQueued(evt);
 
-	//
+	// ²âÊÔÅÚµ¯
+	for (auto iter = mBulletList.begin(); iter != mBulletList.end(); ++iter)
+		(*iter)->fly(evt.timeSinceLastFrame, Ogre::Vector3(0, -10, 0));
+
 	return true;
 }
 

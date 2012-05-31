@@ -27,7 +27,10 @@ public:
 	/// 测试子弹
 	/// 测试用
 	TestBullet* mTestBullet;
-	///
+	/// 子弹列表
+	/// 测试用
+	typedef std::deque<TestBullet*> BulletList;
+	BulletList mBulletList;
 
 protected:
     virtual void createScene(void);
