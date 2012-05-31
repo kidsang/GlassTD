@@ -16,8 +16,10 @@ private:
 	Vector3 mVelocity;
 	/// 位移
 	Vector3 mPosition;;
-	/// 重力加速度
-	float mGravity;
+	/// 重力
+	//Vector3 mGravity;
+	/// 该炮弹是否已经被发射
+	bool mIsFired;
 
 	/// 该炮弹的节点
 	SceneNode* mNode;
@@ -35,18 +37,19 @@ public:
 	/// @param position 发射初始位置
 	/// @param velocity 发射初速度
 	/// @param gravity 环境重力
-	void fire(Vector3 position, Vector3 velocity, float gravity)
-	{
+	void fire(const Vector3& position, const Vector3& velocity);
 
-	}
-
-
+	/// 炮弹飞行函数
+	/// @param t 上一帧到这一帧的运行时间，now - last
+	/// @note 该函数将由某个管理子弹的类在主循环中调用
+	///		  调用一次就向前飞一点
+	void fly(float t, const Vector3& gravity);
 
 	// Get/Set
 public:
 	/// 获取炮弹的质量属性
 	/// 由子类提供
-	virtual float getMass() = 0;
+	virtual const float getMass() = 0;
 
 };
 
