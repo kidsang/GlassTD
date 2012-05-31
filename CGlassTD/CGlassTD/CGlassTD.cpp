@@ -46,6 +46,11 @@ bool CGlassTD::frameRenderingQueued( const Ogre::FrameEvent& evt )
 	BaseApplication::frameRenderingQueued(evt);
 
 	// ≤‚ ‘≈⁄µØ
+	//auto iter = mBulletFactoryMap.find("testbullet");
+	//TestBullet* tb = static_cast<TestBullet*>((*iter).second->createInstance(mSceneMgr, NameValueList()));
+	//tb->fire(Ogre::Vector3(0.f), Ogre::Vector3(4, 0, 0));
+	//mBulletList.push_back(tb);
+	// ≤‚ ‘≈⁄µØ
 	for (auto iter = mBulletList.begin(); iter != mBulletList.end(); ++iter)
 		(*iter)->fly(evt.timeSinceLastFrame, Ogre::Vector3(0, -10, 0));
 
