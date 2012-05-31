@@ -130,6 +130,7 @@
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StageManager.h" />
     <ClInclude Include="TestBullet.h" />
+    <ClInclude Include="TestStage.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\CGlassTD.ico" />
@@ -144,7 +145,10 @@
     <ClCompile Include="CGlassTD.cpp" />
     <ClCompile Include="Maze.cpp" />
     <ClCompile Include="ObjectFactory.cpp" />
+    <ClCompile Include="Stage.cpp" />
+    <ClCompile Include="StageManager.cpp" />
     <ClCompile Include="TestBullet.cpp" />
+    <ClCompile Include="TestStage.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

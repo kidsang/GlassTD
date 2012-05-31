@@ -6,6 +6,7 @@
 #include "BaseApplication.h"
 #include "../res/resource.h"
 #include "Bullet.h"
+#include "StageManager.h"
 
 /**
  * 文件：CGlassTD
@@ -27,7 +28,18 @@ public:
 protected:
     virtual void createScene(void);
 
+	// 帧消息
 	virtual bool frameRenderingQueued( const Ogre::FrameEvent& evt );
+/*
+	// 键盘鼠标消息
+	virtual bool keyPressed( const OIS::KeyEvent &arg );
+    virtual bool keyReleased( const OIS::KeyEvent &arg );
+    virtual bool mouseMoved( const OIS::MouseEvent &arg );
+    virtual bool mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
+    virtual bool mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
+*/
+private:
+	StageManager* mpStageManager;
 
 };
 
