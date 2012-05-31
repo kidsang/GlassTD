@@ -1,8 +1,11 @@
 #ifndef __CGlassTD_h_
 #define __CGlassTD_h_
 
+#include <hash_map>
+#include <string>
 #include "BaseApplication.h"
 #include "../res/resource.h"
+#include "Bullet.h"
 
 /**
  * 文件：CGlassTD
@@ -15,6 +18,11 @@ class CGlassTD : public BaseApplication
 public:
     CGlassTD(void);
     virtual ~CGlassTD(void);
+
+	/// 子弹工厂类列表
+	/// 测试用
+	typedef std::hash_map<std::string, BulletFactory*> BulletFactoryMap;
+	BulletFactoryMap mBulletFactoryMap;
 
 protected:
     virtual void createScene(void);

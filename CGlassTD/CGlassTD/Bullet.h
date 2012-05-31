@@ -54,6 +54,7 @@ public:
 /// 炮弹工厂类
 class BulletFactory
 {
+public:
 	/// 创建一个子弹的实例
 	/// @param mgr 场景管理类
 	/// @param args 创建子类需要用到的参数
