@@ -119,6 +119,7 @@
     <ClInclude Include="BaseApplication.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="CGlassTD.h" />
+    <ClInclude Include="Common.h" />
     <ClInclude Include="res\Resource.h" />
   </ItemGroup>
   <ItemGroup>
