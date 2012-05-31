@@ -120,8 +120,12 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CGlassTD.h" />
+<<<<<<< HEAD
     <ClInclude Include="Maze.h" />
     <ClInclude Include="ObjectFactory.h" />
+=======
+    <ClInclude Include="Common.h" />
+>>>>>>> 95bed2b292ced91242f67b5d956fdb4ffbbe00c1
     <ClInclude Include="res\Resource.h" />
   </ItemGroup>
   <ItemGroup>

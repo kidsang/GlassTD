@@ -1,7 +1,8 @@
 #include "Bullet.h"
 
 
-Bullet::Bullet(void)
+Bullet::Bullet(SceneNode* node, Entity* entity)
+	: mNode(node), mEntity(entity)
 {
 }
 

@@ -27,6 +27,7 @@
     <ClInclude Include="Bullet.h">
       <Filter>头文件</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Cell.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -34,6 +35,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Maze.h">
+=======
+    <ClInclude Include="Common.h">
+>>>>>>> 95bed2b292ced91242f67b5d956fdb4ffbbe00c1
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
