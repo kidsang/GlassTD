@@ -28,3 +28,15 @@ Bullet* Cannon::fire(SceneManager* mgr)
 	bul->fire(mNode->getPosition(),zAxis * mFireStrenth);
 	return bul;
 }
+
+void Cannon::changeBullet( unsigned int index )
+{
+	if (index >= mBulletFactoryList.size())
+		return;
+	mCurrentBullet = index;
+}
+
+void Cannon::changeBullet()
+{
+	mCurrentBullet = (mCurrentBullet + 1) % mBulletFactoryList.size();
+}

@@ -15,7 +15,7 @@ private:
 	/// 炮台所拥有的所有炮弹
 	BulletFactoryList mBulletFactoryList;
 	/// 当前选择的弹药类型
-	int mCurrentBullet;
+	unsigned int mCurrentBullet;
 
 	/// 大炮发射力度
 	float mFireStrenth;
@@ -48,10 +48,7 @@ public:
 
 	/// 切换至下一个武器
 	/// @note 会轮转
-	void changeBullet()
-	{
-		mCurrentBullet = (mCurrentBullet + 1) % mBulletFactoryList.size();
-	}
+	void changeBullet();
 };
 
 
