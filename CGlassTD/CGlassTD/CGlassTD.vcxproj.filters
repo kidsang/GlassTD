@@ -27,6 +27,15 @@
     <ClInclude Include="Bullet.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectFactory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Maze.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\CGlassTD.ico">
@@ -46,6 +55,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectFactory.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Maze.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
