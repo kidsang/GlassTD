@@ -11,12 +11,17 @@ CGlassTD::~CGlassTD(void)
 	// Çå¿Õ
 	for (auto iter = mBulletFactoryMap.begin(); iter != mBulletFactoryMap.end(); ++iter)
 		delete (*iter).second;
+
+	if (mpStageManager != NULL)
+	{
+		delete mpStageManager;
+	}
 }
 
 //-------------------------------------------------------------------------------------
 void CGlassTD::createScene(void)
 {
-    Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "ogrehead.mesh");
+ /*   Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "ogrehead.mesh");
 
     Ogre::SceneNode* headNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
     headNode->attachObject(ogreHead);
@@ -27,6 +32,10 @@ void CGlassTD::createScene(void)
     // Create a light
     Ogre::Light* l = mSceneMgr->createLight("MainLight");
     l->setPosition(20,80,50);
+	*/
+
+	mpStageManager = new StageManager(mSceneMgr);
+	mpStageManager->runStage();
 
 	// ²âÊÔby kid
 	BulletFactory* bf;
@@ -38,10 +47,37 @@ bool CGlassTD::frameRenderingQueued( const Ogre::FrameEvent& evt )
 {
 	BaseApplication::frameRenderingQueued(evt);
 
-	//
+	return true;
+}
+/*
+bool CGlassTD::keyPressed(const OIS::KeyEvent &arg)
+{
+	Stage* pCurrentStage = mpStageManager->getStage();
+	pCurrentStage->onKeyPressed(arg);
 	return true;
 }
 
+bool CGlassTD::mouseMoved(const OIS::MouseEvent &arg)
+{
+	Stage* pCurrentStage = mpStageManager->getStage();
+	pCurrentStage->onMouseMoved(arg);
+	return true;
+}
+
+bool CGlassTD::mousePressed(const OIS::MouseEvent &arg, OIS::MouseButtonID id)
+{
+	Stage* pCurrentStage = mpStageManager->getStage();
+	pCurrentStage->onMousePressed(arg, id);
+	return true;
+}
+
+bool CGlassTD::mouseReleased(const OIS::MouseEvent &arg, OIS::MouseButtonID id)
+{
+	Stage* pCurrentStage = mpStageManager->getStage();
+	pCurrentStage->onMouseReleased(arg, id);
+	return true;
+}
+*/
 
 
 #include "windows.h"

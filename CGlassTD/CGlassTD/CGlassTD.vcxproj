@@ -118,14 +118,20 @@
   <ItemGroup>
     <ClInclude Include="BaseApplication.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Cannon.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CGlassTD.h" />
     <ClInclude Include="Common.h" />
+    <ClInclude Include="Direction.h" />
+    <ClInclude Include="Magazine.h" />
     <ClInclude Include="Maze.h" />
+    <ClInclude Include="Monster.h" />
     <ClInclude Include="ObjectFactory.h" />
-    <ClInclude Include="Position.h" />
     <ClInclude Include="res\Resource.h" />
+    <ClInclude Include="Stage.h" />
+    <ClInclude Include="StageManager.h" />
     <ClInclude Include="TestBullet.h" />
+    <ClInclude Include="TestStage.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\CGlassTD.ico" />
@@ -139,9 +145,12 @@
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CGlassTD.cpp" />
     <ClCompile Include="Maze.cpp" />
+    <ClCompile Include="Monster.cpp" />
     <ClCompile Include="ObjectFactory.cpp" />
-    <ClCompile Include="Position.cpp" />
+    <ClCompile Include="Stage.cpp" />
+    <ClCompile Include="StageManager.cpp" />
     <ClCompile Include="TestBullet.cpp" />
+    <ClCompile Include="TestStage.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
