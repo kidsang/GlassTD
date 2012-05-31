@@ -8,3 +8,9 @@ Stage::Stage(Ogre::SceneManager* pSceneManager, StageManager* pStageManager)
 Stage::~Stage(void)
 {
 }
+
+void Stage::jumpToNextStage(Stage* pNextStage)
+{
+	mpStageManager->setStage(pNextStage);
+	delete this;
+}
