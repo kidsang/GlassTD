@@ -1,6 +1,12 @@
 #ifndef Bullet_h__
 #define Bullet_h__
 
+/**
+ * 文件：Bullet
+ * 日期：2012/05/31
+ * 作者：kid
+ */
+
 #include <OgreVector3.h>
 #include <OgreSceneManager.h>
 using namespace Ogre;
@@ -62,7 +68,7 @@ public:
 	/// @param mgr 场景管理类
 	/// @param args 创建子类需要用到的参数
 	/// @return 返回创建好的子类，如果失败则返回NULL
-	virtual Bullet* createInstance(SceneManager* mgr, NameValueList args) = 0;
+	virtual Bullet* createInstance(SceneManager* mgr) = 0;
 
 	/// 返回工厂的类型
 	virtual std::string getType() = 0;

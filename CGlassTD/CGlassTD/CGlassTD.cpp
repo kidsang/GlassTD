@@ -36,7 +36,7 @@ void CGlassTD::createScene(void)
 	bf = new TestBulletFactory();
 	mBulletFactoryMap.insert(std::make_pair(bf->getType(), bf));
 	TestBulletFactory* tbf = static_cast<TestBulletFactory*>(bf);
-	mTestBullet = tbf->createInstance(mSceneMgr, NameValueList());
+	mTestBullet = tbf->createInstance(mSceneMgr);
 	mBulletList.push_back(mTestBullet);
 	mTestBullet->fire(Ogre::Vector3(0.f), Ogre::Vector3(4, 0, 0));
 }
