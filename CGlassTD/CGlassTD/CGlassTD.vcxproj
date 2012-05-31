@@ -118,8 +118,11 @@
   <ItemGroup>
     <ClInclude Include="BaseApplication.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Cell.h" />
     <ClInclude Include="CGlassTD.h" />
     <ClInclude Include="Common.h" />
+    <ClInclude Include="Maze.h" />
+    <ClInclude Include="ObjectFactory.h" />
     <ClInclude Include="res\Resource.h" />
     <ClInclude Include="TestBullet.h" />
   </ItemGroup>
@@ -132,7 +135,10 @@
   <ItemGroup>
     <ClCompile Include="BaseApplication.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CGlassTD.cpp" />
+    <ClCompile Include="Maze.cpp" />
+    <ClCompile Include="ObjectFactory.cpp" />
     <ClCompile Include="TestBullet.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
