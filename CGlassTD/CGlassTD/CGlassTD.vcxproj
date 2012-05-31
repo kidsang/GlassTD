@@ -118,12 +118,17 @@
   <ItemGroup>
     <ClInclude Include="BaseApplication.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Cannon.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CGlassTD.h" />
     <ClInclude Include="Common.h" />
+    <ClInclude Include="Direction.h" />
+    <ClInclude Include="Magazine.h" />
     <ClInclude Include="Maze.h" />
     <ClInclude Include="ObjectFactory.h" />
     <ClInclude Include="res\Resource.h" />
+    <ClInclude Include="Stage.h" />
+    <ClInclude Include="StageManager.h" />
     <ClInclude Include="TestBullet.h" />
   </ItemGroup>
   <ItemGroup>
