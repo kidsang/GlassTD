@@ -3,22 +3,24 @@
 
 
 #include "BaseApplication.h"
-#include "Stage.h"
+class Stage;
 
 /// ÎèÌ¨¹ÜÀíÆ÷
 /// @author: LiaoNanhao
 class StageManager
 {
 public:
-	StageManager(void);
+	StageManager(Ogre::SceneManager* pSceneManager);
 	~StageManager(void);
 
-	bool runStage();
+	void runStage();
 
-	bool setStage( Stage* pStage );
+	void setStage(Stage* pStage);
+	Stage* getStage() const;
 
 private:
 	Stage* mpCurrentStage;
+	Ogre::SceneManager* mpSceneManager;
 };
 
 

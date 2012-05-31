@@ -1,5 +1,5 @@
 #include "CGlassTD.h"
-#include "Common.h"
+#include "TestBullet.h"
 
 //-------------------------------------------------------------------------------------
 CGlassTD::CGlassTD(void)
@@ -8,21 +8,23 @@ CGlassTD::CGlassTD(void)
 //-------------------------------------------------------------------------------------
 CGlassTD::~CGlassTD(void)
 {
-	// «Âø’◊”µØπ§≥ß
+	// «Âø’
 	for (auto iter = mBulletFactoryMap.begin(); iter != mBulletFactoryMap.end(); ++iter)
 		delete (*iter).second;
-	// «Âø’◊”µØ
-	for (auto iter = mBulletList.begin(); iter != mBulletList.end(); ++iter)
-		delete (*iter);
+
+	if (mpStageManager != NULL)
+	{
+		delete mpStageManager;
+	}
 }
 
 //-------------------------------------------------------------------------------------
 void CGlassTD::createScene(void)
 {
-    /*Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "sphere.mesh");
+ /*   Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "ogrehead.mesh");
 
     Ogre::SceneNode* headNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-    headNode->attachObject(ogreHead);*/
+    headNode->attachObject(ogreHead);
 
     // Set ambient light
     mSceneMgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
@@ -30,33 +32,52 @@ void CGlassTD::createScene(void)
     // Create a light
     Ogre::Light* l = mSceneMgr->createLight("MainLight");
     l->setPosition(20,80,50);
+	*/
+
+	mpStageManager = new StageManager(mSceneMgr);
+	mpStageManager->runStage();
 
 	// ≤‚ ‘by kid
 	BulletFactory* bf;
 	bf = new TestBulletFactory();
 	mBulletFactoryMap.insert(std::make_pair(bf->getType(), bf));
-	TestBulletFactory* tbf = static_cast<TestBulletFactory*>(bf);
-	mTestBullet = tbf->createInstance(mSceneMgr);
-	mBulletList.push_back(mTestBullet);
-	mTestBullet->fire(Ogre::Vector3(0.f), Ogre::Vector3(4, 0, 0));
 }
 
 bool CGlassTD::frameRenderingQueued( const Ogre::FrameEvent& evt )
 {
 	BaseApplication::frameRenderingQueued(evt);
 
-	// ≤‚ ‘≈⁄µØ
-	//auto iter = mBulletFactoryMap.find("testbullet");
-	//TestBullet* tb = static_cast<TestBullet*>((*iter).second->createInstance(mSceneMgr, NameValueList()));
-	//tb->fire(Ogre::Vector3(0.f), Ogre::Vector3(4, 0, 0));
-	//mBulletList.push_back(tb);
-	// ≤‚ ‘≈⁄µØ
-	for (auto iter = mBulletList.begin(); iter != mBulletList.end(); ++iter)
-		(*iter)->fly(evt.timeSinceLastFrame, Ogre::Vector3(0, -10, 0));
-
+	return true;
+}
+/*
+bool CGlassTD::keyPressed(const OIS::KeyEvent &arg)
+{
+	Stage* pCurrentStage = mpStageManager->getStage();
+	pCurrentStage->onKeyPressed(arg);
 	return true;
 }
 
+bool CGlassTD::mouseMoved(const OIS::MouseEvent &arg)
+{
+	Stage* pCurrentStage = mpStageManager->getStage();
+	pCurrentStage->onMouseMoved(arg);
+	return true;
+}
+
+bool CGlassTD::mousePressed(const OIS::MouseEvent &arg, OIS::MouseButtonID id)
+{
+	Stage* pCurrentStage = mpStageManager->getStage();
+	pCurrentStage->onMousePressed(arg, id);
+	return true;
+}
+
+bool CGlassTD::mouseReleased(const OIS::MouseEvent &arg, OIS::MouseButtonID id)
+{
+	Stage* pCurrentStage = mpStageManager->getStage();
+	pCurrentStage->onMouseReleased(arg, id);
+	return true;
+}
+*/
 
 
 #include "windows.h"

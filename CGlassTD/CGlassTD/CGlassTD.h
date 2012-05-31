@@ -6,7 +6,7 @@
 #include "BaseApplication.h"
 #include "../res/resource.h"
 #include "Bullet.h"
-#include "TestBullet.h"
+#include "StageManager.h"
 
 /**
  * 文件：CGlassTD
@@ -24,18 +24,22 @@ public:
 	/// 测试用
 	typedef std::hash_map<std::string, BulletFactory*> BulletFactoryMap;
 	BulletFactoryMap mBulletFactoryMap;
-	/// 测试子弹
-	/// 测试用
-	TestBullet* mTestBullet;
-	/// 子弹列表
-	/// 测试用
-	typedef std::deque<TestBullet*> BulletList;
-	BulletList mBulletList;
 
 protected:
     virtual void createScene(void);
 
+	// 帧消息
 	virtual bool frameRenderingQueued( const Ogre::FrameEvent& evt );
+/*
+	// 键盘鼠标消息
+	virtual bool keyPressed( const OIS::KeyEvent &arg );
+    virtual bool keyReleased( const OIS::KeyEvent &arg );
+    virtual bool mouseMoved( const OIS::MouseEvent &arg );
+    virtual bool mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
+    virtual bool mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
+*/
+private:
+	StageManager* mpStageManager;
 
 };
 
