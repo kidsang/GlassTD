@@ -6,7 +6,7 @@ Monster::Monster(void)
     face(Ogre::Vector3(0, 0, 1)),
     kind(ORDINARY_MONSTER)
 {
-
+	
 }
 
 Monster::~Monster(void)

@@ -6,7 +6,7 @@
 class Monster
 {
 	/// Maze maze;
-	/// dgfdgd
+	/// 怪兽的速度
 	float speed;
 	/// 怪物的血量
 	int blood;
@@ -16,6 +16,7 @@ class Monster
 	int kind;
 	Ogre::Vector3 pos;
 	Ogre::SceneNode* node;
+	Ogre::Entity* entity;
 	Ogre::String mesh;
 	Ogre::String name;
 
@@ -30,9 +31,6 @@ public:
 	void setPosition(Ogre::Vector3& pos);
 	Ogre::Vector3 getFace(void);
 	void setFace(Ogre::Vector3& face);
-	//void Ogre::SceneNode* getNode(Ogre::String mesh, Ogre::String name);
-	//void Ogre::SceneNode* getNode(Ogre::String name);
-
 
 };
 
