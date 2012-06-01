@@ -10,7 +10,7 @@ Cell::Cell(Ogre::SceneManager* sceneManager, Ogre::SceneNode* parentNode,int sta
 {
 	this->mEntity = ObjectFactory::createEntity(sceneManager,"cubess.mesh");
 	int x = this->mEntity->getBoundingBox().getSize().x;
-	int z = this->mEntity->getBoundingBox().getSize().x;
+	int z = this->mEntity->getBoundingBox().getSize().z;
 	this->mSceneNode = ObjectFactory::createSceneNode(parentNode,this->mEntity, Vector3(Real(x * pos.getX()),Real(0), Real(z * pos.getZ())));
 	if(state == 0)
 	{
@@ -32,4 +32,9 @@ bool Cell::isContain(Monster& monster)
 int Cell::getContain()
 {
 	return mMaxContain - mState;
+}
+
+int Cell::getHeight()
+{
+	return this->mEntity->getBoundingBox().getSize().y;
 }
