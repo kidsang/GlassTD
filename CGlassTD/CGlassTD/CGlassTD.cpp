@@ -56,35 +56,35 @@ bool CGlassTD::frameRenderingQueued( const Ogre::FrameEvent& evt )
 
 	return true;
 }
-/*
+
 bool CGlassTD::keyPressed(const OIS::KeyEvent &arg)
 {
-	Stage* pCurrentStage = mpStageManager->getStage();
-	pCurrentStage->onKeyPressed(arg);
+	BaseApplication::keyPressed(arg);
+	mpStageManager->getStage()->onKeyPressed(arg);
 	return true;
 }
 
 bool CGlassTD::mouseMoved(const OIS::MouseEvent &arg)
 {
-	Stage* pCurrentStage = mpStageManager->getStage();
-	pCurrentStage->onMouseMoved(arg);
+	BaseApplication::mouseMoved(arg);
+	mpStageManager->getStage()->onMouseMoved(arg);
 	return true;
 }
 
 bool CGlassTD::mousePressed(const OIS::MouseEvent &arg, OIS::MouseButtonID id)
 {
-	Stage* pCurrentStage = mpStageManager->getStage();
-	pCurrentStage->onMousePressed(arg, id);
+	BaseApplication::mousePressed(arg, id);
+	mpStageManager->getStage()->onMousePressed(arg, id);
 	return true;
 }
 
 bool CGlassTD::mouseReleased(const OIS::MouseEvent &arg, OIS::MouseButtonID id)
 {
-	Stage* pCurrentStage = mpStageManager->getStage();
-	pCurrentStage->onMouseReleased(arg, id);
+	BaseApplication::mouseReleased(arg, id);
+	mpStageManager->getStage()->onMouseReleased(arg, id);
 	return true;
 }
-*/
+
 
 
 #include "windows.h"

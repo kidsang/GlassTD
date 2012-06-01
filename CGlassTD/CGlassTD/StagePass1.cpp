@@ -26,6 +26,10 @@ StagePass1::~StagePass1(void)
 
 void StagePass1::onKeyPressed( const OIS::KeyEvent &arg )
 {
+	if (arg.key == OIS::KC_SPACE)
+	{
+		mBulletList.push_back(mCannon->fire(mpSceneManager));
+	}
 }
 
 void StagePass1::onMouseMoved( const OIS::MouseEvent &arg )
@@ -42,4 +46,6 @@ void StagePass1::onMouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID
 
 void StagePass1::run( float timeSinceLastFrame )
 {
+	for (auto iter = mBulletList.begin(); iter != mBulletList.end(); ++iter)
+		(*iter)->fly(timeSinceLastFrame, Vector3(0, -10, 0));
 }

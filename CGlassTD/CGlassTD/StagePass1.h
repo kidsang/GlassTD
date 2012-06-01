@@ -17,17 +17,33 @@ private:
 	BulletList mBulletList;
 
 public:
+	/// 构造函数
+	/// @param pSceneManager 场景管理器的指针
+	/// @param pStageManager 舞台管理器的指针
 	StagePass1(Ogre::SceneManager* pSceneManager, StageManager* pStageManager);
 	~StagePass1(void);
 
-	virtual void onKeyPressed( const OIS::KeyEvent &arg );
+	// 对事件的响应
+	/// 按下键盘触发此函数
+	/// @param arg 事件的信息
+	virtual void onKeyPressed(const OIS::KeyEvent &arg);
 
-	virtual void onMouseMoved( const OIS::MouseEvent &arg );
+	/// 鼠标移动触发此函数
+	/// @param arg 事件的信息
+	virtual void onMouseMoved(const OIS::MouseEvent &arg);
 
-	virtual void onMousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
+	/// 按下鼠标触发此函数
+	/// @param arg 事件的信息
+	/// @param id 哪个按键
+	virtual void onMousePressed(const OIS::MouseEvent &arg, OIS::MouseButtonID id);
 
-	virtual void onMouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
+	/// 释放鼠标触发此函数
+	/// @param arg 事件的信息
+	/// @param id 哪个按键
+	virtual void onMouseReleased(const OIS::MouseEvent &arg, OIS::MouseButtonID id);
 
+	/// 场景的运行逻辑
+	/// @param timeSinceLastFrame 从上一帧到现在流逝的时间
 	virtual void run( float timeSinceLastFrame );
 
 };

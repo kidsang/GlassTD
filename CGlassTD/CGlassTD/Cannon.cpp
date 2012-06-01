@@ -1,7 +1,8 @@
 #include "Cannon.h"
 
 Cannon::Cannon(SceneNode* node, Entity* entity)
-	: mNode(node), mEntity(entity)
+	: mNode(node), mEntity(entity),
+	mCurrentBullet(0), mFireStrenth(10)
 {
 
 }
