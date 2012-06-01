@@ -11,17 +11,17 @@ TestStage::~TestStage()
 
 void TestStage::built()
 {
-	Ogre::Entity* ogreHead = mpSceneManager->createEntity("Head", "ogrehead.mesh");
+	//Ogre::Entity* ogreHead = mpSceneManager->createEntity("Head", "ogrehead.mesh");
 
-	Ogre::SceneNode* headNode = mpSceneManager->getRootSceneNode()->createChildSceneNode();
-	headNode->attachObject(ogreHead);
+	//Ogre::SceneNode* headNode = mpSceneManager->getRootSceneNode()->createChildSceneNode();
+	//headNode->attachObject(ogreHead);
 
-	// Set ambient light
-	mpSceneManager->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
+	//// Set ambient light
+	//mpSceneManager->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
 
-	// Create a light
-	Ogre::Light* l = mpSceneManager->createLight("MainLight");
-	l->setPosition(20,80,50);
+	//// Create a light
+	//Ogre::Light* l = mpSceneManager->createLight("MainLight");
+	//l->setPosition(20,80,50);
 }
 
 void TestStage::onKeyPressed(const OIS::KeyEvent &arg)

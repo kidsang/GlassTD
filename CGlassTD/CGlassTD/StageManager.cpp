@@ -1,6 +1,7 @@
 #include "StageManager.h"
 #include "TestStage.h"
 #include "Stage.h"
+#include "TempStage.h"
 
 StageManager::StageManager(Ogre::SceneManager* pSceneManager)
 	: mpCurrentStage(NULL), mpSceneManager(pSceneManager)
@@ -19,7 +20,8 @@ void StageManager::runStage()
 {
 	if (mpCurrentStage == NULL)
 	{
-		mpCurrentStage = new TestStage(mpSceneManager, this);
+		//mpCurrentStage = new TestStage(mpSceneManager, this);
+		mpCurrentStage = new TempStage(mpSceneManager,this);
 	}
 
 	mpCurrentStage->built();
