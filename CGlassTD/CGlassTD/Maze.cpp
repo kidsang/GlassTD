@@ -1,24 +1,26 @@
 #include "Maze.h"
-
-const int Maze::MAP_WIDTH = 20;
-const int Maze::MAP_LENGTH = 20;
-
 Maze::Maze(void)
 {
 }
 
-Maze::Maze( SceneManager* sceneManager, int* map)
+Maze::Maze(SceneManager* sceneManager, int* map, int width, int height)
+	: mWidth(width), mHeight(height), mSceneManager(sceneManager), 
+	mMap(0)
 {	
 	this->mSceneNode = sceneManager->getRootSceneNode()->createChildSceneNode("mapSenenNode");
-	this->pZones = new Cell[MAP_WIDTH * MAP_LENGTH];
-	this->pMapInfo = new int[MAP_WIDTH * MAP_LENGTH];
-	for(int i = -10; i < 10; ++i)
+	this->pZones = new Cell[mWidth * mHeight];
+	this->pMapInfo = new int[mWidth * mHeight];
+
+	int halfWidth = mWidth / 2;
+	int halfHeight = mHeight / 2;
+	for(int j = -halfWidth; j < halfWidth; ++j)
 	{
-		for(int j = -10; j < 10; ++j)
+		for(int i = -halfHeight; i < halfHeight; ++i)
 		{
-			this->pZones[(i + 10) * 20 + j + 10] = Cell(sceneManager,sceneManager->getRootSceneNode(),map[(i + 10) * 20 + j + 10],8,Position(i,j));
+			this->pZones[(i + halfWidth) * mWidth + j + halfHeight] = Cell(sceneManager, mSceneNode, map[(i + halfWidth) * mWidth + j + halfHeight], 8, Position(i,j));
 		}
 	}
+	mSceneNode->setScale(Ogre::Vector3(0.1f));
 }
 
 
@@ -29,7 +31,7 @@ Maze::~Maze(void)
 
 int* Maze::getMazeInfo()
 {
-	for(int i = 0; i < MAP_WIDTH * MAP_LENGTH; ++i)
+	for(int i = 0; i < mWidth * mHeight; ++i)
 	{
 		this->pMapInfo[i] = this->pZones[i].getContain();
 	}

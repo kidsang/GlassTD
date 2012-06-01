@@ -9,24 +9,32 @@ using namespace Ogre;
 
 class Maze
 {
-public:
-	/// 地图的宽
-	const static int MAP_WIDTH;
-	/// 地图的高
-	const static int MAP_LENGTH;
 private:
+	SceneManager* mSceneManager;
 	/// 地图的场景节点指针
 	SceneNode* mSceneNode;
 	/// 地图所拥有的空间一维数组
 	Cell* pZones;
 	/// 地图信息的一维数组
 	int* pMapInfo;
+
+	/// 地图一位数组
+	int* mMap;
+	/// 地图的宽
+	int mWidth;
+	/// 地图的高
+	int mHeight;
+
 public:
 	Maze(void);
-	Maze(SceneManager* sceneManager, int* map);
+	/// 构造函数
+	/// @param sceneManager 场景管理类
+	/// @
+	Maze(SceneManager* sceneManager, int* map, int width, int height);
 	/// 获取当前地图的信息
 	/// @return 返回一维数组
 	int* getMazeInfo();
+
 	/// 怪兽请求空间位置
 	/// @param moster 指定的怪兽引用
 	/// @return 返回true则表示请求成功，反之不成功

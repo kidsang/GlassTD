@@ -13,7 +13,10 @@ StagePass1::StagePass1(Ogre::SceneManager* pSceneManager, StageManager* pStageMa
 	// 给cannon增加炮弹
 	mCannon->addBulletFactory(new TestBulletFactory());
 
-	int iMap[400] = 
+	/// 加载迷宫地图
+	const int mapWidth = 20;
+	const int mapHeight = 20;
+	int iMap[mapHeight *mapWidth] =
 	{
 		1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -36,8 +39,7 @@ StagePass1::StagePass1(Ogre::SceneManager* pSceneManager, StageManager* pStageMa
 		0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 		};
-
-	mMaze = new Maze(pSceneManager, iMap);
+	mMaze = new Maze(pSceneManager, iMap, mapWidth, mapHeight);
 }
 
 
