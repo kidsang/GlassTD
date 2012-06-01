@@ -3,6 +3,7 @@
 #include "TestStage.h"
 #include "StagePass1.h"
 
+#include "OrdinaryMonster.h"
 //-------------------------------------------------------------------------------------
 CGlassTD::CGlassTD(void)
 {
@@ -19,6 +20,8 @@ CGlassTD::~CGlassTD(void)
 //-------------------------------------------------------------------------------------
 void CGlassTD::createScene(void)
 {
+	/*Ogre::SceneNode* monsterNode = mSceneMgr->getRootSceneNode();
+	OrdinaryMonster mon(mSceneMgr, monsterNode, Position(10, 10), "ogrehead.mesh", "name");*/
  /*   Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "ogrehead.mesh");
 
     Ogre::SceneNode* headNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
@@ -39,6 +42,8 @@ void CGlassTD::createScene(void)
 	//BulletFactory* bf;
 	//bf = new TestBulletFactory();
 	//mBulletFactoryMap.insert(std::make_pair(bf->getType(), bf));
+
+
 }
 
 bool CGlassTD::frameRenderingQueued( const Ogre::FrameEvent& evt )

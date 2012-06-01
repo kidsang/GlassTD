@@ -1,13 +1,18 @@
 #include "Monster.h"
 
 Monster::Monster(void)
-	:speed(0),
-	blood(FULL_BLOOD),
-    face(Ogre::Vector3(0, 0, 1)),
-    kind(ORDINARY_MONSTER)
+	:mSpeed(0),
+	mBlood(FULL_BLOOD),
+    mFace(Ogre::Vector3(0, 0, 1)),
+    mKind(ORDINARY_MONSTER)
 {
 	
 }
+//
+//Monster::Monster( Ogre::SceneManager* sceneMgr, Ogre::SceneNode* parentNode, Position& pos)
+//{	
+//	
+//}
 
 Monster::~Monster(void)
 {
@@ -27,30 +32,50 @@ void Monster::go(void)
 
 int Monster::getBlood(void)
 {
-	return blood;
+	return mBlood;
 }
-void Monster::setBlood(int blood)
+void Monster::setBlood(int mBlood)
 {
-	this->blood = blood;
+	this->mBlood = mBlood;
 }
-int Monster::getType(void)
+int Monster::getKind(void)
 {
-	return kind;
+	return mKind;
 }
-Ogre::Vector3 Monster::getPosition(void)
+Position Monster::getPosition(void)
 {
-	return pos;
+	return mPos;
 }
-void Monster::setPosition(Ogre::Vector3& pos)
+void Monster::setPosition(Position& mPos)
 {
-	this->pos = pos;
+	this->mPos = mPos;
 }
 Ogre::Vector3 Monster::getFace()
 {
-	return face;
+	return mFace;
 }
-void Monster::setFace(Ogre::Vector3& face)
+void Monster::setFace(Ogre::Vector3& mFace)
 {
-	this->face = face;
+	this->mFace = mFace;
+}
+
+Ogre::String Monster::getMesh()
+{
+	return mMesh;
+}
+
+void Monster::setMesh( Ogre::String mesh )
+{
+	mMesh = mesh;
+}
+
+Ogre::String Monster::getName()
+{
+	return mName;
+}
+
+void Monster::setName( Ogre::String name )
+{
+	mName = name;
 }
 
