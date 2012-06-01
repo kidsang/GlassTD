@@ -9,11 +9,14 @@ using namespace Ogre;
 
 class Maze
 {
+public:
+	/// 地图的宽
+	const static int MAP_WIDTH;
+	/// 地图的高
+	const static int MAP_LENGTH;
 private:
 	/// 地图的场景节点指针
 	SceneNode* mSceneNode;
-	const static int MAP_WIDTH;
-	const static int MAP_LENGTH;
 	/// 地图所拥有的空间一维数组
 	Cell* pZones;
 	/// 地图信息的一维数组
