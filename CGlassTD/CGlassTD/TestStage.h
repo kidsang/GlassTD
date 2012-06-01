@@ -17,6 +17,8 @@ public:
 	virtual void onMousePressed(const OIS::MouseEvent &arg, OIS::MouseButtonID id);
 	virtual void onMouseReleased(const OIS::MouseEvent &arg, OIS::MouseButtonID id);
 
+	virtual void run( float timeSinceLastFrame );
+
 };
 
 

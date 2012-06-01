@@ -127,11 +127,12 @@
     <ClInclude Include="Maze.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="ObjectFactory.h" />
+    <ClInclude Include="OrdinaryMonster.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="res\Resource.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StageManager.h" />
-    <ClInclude Include="TempStage.h" />
+    <ClInclude Include="StagePass1.h" />
     <ClInclude Include="TestBullet.h" />
     <ClInclude Include="TestStage.h" />
   </ItemGroup>
@@ -145,15 +146,17 @@
   <ItemGroup>
     <ClCompile Include="BaseApplication.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Cannon.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CGlassTD.cpp" />
     <ClCompile Include="Maze.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="ObjectFactory.cpp" />
+    <ClCompile Include="OrdinaryMonster.cpp" />
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StageManager.cpp" />
-    <ClCompile Include="TempStage.cpp" />
+    <ClCompile Include="StagePass1.cpp" />
     <ClCompile Include="TestBullet.cpp" />
     <ClCompile Include="TestStage.cpp" />
   </ItemGroup>
