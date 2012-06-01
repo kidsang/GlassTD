@@ -1,5 +1,6 @@
 #include "CGlassTD.h"
 #include "TestBullet.h"
+#include "TestStage.h"
 
 //-------------------------------------------------------------------------------------
 CGlassTD::CGlassTD(void)
@@ -35,7 +36,7 @@ void CGlassTD::createScene(void)
 	*/
 
 	mpStageManager = new StageManager(mSceneMgr);
-	mpStageManager->runStage();
+	mpStageManager->setStage(new TestStage(mSceneMgr, mpStageManager));
 
 	// ≤‚ ‘by kid
 	BulletFactory* bf;

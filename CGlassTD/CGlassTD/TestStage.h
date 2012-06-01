@@ -11,17 +11,12 @@ public:
 	TestStage(Ogre::SceneManager* pSceneManager, StageManager* pStageManager);
 	~TestStage(void);
 
-	// 舞台的初始构建
-	virtual void built();
-
 	// 对事件的响应
 	virtual void onKeyPressed(const OIS::KeyEvent &arg);
 	virtual void onMouseMoved(const OIS::MouseEvent &arg);
 	virtual void onMousePressed(const OIS::MouseEvent &arg, OIS::MouseButtonID id);
 	virtual void onMouseReleased(const OIS::MouseEvent &arg, OIS::MouseButtonID id);
 
-protected:
-	virtual void jumpToNextStage();
 };
 
 

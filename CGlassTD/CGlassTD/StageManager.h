@@ -13,8 +13,6 @@ public:
 	StageManager(Ogre::SceneManager* pSceneManager);
 	~StageManager(void);
 
-	void runStage();
-
 	void setStage(Stage* pStage);
 	Stage* getStage() const;
 
