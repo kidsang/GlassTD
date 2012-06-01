@@ -3,34 +3,43 @@
 #define Monster_h__
 
 #include "BaseApplication.h"
+#include "ObjectFactory.h"
+#include "Position.h"
+
 class Monster
 {
+protected:
 	/// Maze maze;
 	/// 怪兽的速度
-	float speed;
+	float mSpeed;
 	/// 怪物的血量
-	int blood;
+	int mBlood;
 	/// 怪物的面向（一个三维向量)
-	Ogre::Vector3 face;
+	Ogre::Vector3 mFace;
 	/// 怪物的种类
-	int kind;
-	Ogre::Vector3 pos;
-	Ogre::SceneNode* node;
+	int mKind;
+	Position mPos;
+	Ogre::SceneNode* mNode;
 	Ogre::Entity* entity;
-	Ogre::String mesh;
-	Ogre::String name;
+	Ogre::String mMesh;
+	Ogre::String mName;
 
 public:
 	Monster(void);
+	Monster(Ogre::SceneManager* sceneMgr, Ogre::SceneNode* parentNode, Position& pos);
 	~Monster(void);
 	void go(void);
 	int getBlood(void);
-	void setBlood(int blood);
-	int getType(void);
-	Ogre::Vector3 getPosition(void);
-	void setPosition(Ogre::Vector3& pos);
+	void setBlood(int mBlood);
+	int getKind(void);
+	Position getPosition(void);
+	void setPosition(Position& mPos);
 	Ogre::Vector3 getFace(void);
-	void setFace(Ogre::Vector3& face);
+	void setFace(Ogre::Vector3& mFace);
+	Ogre::String getMesh();
+	void setMesh(Ogre::String mesh);
+	Ogre::String getName();
+	void setName(Ogre::String name);
 
 };
 

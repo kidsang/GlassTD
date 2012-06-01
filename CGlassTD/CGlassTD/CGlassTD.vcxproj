@@ -127,6 +127,7 @@
     <ClInclude Include="Maze.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="ObjectFactory.h" />
+    <ClInclude Include="OrdinaryMonster.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="res\Resource.h" />
     <ClInclude Include="Stage.h" />
@@ -149,6 +150,7 @@
     <ClCompile Include="Maze.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="ObjectFactory.cpp" />
+    <ClCompile Include="OrdinaryMonster.cpp" />
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StageManager.cpp" />

@@ -1,6 +1,6 @@
 #include "CGlassTD.h"
 #include "TestBullet.h"
-
+#include "OrdinaryMonster.h"
 //-------------------------------------------------------------------------------------
 CGlassTD::CGlassTD(void)
 {
@@ -21,6 +21,8 @@ CGlassTD::~CGlassTD(void)
 //-------------------------------------------------------------------------------------
 void CGlassTD::createScene(void)
 {
+	/*Ogre::SceneNode* monsterNode = mSceneMgr->getRootSceneNode();
+	OrdinaryMonster mon(mSceneMgr, monsterNode, Position(10, 10), "ogrehead.mesh", "name");*/
  /*   Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "ogrehead.mesh");
 
     Ogre::SceneNode* headNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
