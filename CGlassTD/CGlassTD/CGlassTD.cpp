@@ -1,6 +1,7 @@
 #include "CGlassTD.h"
 #include "TestBullet.h"
 #include "TestStage.h"
+#include "StagePass1.h"
 
 //-------------------------------------------------------------------------------------
 CGlassTD::CGlassTD(void)
@@ -9,10 +10,6 @@ CGlassTD::CGlassTD(void)
 //-------------------------------------------------------------------------------------
 CGlassTD::~CGlassTD(void)
 {
-	// 清空
-	for (auto iter = mBulletFactoryMap.begin(); iter != mBulletFactoryMap.end(); ++iter)
-		delete (*iter).second;
-
 	if (mpStageManager != NULL)
 	{
 		delete mpStageManager;
@@ -36,17 +33,21 @@ void CGlassTD::createScene(void)
 	*/
 
 	mpStageManager = new StageManager(mSceneMgr);
-	mpStageManager->setStage(new TestStage(mSceneMgr, mpStageManager));
+	mpStageManager->setStage(new StagePass1(mSceneMgr, mpStageManager));
 
 	// 测试by kid
-	BulletFactory* bf;
-	bf = new TestBulletFactory();
-	mBulletFactoryMap.insert(std::make_pair(bf->getType(), bf));
+	//BulletFactory* bf;
+	//bf = new TestBulletFactory();
+	//mBulletFactoryMap.insert(std::make_pair(bf->getType(), bf));
 }
 
 bool CGlassTD::frameRenderingQueued( const Ogre::FrameEvent& evt )
 {
+	//
 	BaseApplication::frameRenderingQueued(evt);
+
+	// 运行当前场景的逻辑
+	mpStageManager->getStage()->run(evt.timeSinceLastFrame);
 
 	return true;
 }

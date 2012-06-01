@@ -12,6 +12,10 @@ public:
 	Stage(Ogre::SceneManager* pSceneManager, StageManager* pStageManager);
 	virtual ~Stage(void);
 
+	/// 场景的运行逻辑
+	/// @param timeSinceLastFrame 从上一帧到现在流逝的时间
+	virtual void run(float timeSinceLastFrame) = 0;
+
 	// 对事件的响应
 	virtual void onKeyPressed(const OIS::KeyEvent &arg) = 0;
 	virtual void onMouseMoved(const OIS::MouseEvent &arg) = 0;

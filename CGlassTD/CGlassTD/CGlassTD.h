@@ -5,7 +5,6 @@
 #include <string>
 #include "BaseApplication.h"
 #include "../res/resource.h"
-#include "Bullet.h"
 #include "StageManager.h"
 
 /**
@@ -20,10 +19,6 @@ public:
     CGlassTD(void);
     virtual ~CGlassTD(void);
 
-	/// 子弹工厂类列表
-	/// 测试用
-	typedef std::hash_map<std::string, BulletFactory*> BulletFactoryMap;
-	BulletFactoryMap mBulletFactoryMap;
 
 protected:
     virtual void createScene(void);
