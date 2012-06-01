@@ -37,6 +37,8 @@ void CGlassTD::createScene(void)
 
 	mpStageManager = new StageManager(mSceneMgr);
 	mpStageManager->setStage(new StagePass1(mSceneMgr, mpStageManager));
+	mCamera->setPosition(0, 10, 10);
+	mCamera->lookAt(0, -10, -10);
 
 	// ²âÊÔby kid
 	//BulletFactory* bf;
@@ -66,7 +68,7 @@ bool CGlassTD::keyPressed(const OIS::KeyEvent &arg)
 
 bool CGlassTD::mouseMoved(const OIS::MouseEvent &arg)
 {
-	BaseApplication::mouseMoved(arg);
+	//BaseApplication::mouseMoved(arg);
 	mpStageManager->getStage()->onMouseMoved(arg);
 	return true;
 }

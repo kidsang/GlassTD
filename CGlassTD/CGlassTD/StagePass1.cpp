@@ -34,6 +34,7 @@ void StagePass1::onKeyPressed( const OIS::KeyEvent &arg )
 
 void StagePass1::onMouseMoved( const OIS::MouseEvent &arg )
 {
+	mCannon->rotate(-arg.state.X.rel, arg.state.Y.rel);
 }
 
 void StagePass1::onMousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
