@@ -1,5 +1,6 @@
 #include "CGlassTD.h"
 #include "TestBullet.h"
+#include "TestStage.h"
 
 #include "OrdinaryMonster.h"
 //-------------------------------------------------------------------------------------
@@ -38,12 +39,14 @@ void CGlassTD::createScene(void)
 	*/
 
 	mpStageManager = new StageManager(mSceneMgr);
-	mpStageManager->runStage();
+	mpStageManager->setStage(new TestStage(mSceneMgr, mpStageManager));
 
 	// ²âÊÔby kid
 	BulletFactory* bf;
 	bf = new TestBulletFactory();
 	mBulletFactoryMap.insert(std::make_pair(bf->getType(), bf));
+
+
 }
 
 bool CGlassTD::frameRenderingQueued( const Ogre::FrameEvent& evt )

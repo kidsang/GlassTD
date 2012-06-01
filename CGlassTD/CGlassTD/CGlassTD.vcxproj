@@ -132,6 +132,7 @@
     <ClInclude Include="res\Resource.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StageManager.h" />
+    <ClInclude Include="TempStage.h" />
     <ClInclude Include="TestBullet.h" />
     <ClInclude Include="TestStage.h" />
   </ItemGroup>
@@ -154,6 +155,7 @@
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StageManager.cpp" />
+    <ClCompile Include="TempStage.cpp" />
     <ClCompile Include="TestBullet.cpp" />
     <ClCompile Include="TestStage.cpp" />
   </ItemGroup>

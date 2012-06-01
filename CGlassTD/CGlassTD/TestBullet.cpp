@@ -17,7 +17,7 @@ const float TestBullet::getMass()
 	return 1;
 }
 
-TestBullet* TestBulletFactory::createInstance( SceneManager* mgr, NameValueList args )
+TestBullet* TestBulletFactory::createInstance(SceneManager* mgr)
 {
 	SceneNode* node = mgr->getRootSceneNode()->createChildSceneNode();
 	node->setScale(0.1f, 0.1f, 0.1f);

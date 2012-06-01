@@ -26,7 +26,7 @@ public:
 	/// @param mgr 场景管理类
 	/// @param args 创建子类需要用到的参数
 	/// @return 返回创建好的子类，如果失败则返回NULL
-	virtual TestBullet* createInstance( SceneManager* mgr, NameValueList args );
+	virtual TestBullet* createInstance(SceneManager* mgr);
 
 	/// 返回工厂的类型
 	virtual std::string getType();
