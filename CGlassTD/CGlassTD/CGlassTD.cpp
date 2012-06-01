@@ -42,6 +42,8 @@ void CGlassTD::createScene(void)
 	BulletFactory* bf;
 	bf = new TestBulletFactory();
 	mBulletFactoryMap.insert(std::make_pair(bf->getType(), bf));
+
+
 }
 
 bool CGlassTD::frameRenderingQueued( const Ogre::FrameEvent& evt )
