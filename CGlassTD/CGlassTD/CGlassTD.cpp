@@ -1,5 +1,6 @@
 #include "CGlassTD.h"
 #include "TestBullet.h"
+
 #include "OrdinaryMonster.h"
 //-------------------------------------------------------------------------------------
 CGlassTD::CGlassTD(void)
