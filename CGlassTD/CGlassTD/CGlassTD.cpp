@@ -42,6 +42,7 @@ void CGlassTD::createScene(void)
 	mCamera->setPosition(0, 10, 10);
 	mCamera->lookAt(0, -10, -10);
 
+	
 	//// ≤‚ ‘by kid
 	// ≤‚ ‘by kid
 	//BulletFactory* bf;
