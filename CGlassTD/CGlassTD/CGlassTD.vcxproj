@@ -126,6 +126,8 @@
     <ClInclude Include="Magazine.h" />
     <ClInclude Include="Maze.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="MonsterGenerator.h" />
+    <ClInclude Include="MonsterManager.h" />
     <ClInclude Include="ObjectFactory.h" />
     <ClInclude Include="OrdinaryMonster.h" />
     <ClInclude Include="Position.h" />
@@ -150,6 +152,8 @@
     <ClCompile Include="CGlassTD.cpp" />
     <ClCompile Include="Maze.cpp" />
     <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="MonsterGenerator.cpp" />
+    <ClCompile Include="MonsterManager.cpp" />
     <ClCompile Include="ObjectFactory.cpp" />
     <ClCompile Include="OrdinaryMonster.cpp" />
     <ClCompile Include="Position.cpp" />

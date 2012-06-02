@@ -2,7 +2,7 @@
 #include "TestBullet.h"
 #include "TestStage.h"
 
-#include "OrdinaryMonster.h"
+
 //-------------------------------------------------------------------------------------
 CGlassTD::CGlassTD(void)
 {
@@ -23,8 +23,8 @@ CGlassTD::~CGlassTD(void)
 //-------------------------------------------------------------------------------------
 void CGlassTD::createScene(void)
 {
-	/*Ogre::SceneNode* monsterNode = mSceneMgr->getRootSceneNode();
-	OrdinaryMonster mon(mSceneMgr, monsterNode, Position(10, 10), "ogrehead.mesh", "name");*/
+	/*MonsterManager* monsterMgr = MonsterManager::getMonsterManager();
+	monsterMgr->monsterGenerate(mSceneMgr);*/
  /*   Ogre::Entity* ogreHead = mSceneMgr->createEntity("Head", "ogrehead.mesh");
 
     Ogre::SceneNode* headNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
@@ -38,13 +38,13 @@ void CGlassTD::createScene(void)
     l->setPosition(20,80,50);
 	*/
 
-	mpStageManager = new StageManager(mSceneMgr);
-	mpStageManager->setStage(new TestStage(mSceneMgr, mpStageManager));
+	//mpStageManager = new StageManager(mSceneMgr);
+	//mpStageManager->setStage(new TestStage(mSceneMgr, mpStageManager));
 
-	// ²âÊÔby kid
-	BulletFactory* bf;
-	bf = new TestBulletFactory();
-	mBulletFactoryMap.insert(std::make_pair(bf->getType(), bf));
+	//// ²âÊÔby kid
+	//BulletFactory* bf;
+	//bf = new TestBulletFactory();
+	//mBulletFactoryMap.insert(std::make_pair(bf->getType(), bf));
 
 
 }

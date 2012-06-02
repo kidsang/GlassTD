@@ -2,6 +2,7 @@
 
 Monster::Monster(void)
 	:mSpeed(0),
+	mPos(Ogre::Vector2(BEGIN_POS_X, BEGIN_POS_Y)),
 	mBlood(FULL_BLOOD),
     mFace(Ogre::Vector3(0, 0, 1)),
     mKind(ORDINARY_MONSTER)
@@ -42,11 +43,11 @@ int Monster::getKind(void)
 {
 	return mKind;
 }
-Position Monster::getPosition(void)
+Ogre::Vector2 Monster::getPosition(void)
 {
 	return mPos;
 }
-void Monster::setPosition(Position& mPos)
+void Monster::setPosition(Ogre::Vector2& mPos)
 {
 	this->mPos = mPos;
 }
