@@ -6,8 +6,7 @@
 #include "BaseApplication.h"
 #include "../res/resource.h"
 #include "StageManager.h"
-#include "MonsterManager.h"
-#include "OrdinaryMonster.h"
+
 /**
  * 文件：CGlassTD
  * 日期：2012/05/31

@@ -18,9 +18,9 @@ protected:
 	Ogre::Vector3 mFace;
 	/// 怪物的种类
 	int mKind;
-	Ogre::Vector2 mPos;
+	Ogre::Vector3 mPos;
 	Ogre::SceneNode* mNode;
-	Ogre::Entity* entity;
+	/// Ogre::Entity* entity;
 	Ogre::String mMesh;
 	Ogre::String mName;
 
@@ -28,12 +28,12 @@ public:
 	Monster(void);
 	Monster(Ogre::SceneManager* sceneMgr, Ogre::SceneNode* parentNode);
 	~Monster(void);
-	void go(void);
+	void go(float timeSinceLastFrame, Ogre::Vector3& direction);
 	int getBlood(void);
 	void setBlood(int mBlood);
 	int getKind(void);
-	Ogre::Vector2 getPosition(void);
-	void setPosition(Ogre::Vector2& mPos);
+	Ogre::Vector3 getPosition(void);
+	void setPosition(Ogre::Vector3& mPos);
 	Ogre::Vector3 getFace(void);
 	void setFace(Ogre::Vector3& mFace);
 	Ogre::String getMesh();

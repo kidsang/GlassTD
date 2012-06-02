@@ -2,7 +2,7 @@
 
 Monster::Monster(void)
 	:mSpeed(0),
-	mPos(Ogre::Vector2(BEGIN_POS_X, BEGIN_POS_Y)),
+	mPos(Ogre::Vector3(BEGIN_POS_X, 10, BEGIN_POS_Y)),
 	mBlood(FULL_BLOOD),
     mFace(Ogre::Vector3(0, 0, 1)),
     mKind(ORDINARY_MONSTER)
@@ -17,7 +17,8 @@ Monster::Monster(void)
 
 Monster::~Monster(void)
 {
-
+////	if(mNode != NULL)
+////		delete mNode;
 }
 
 //Ogre::SceneNode* Monster::getNode(Ogre::String mesh, Ogre::String name)
@@ -26,9 +27,10 @@ Monster::~Monster(void)
 //	
 //}
 
-void Monster::go(void)
+void Monster::go(float timeSinceLastFrame, Ogre::Vector3& direction)
 {
-
+		mPos += direction * timeSinceLastFrame;
+		mNode->setPosition(mPos);
 }
 
 int Monster::getBlood(void)
@@ -43,11 +45,11 @@ int Monster::getKind(void)
 {
 	return mKind;
 }
-Ogre::Vector2 Monster::getPosition(void)
+Ogre::Vector3 Monster::getPosition(void)
 {
 	return mPos;
 }
-void Monster::setPosition(Ogre::Vector2& mPos)
+void Monster::setPosition(Ogre::Vector3& mPos)
 {
 	this->mPos = mPos;
 }

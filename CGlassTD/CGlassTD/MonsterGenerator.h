@@ -8,6 +8,7 @@ class MonsterGenerator
 public:
 	MonsterGenerator(void);
 	~MonsterGenerator(void);
+	/// ²úÉú¹ÖÎï
 	Monster* createMonster(Ogre::SceneManager* sceneManager, Ogre::String mesh, Ogre::String name);
 };
 //
