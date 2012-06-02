@@ -35,3 +35,8 @@ void TestStage::onMousePressed(const OIS::MouseEvent &arg, OIS::MouseButtonID id
 void TestStage::onMouseReleased(const OIS::MouseEvent &arg, OIS::MouseButtonID id)
 {
 }
+
+void TestStage::run( float timeSinceLastFrame )
+{
+	throw std::exception("The method or operation is not implemented.");
+}

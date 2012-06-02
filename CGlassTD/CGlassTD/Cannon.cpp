@@ -1,9 +1,10 @@
 #include "Cannon.h"
 
 Cannon::Cannon(SceneNode* node, Entity* entity)
-	: mNode(node), mEntity(entity)
+	: mNode(node), mEntity(entity),
+	mCurrentBullet(0), mFireStrenth(100)
 {
-
+	mNode->setOrientation(0, 0, 1, 0);
 }
 
 Cannon::~Cannon()
@@ -39,4 +40,10 @@ void Cannon::changeBullet( unsigned int index )
 void Cannon::changeBullet()
 {
 	mCurrentBullet = (mCurrentBullet + 1) % mBulletFactoryList.size();
+}
+
+void Cannon::rotate( int yaw, int pitch )
+{
+	mNode->yaw(Ogre::Radian(yaw / 100.f));
+	mNode->pitch(Ogre::Radian(pitch / 100.f));
 }

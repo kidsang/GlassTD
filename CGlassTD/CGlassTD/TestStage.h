@@ -2,7 +2,7 @@
 #define __TestStage_h_
 
 #include "Stage.h"
-
+#include "Maze.h"
 /// 用于测试的舞台类
 /// @author: LiaoNanhao
 class TestStage : public Stage
@@ -16,6 +16,8 @@ public:
 	virtual void onMouseMoved(const OIS::MouseEvent &arg);
 	virtual void onMousePressed(const OIS::MouseEvent &arg, OIS::MouseButtonID id);
 	virtual void onMouseReleased(const OIS::MouseEvent &arg, OIS::MouseButtonID id);
+
+	virtual void run( float timeSinceLastFrame );
 
 };
 

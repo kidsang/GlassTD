@@ -1,6 +1,7 @@
 #include "CGlassTD.h"
 #include "TestBullet.h"
 #include "TestStage.h"
+#include "StagePass1.h"
 
 
 //-------------------------------------------------------------------------------------
@@ -10,10 +11,6 @@ CGlassTD::CGlassTD(void)
 //-------------------------------------------------------------------------------------
 CGlassTD::~CGlassTD(void)
 {
-	// 清空
-	for (auto iter = mBulletFactoryMap.begin(); iter != mBulletFactoryMap.end(); ++iter)
-		delete (*iter).second;
-
 	if (mpStageManager != NULL)
 	{
 		delete mpStageManager;
@@ -39,11 +36,19 @@ void CGlassTD::createScene(void)
 	*/
 
 	//mpStageManager = new StageManager(mSceneMgr);
+	mpStageManager = new StageManager(mSceneMgr);
 	//mpStageManager->setStage(new TestStage(mSceneMgr, mpStageManager));
+	mpStageManager->setStage(new StagePass1(mSceneMgr, mpStageManager));
+	mCamera->setPosition(0, 10, 10);
+	mCamera->lookAt(0, -10, -10);
 
 	//// 测试by kid
+	// 测试by kid
+	//BulletFactory* bf;
 	//BulletFactory* bf;
 	//bf = new TestBulletFactory();
+	//bf = new TestBulletFactory();
+	//mBulletFactoryMap.insert(std::make_pair(bf->getType(), bf));
 	//mBulletFactoryMap.insert(std::make_pair(bf->getType(), bf));
 
 
@@ -51,39 +56,43 @@ void CGlassTD::createScene(void)
 
 bool CGlassTD::frameRenderingQueued( const Ogre::FrameEvent& evt )
 {
+	//
 	BaseApplication::frameRenderingQueued(evt);
+
+	// 运行当前场景的逻辑
+	mpStageManager->getStage()->run(evt.timeSinceLastFrame);
 
 	return true;
 }
-/*
+
 bool CGlassTD::keyPressed(const OIS::KeyEvent &arg)
 {
-	Stage* pCurrentStage = mpStageManager->getStage();
-	pCurrentStage->onKeyPressed(arg);
+	BaseApplication::keyPressed(arg);
+	mpStageManager->getStage()->onKeyPressed(arg);
 	return true;
 }
 
 bool CGlassTD::mouseMoved(const OIS::MouseEvent &arg)
 {
-	Stage* pCurrentStage = mpStageManager->getStage();
-	pCurrentStage->onMouseMoved(arg);
+	//BaseApplication::mouseMoved(arg);
+	mpStageManager->getStage()->onMouseMoved(arg);
 	return true;
 }
 
 bool CGlassTD::mousePressed(const OIS::MouseEvent &arg, OIS::MouseButtonID id)
 {
-	Stage* pCurrentStage = mpStageManager->getStage();
-	pCurrentStage->onMousePressed(arg, id);
+	BaseApplication::mousePressed(arg, id);
+	mpStageManager->getStage()->onMousePressed(arg, id);
 	return true;
 }
 
 bool CGlassTD::mouseReleased(const OIS::MouseEvent &arg, OIS::MouseButtonID id)
 {
-	Stage* pCurrentStage = mpStageManager->getStage();
-	pCurrentStage->onMouseReleased(arg, id);
+	BaseApplication::mouseReleased(arg, id);
+	mpStageManager->getStage()->onMouseReleased(arg, id);
 	return true;
 }
-*/
+
 
 
 #include "windows.h"

@@ -49,6 +49,9 @@ public:
 	/// 切换至下一个武器
 	/// @note 会轮转
 	void changeBullet();
+
+	/// 修改炮台朝向
+	void rotate(int yaw, int pitch);
 };
 
 

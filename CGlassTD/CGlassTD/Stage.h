@@ -17,6 +17,11 @@ public:
 	/// 析构函数
 	virtual ~Stage(void);
 
+	/// 场景的运行逻辑
+	/// @param timeSinceLastFrame 从上一帧到现在流逝的时间
+	virtual void run(float timeSinceLastFrame) = 0;
+
+	// 对事件的响应
 	/// 按下键盘触发此函数
 	/// @param arg 事件的信息
 	virtual void onKeyPressed(const OIS::KeyEvent &arg) = 0;
