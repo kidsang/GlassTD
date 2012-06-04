@@ -18,7 +18,6 @@ Maze::Maze(SceneManager* sceneManager, int* map, int width, int height)
 			this->pZones[j * width + i] = Cell(sceneManager, mSceneNode, new Ogre::Vector2(Real(i),Real(j)), map[j * width + i]);
 		}
 	}
-	mSceneNode->setScale(Ogre::Vector3(0.1f));
 	this->horizon = this->pZones[1].getHeight() / 2;
 }
 

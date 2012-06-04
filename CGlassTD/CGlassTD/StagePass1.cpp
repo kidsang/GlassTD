@@ -71,7 +71,9 @@ void StagePass1::onKeyPressed( const OIS::KeyEvent &arg )
 {
 	if (arg.key == OIS::KC_SPACE)
 	{
-		mBulletList.push_back(mCannon->fire(mSceneManager));
+		Bullet* bullet = mCannon->fire(mSceneManager);
+		if (bullet)
+			mBulletList.push_back(bullet);
 	}
 }
 
