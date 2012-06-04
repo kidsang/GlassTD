@@ -19,6 +19,18 @@ Cell::Cell(Ogre::SceneManager* sceneManager, Ogre::SceneNode* parentNode,int sta
 	this->mPos = pos;
 }
 
+Cell::Cell( Ogre::SceneManager* sceneManager,Ogre::SceneNode* parentNode,int state,int maxContain,Ogre::Vector2* pos )
+{
+	this->mEntity = ObjectFactory::createEntity(sceneManager,"cubess.mesh");
+	int x = this->mEntity->getBoundingBox().getSize().x;
+	int z = this->mEntity->getBoundingBox().getSize().z;
+	this->mSceneNode = ObjectFactory::createSceneNode(parentNode,this->mEntity, Vector3(x * pos->x,Real(0), z * pos->y));
+	if(state == 0)
+	{
+		this->mSceneNode->setVisible(false);
+	}
+}
+
 
 Cell::~Cell(void)
 {

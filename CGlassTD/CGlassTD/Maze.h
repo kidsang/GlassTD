@@ -30,7 +30,9 @@ public:
 	Maze(void);
 	/// 构造函数
 	/// @param sceneManager 场景管理类
-	/// @
+	/// @param map 地图数组指针
+	/// @param width 地图的宽
+	/// @param height 地图的高
 	Maze(SceneManager* sceneManager, int* map, int width, int height);
 	/// 获取当前地图的信息
 	/// @return 返回一维数组

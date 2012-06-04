@@ -19,6 +19,8 @@ private:
 	int mMaxContain;
 	/// 此空间的位置坐标
 	Position mPos;
+	/// 此空间的位置坐标
+	Ogre::Vector2* pPos;
 	/// 此空间的实体指针
 	Entity* mEntity;
 	/// 此空间的场景节点
@@ -35,6 +37,7 @@ public:
 	/// @param maxContain 此空间的最大容量属性
 	/// @param pos 此空间的坐标值引用
 	Cell(Ogre::SceneManager* sceneManager,Ogre::SceneNode* parentNode,int state,int maxContain,Position& pos);
+	Cell(Ogre::SceneManager* sceneManager,Ogre::SceneNode* parentNode,int state,int maxContain,Ogre::Vector2* pos);
 	~Cell(void);
 	/// 获取可以容纳的空间值
 	/// @note 每个实体本身的属性都会有一个空间值
