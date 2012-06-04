@@ -5,6 +5,7 @@
 #include "StageManager.h"
 #include <OgreCamera.h>
 
+
 /// 舞台抽象类，负责场景的管理
 /// @author: LiaoNanhao
 class Stage
@@ -13,6 +14,7 @@ public:
 	/// 构造函数
 	/// @param pSceneManager 场景管理器的指针
 	/// @param pStageManager 舞台管理器的指针
+	/// @note 在构造函数中完成该舞台的场景相关的所有初始化操作，例如场景树的重建，资源的加载等
 	Stage(Ogre::SceneManager* sceneManager, StageManager* stageManager);
 
 	/// 析构函数
@@ -20,6 +22,7 @@ public:
 
 	/// 场景的运行逻辑
 	/// @param timeSinceLastFrame 从上一帧到现在流逝的时间
+	/// @note 这个函数每一帧调用，处理的是每一帧的逻辑
 	virtual void run(float timeSinceLastFrame) = 0;
 
 	// 对事件的响应
