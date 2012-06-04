@@ -2,7 +2,7 @@
 
 Cannon::Cannon(SceneNode* node, Entity* entity)
 	: mNode(node), mEntity(entity),
-	mCurrentBullet(0), mFireStrenth(100)
+	mCurrentBullet(0), mFireStrenth(500)
 {
 	mNode->setOrientation(0, 0, 1, 0);
 }
@@ -44,6 +44,6 @@ void Cannon::changeBullet()
 
 void Cannon::rotate( int yaw, int pitch )
 {
-	mNode->yaw(Ogre::Radian(yaw / 100.f));
-	mNode->pitch(Ogre::Radian(pitch / 100.f));
+	mNode->yaw(Ogre::Radian(yaw / 400.f), Ogre::Node::TS_WORLD);
+	mNode->pitch(Ogre::Radian(pitch / 400.f), Ogre::Node::TS_WORLD);
 }
