@@ -1,6 +1,5 @@
 #ifndef __Maze_h_
 #define __Maze_h_
-
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
 #include <OgreEntity.h>
@@ -49,8 +48,4 @@ public:
 	bool step(Monster& monster);
 	~Maze(void);
 };
-
-
-
 #endif
-
