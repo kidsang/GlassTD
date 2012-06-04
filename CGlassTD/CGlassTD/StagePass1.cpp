@@ -1,12 +1,12 @@
 #include "StagePass1.h"
 #include "TestBullet.h"
 
-StagePass1::StagePass1(Ogre::SceneManager* pSceneManager, StageManager* pStageManager)
-	: Stage(pSceneManager, pStageManager)
+StagePass1::StagePass1(Ogre::SceneManager* sceneManager, StageManager* stageManager)
+	: Stage(sceneManager, stageManager)
 {
 	// 新增cannon
-	SceneNode* node = pSceneManager->getRootSceneNode()->createChildSceneNode();
-	Entity* cannon = pSceneManager->createEntity("cube.mesh");
+	SceneNode* node = sceneManager->getRootSceneNode()->createChildSceneNode();
+	Entity* cannon = sceneManager->createEntity("cube.mesh");
 	node->attachObject((MovableObject*)cannon);
 	node->setScale(0.1, 0.1, 0.1);
 	mCannon = new Cannon(node, cannon);
@@ -39,7 +39,7 @@ StagePass1::StagePass1(Ogre::SceneManager* pSceneManager, StageManager* pStageMa
 		0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 		};
-	mMaze = new Maze(pSceneManager, iMap, mapWidth, mapHeight);
+	mMaze = new Maze(sceneManager, iMap, mapWidth, mapHeight);
 
 	/// 新增一个monster管理器
 	mMonsterManager = MonsterManager::getMonsterManager();
@@ -62,7 +62,7 @@ void StagePass1::onKeyPressed( const OIS::KeyEvent &arg )
 {
 	if (arg.key == OIS::KC_SPACE)
 	{
-		mBulletList.push_back(mCannon->fire(mpSceneManager));
+		mBulletList.push_back(mCannon->fire(mSceneManager));
 	}
 }
 
@@ -83,7 +83,7 @@ void StagePass1::run( float timeSinceLastFrame )
 {
 	/// MonsterManager* monsterMgr = MonsterManager::getMonsterManager();
 	/// 产生怪物
-	mMonsterManager->monsterGenerate(mpSceneManager, timeSinceLastFrame);
+	mMonsterManager->monsterGenerate(mSceneManager, timeSinceLastFrame);
 	/// 遍历怪物列表
 	std::list<Monster*> monsterList = mMonsterManager->getMonstersList();
 	for (auto iter = monsterList.begin(); iter != monsterList.end(); ++iter)

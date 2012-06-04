@@ -1,16 +1,17 @@
 #include "Stage.h"
 
-Stage::Stage(Ogre::SceneManager* pSceneManager, StageManager* pStageManager)
-	: mpSceneManager(pSceneManager), mpStageManager(pStageManager)
+Stage::Stage(Ogre::SceneManager* sceneManager, StageManager* stageManager)
+	: mSceneManager(sceneManager), mStageManager(stageManager)
 {
+	mCamera = mSceneManager->getCamera("PlayerCam");
 }
 
 Stage::~Stage(void)
 {
 }
 
-void Stage::jumpToNextStage(Stage* pNextStage)
+void Stage::jumpToNextStage(Stage* nextStage)
 {
-	mpStageManager->setStage(pNextStage);
+	mStageManager->setStage(nextStage);
 	delete this;
 }

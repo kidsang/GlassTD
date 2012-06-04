@@ -3,16 +3,16 @@
 TestStage::TestStage(Ogre::SceneManager* pSceneManager, StageManager* pStageManager)
 	: Stage(pSceneManager, pStageManager)
 {
-	Ogre::Entity* ogreHead = mpSceneManager->createEntity("Head", "ogrehead.mesh");
+	Ogre::Entity* ogreHead = mSceneManager->createEntity("Head", "ogrehead.mesh");
 
-	Ogre::SceneNode* headNode = mpSceneManager->getRootSceneNode()->createChildSceneNode();
+	Ogre::SceneNode* headNode = mSceneManager->getRootSceneNode()->createChildSceneNode();
 	headNode->attachObject(ogreHead);
 
 	// Set ambient light
-	mpSceneManager->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
+	mSceneManager->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
 
 	// Create a light
-	Ogre::Light* l = mpSceneManager->createLight("MainLight");
+	Ogre::Light* l = mSceneManager->createLight("MainLight");
 	l->setPosition(20,80,50);
 }
 
