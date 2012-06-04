@@ -8,7 +8,7 @@ StagePass1::StagePass1(Ogre::SceneManager* sceneManager, StageManager* stageMana
 	SceneNode* node = sceneManager->getRootSceneNode()->createChildSceneNode();
 	Entity* cannon = sceneManager->createEntity("cube.mesh");
 	node->attachObject((MovableObject*)cannon);
-	node->setScale(0.1, 0.1, 0.1);
+	node->setPosition(0, 0, 500);
 	mCannon = new Cannon(node, cannon);
 	// 给cannon增加炮弹
 	mCannon->addBulletFactory(new TestBulletFactory());
@@ -44,6 +44,10 @@ StagePass1::StagePass1(Ogre::SceneManager* sceneManager, StageManager* stageMana
 	/// 新增一个monster管理器
 	mMonsterManager = MonsterManager::getMonsterManager();
 
+	/// 改变镜头视角
+	//mCamera->lookAt(Vector3(0, 0, -100s));//lookat 貌似没用
+	mCamera->setPosition(Vector3(0, 1000, 1000));
+	mCamera->setDirection(-mCamera->getPosition());
 }
 
 
@@ -88,7 +92,7 @@ void StagePass1::run( float timeSinceLastFrame )
 	std::list<Monster*> monsterList = mMonsterManager->getMonstersList();
 	for (auto iter = monsterList.begin(); iter != monsterList.end(); ++iter)
 		(*iter)->go(timeSinceLastFrame, Vector3(0, 0, 10));
-
+	/// 使炮弹飞行
 	for (auto iter = mBulletList.begin(); iter != mBulletList.end(); ++iter)
 		(*iter)->fly(timeSinceLastFrame, Vector3(0, -10, 0));
 }
