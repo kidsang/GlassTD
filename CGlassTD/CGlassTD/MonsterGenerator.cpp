@@ -8,6 +8,15 @@ Monster* MonsterGenerator::createMonster(Ogre::SceneManager* mSceneMgr, Ogre::St
 	return mon;
 }
 
+Monster* MonsterGenerator::createMonster(Ogre::SceneManager* mSceneMgr, Ogre::String mesh)
+{
+	Ogre::SceneNode* monsterNode = mSceneMgr->getRootSceneNode();
+	Monster* mon;
+	mon = new OrdinaryMonster(mSceneMgr, monsterNode, mesh);
+	return mon;
+}
+
+
 MonsterGenerator::MonsterGenerator( void )
 {
 

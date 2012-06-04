@@ -46,9 +46,9 @@ void MonsterManager::monsterGenerate(Ogre::SceneManager* sceneManager, float tim
 	{
 		MonsterGenerator* monsterGen = new MonsterGenerator();
 		Ogre::String mesh = "robot.mesh";
-		mMonstersList.push_back(monsterGen->createMonster(sceneManager, mesh, mMonsterMgr->mMonNames[mMonsterMgr->getMonsterNum()]));
+		mMonstersList.push_back(monsterGen->createMonster(sceneManager, mesh));
 		mMonsterMgr->MonsterNumPlus();
-		mMonsterMgr->setTimeCount(0.0);
+		mMonsterMgr->setTimeCount(0.0f);
 	}
 	
 }
