@@ -10,6 +10,8 @@ public:
 	~MonsterGenerator(void);
 	/// 产生怪物
 	Monster* createMonster(Ogre::SceneManager* sceneManager, Ogre::String mesh, Ogre::String name);
+	/// 产生怪物
+	Monster* createMonster(Ogre::SceneManager* mSceneMgr, Ogre::String mesh);
 };
 //
 //const int DenstinationX = 10;
