@@ -32,7 +32,7 @@ TempStage::TempStage( Ogre::SceneManager* pSceneManager, StageManager* pStageMan
 //	mpSceneManager->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
 //
 	//// Create a light
-	Ogre::Light* l = mpSceneManager->createLight("MainLight");
+	Ogre::Light* l = mSceneManager->createLight("MainLight");
 	l->setPosition(20,80,50);
 }
 
