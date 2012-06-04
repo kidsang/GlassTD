@@ -120,6 +120,7 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Cannon.h" />
     <ClInclude Include="Cell.h" />
+    <ClInclude Include="CellType.h" />
     <ClInclude Include="CGlassTD.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="Direction.h" />
