@@ -61,7 +61,7 @@ bool BaseApplication::configure(void)
 void BaseApplication::chooseSceneManager(void)
 {
     // Get the SceneManager, in this case a generic one
-    mSceneMgr = mRoot->createSceneManager(Ogre::ST_GENERIC);
+	mSceneMgr = mRoot->createSceneManager(Ogre::ST_GENERIC);
 }
 //-------------------------------------------------------------------------------------
 void BaseApplication::createCamera(void)

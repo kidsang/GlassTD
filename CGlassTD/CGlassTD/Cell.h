@@ -47,6 +47,8 @@ public:
 	/// @param monster 要容纳怪兽的引用
 	/// @note 返回true表示能容纳，反之不能
 	bool isContain(Monster& monster);
+	/// 获取空间的高度
+	int getHeight();
 };
 
 #endif

@@ -5,6 +5,7 @@
 #include "Bullet.h"
 #include "Cannon.h"
 #include "Maze.h"
+#include "MonsterManager.h"
 
 /// 第一关场景
 class StagePass1 : public Stage
@@ -18,6 +19,8 @@ private:
 	BulletList mBulletList;
 	/// 迷宫
 	Maze* mMaze;
+	/// 怪物序列管理器
+	MonsterManager* mMonsterManager;
 
 public:
 	/// 构造函数

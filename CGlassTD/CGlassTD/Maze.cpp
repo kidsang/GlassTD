@@ -17,10 +17,11 @@ Maze::Maze(SceneManager* sceneManager, int* map, int width, int height)
 	{
 		for(int i = -halfHeight; i < halfHeight; ++i)
 		{
-			this->pZones[(i + halfWidth) * mWidth + j + halfHeight] = Cell(sceneManager, mSceneNode, map[(i + halfWidth) * mWidth + j + halfHeight], 8, Position(i,j));
+			this->pZones[(i + halfWidth) * mWidth + j + halfHeight] = Cell(sceneManager, mSceneNode, map[(i + halfWidth) * mWidth + j + halfHeight], 10, Position(i,j));
 		}
 	}
 	mSceneNode->setScale(Ogre::Vector3(0.1f));
+	this->horizon = this->pZones[0].getHeight() / 2;
 }
 
 
@@ -41,4 +42,9 @@ int* Maze::getMazeInfo()
 bool Maze::isStep( Monster& monster )
 {
 	return true;
+}
+
+int Maze::getHorizon()
+{
+	return this->horizon;
 }

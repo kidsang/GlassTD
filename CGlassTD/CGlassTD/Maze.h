@@ -17,7 +17,8 @@ private:
 	Cell* pZones;
 	/// 地图信息的一维数组
 	int* pMapInfo;
-
+	/// 地平线
+	int horizon;
 	/// 地图一位数组
 	int* mMap;
 	/// 地图的宽
@@ -34,7 +35,8 @@ public:
 	/// 获取当前地图的信息
 	/// @return 返回一维数组
 	int* getMazeInfo();
-
+	/// 获取地板的y坐标
+	int getHorizon();
 	/// 怪兽请求空间位置
 	/// @param moster 指定的怪兽引用
 	/// @return 返回true则表示请求成功，反之不成功
