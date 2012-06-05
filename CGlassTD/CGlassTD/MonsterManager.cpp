@@ -2,7 +2,7 @@
 
 MonsterManager* MonsterManager::mMonsterMgr = NULL;
 int MonsterManager::mMonsterNum = 0;
-float MonsterManager::mTimeCount = 0.0;
+float MonsterManager::mTimeCount = 0.0f;
 
 
 MonsterManager::MonsterManager()
@@ -46,9 +46,13 @@ void MonsterManager::monsterGenerate(Ogre::SceneManager* sceneManager, float tim
 	{
 		MonsterGenerator* monsterGen = new MonsterGenerator();
 		Ogre::String mesh = "robot.mesh";
-		mMonstersList.push_back(monsterGen->createMonster(sceneManager, mesh));
+		Monster* monster = monsterGen->createMonster(sceneManager, mesh);
+		monster->monsterScale(0.1, 0.1, 0.1);
+		monster->setAnimate();
+		mMonstersList.push_back(monster);
 		mMonsterMgr->MonsterNumPlus();
 		mMonsterMgr->setTimeCount(0.0f);
+
 	}
 	
 }

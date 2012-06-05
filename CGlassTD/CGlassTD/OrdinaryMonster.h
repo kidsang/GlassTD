@@ -7,7 +7,7 @@ class OrdinaryMonster:public Monster
 public:
 	OrdinaryMonster();
 	OrdinaryMonster(Ogre::SceneManager* sceneMgr, Ogre::SceneNode* parentNode, Ogre::String mesh);
-	OrdinaryMonster(Ogre::SceneManager* sceneMgr, Ogre::SceneNode* parentNode, Ogre::String mesh, Ogre::String name);
+	/*OrdinaryMonster(Ogre::SceneManager* sceneMgr, Ogre::SceneNode* parentNode, Ogre::String mesh, Ogre::String name);*/
 	~OrdinaryMonster();
 	
 };

@@ -6,6 +6,13 @@
 #include "ObjectFactory.h"
 #include "Position.h"
 
+struct HarmList
+{
+	int iceHarm;
+	int fireHarm;
+	HarmList(int iceHarmTemp, int fireHarmTemp):iceHarm(iceHarmTemp), fireHarm(fireHarmTemp){};
+};
+
 class Monster
 {
 protected:
@@ -18,12 +25,16 @@ protected:
 	Ogre::Vector3 mFace;
 	/// 怪物的种类
 	int mKind;
-	Ogre::Vector3 mPos;
+	/*Ogre::Vector3 mPos;*/
 	Ogre::SceneNode* mNode;
 	/// Ogre::Entity* entity;
 	Ogre::String mMesh;
-	Ogre::String mName;
-
+	/*Ogre::String mName;*/
+	Ogre::AnimationState* mAnimationState;
+	/// 怪兽的半径范围
+	float mRadius;
+	/// 伤害列表
+	HarmList mHarmList;
 public:
 	Monster(void);
 	Monster(Ogre::SceneManager* sceneMgr, Ogre::SceneNode* parentNode);
@@ -32,20 +43,29 @@ public:
 	int getBlood(void);
 	void setBlood(int mBlood);
 	int getKind(void);
-	Ogre::Vector3 getPosition(void);
-	void setPosition(Ogre::Vector3& mPos);
+	/*Ogre::Vector3 getPosition(void);
+	void setPosition(Ogre::Vector3& mPos);*/
 	Ogre::Vector3 getFace(void);
 	void setFace(Ogre::Vector3& mFace);
 	Ogre::String getMesh();
 	void setMesh(Ogre::String mesh);
-	Ogre::String getName();
-	void setName(Ogre::String name);
+	/*Ogre::String getName();
+	void setName(Ogre::String name);*/
 
+	/// 设置动画
+	void setAnimate();
+	/// 根据时间刷新动画状态
+	void addTimeToAnimation(float timeSinceLastFrame);
+	/// 获取怪兽的半径
+	int getRadius();
+	/// 缩放怪物
+	void monsterScale(float x, float y, float z);
 };
 
 const int ORDINARY_MONSTER = 0;
 const int FLY_MONSTER = 1;
 const int FULL_BLOOD = 100;
-const int BEGIN_POS_X = -10;
-const int BEGIN_POS_Y = -10;
+const float BEGIN_POS_X = -100.0f;
+const float BEGIN_POS_Y = 0.f;
+const float BEGIN_POS_Z = -100.f;
 #endif // Monster_h__
