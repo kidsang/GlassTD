@@ -8,7 +8,7 @@ StagePass1::StagePass1(Ogre::SceneManager* sceneManager, StageManager* stageMana
 {
 	// ÐÂÔöcannon
 	SceneNode* node = sceneManager->getRootSceneNode()->createChildSceneNode();
-	Entity* cannon = sceneManager->createEntity("cube.mesh");
+	Entity* cannon = sceneManager->createEntity("cannon.mesh");
 	node->attachObject((MovableObject*)cannon);
 	node->setPosition(0, 200, 550);
 	mCannon = new Cannon(node, cannon);
