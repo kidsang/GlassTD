@@ -16,6 +16,14 @@ public:
 	/// 获取该类型子弹的质量
 	virtual const float getMass();
 
+	/// 获取炮弹的伤害值
+	virtual const float getDamage();
+
+	/// 获取炮弹的爆炸半径
+	virtual const float getRange();
+
+	/// 获取炮弹的元素类型(普通，冰，火)
+	virtual const std::string getSpell();
 };
 
 /// 测试炮弹工厂类

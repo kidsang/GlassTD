@@ -56,7 +56,15 @@ public:
 	/// 获取炮弹的质量属性
 	/// 由子类提供
 	virtual const float getMass() = 0;
+	
+	/// 获取炮弹的伤害值
+	virtual const float getDamage() = 0;
 
+	/// 获取炮弹的爆炸半径
+	virtual const float getRange() = 0;
+
+	/// 获取炮弹的元素类型(普通，冰，火)
+	virtual const std::string getSpell() = 0;
 };
 
 

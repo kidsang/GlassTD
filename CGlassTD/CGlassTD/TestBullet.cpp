@@ -17,6 +17,21 @@ const float TestBullet::getMass()
 	return 1;
 }
 
+const float TestBullet::getDamage()
+{
+	throw std::exception("The method or operation is not implemented.");
+}
+
+const float TestBullet::getRange()
+{
+	throw std::exception("The method or operation is not implemented.");
+}
+
+const std::string TestBullet::getSpell()
+{
+	throw std::exception("The method or operation is not implemented.");
+}
+
 TestBullet* TestBulletFactory::createInstance(SceneManager* mgr)
 {
 	SceneNode* node = mgr->getRootSceneNode()->createChildSceneNode();
