@@ -80,8 +80,8 @@ void StagePass1::onKeyPressed( const OIS::KeyEvent &arg )
 void StagePass1::onMouseMoved( const OIS::MouseEvent &arg )
 {
 	mCannon->rotate(-arg.state.X.rel, arg.state.Y.rel);
-	char buffX[255], buffY[255];
-	LogManager::getSingletonPtr()->logMessage(std::string("--->") + itoa(arg.state.X.rel,buffX,10) + "," + itoa(arg.state.Y.rel,buffY,10));
+	//char buffX[255], buffY[255];
+	//LogManager::getSingletonPtr()->logMessage(std::string("--->") + itoa(arg.state.X.rel,buffX,10) + "," + itoa(arg.state.Y.rel,buffY,10));
 }
 
 void StagePass1::onMousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id )

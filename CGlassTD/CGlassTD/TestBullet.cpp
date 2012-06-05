@@ -1,5 +1,8 @@
 #include "TestBullet.h"
 #include <OgreSceneNode.h>
+#include <OgreMaterialManager.h>
+#include <OgreMaterial.h>
+#include <OgreEntity.h>
 
 
 TestBullet::TestBullet(SceneNode* node, Entity* entity)
@@ -36,7 +39,9 @@ TestBullet* TestBulletFactory::createInstance(SceneManager* mgr)
 {
 	SceneNode* node = mgr->getRootSceneNode()->createChildSceneNode();
 	//node->setScale(0.1f, 0.1f, 0.1f);
-	Entity* entity = mgr->createEntity("sphere10.mesh");
+	Entity* entity = mgr->createEntity("sphere.mesh");
+	//MaterialPtr mat = MaterialManager::getSingletonPtr()->load("GlassTD.material", "Popular");
+	entity->setMaterialName("Glass/Test");
 	node->attachObject((MovableObject*)entity);
 	return new TestBullet(node, entity);
 }
