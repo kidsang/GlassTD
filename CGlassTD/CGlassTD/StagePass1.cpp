@@ -1,6 +1,6 @@
 #include "StagePass1.h"
-#include "TestBullet.h"
 #include <OgreLogManager.h>
+#include "ParamParser.h"
 
 StagePass1::StagePass1(Ogre::SceneManager* sceneManager, StageManager* stageManager)
 	: Stage(sceneManager, stageManager),
@@ -17,7 +17,12 @@ StagePass1::StagePass1(Ogre::SceneManager* sceneManager, StageManager* stageMana
 	node1->setPosition(0, 200, 550);
 	mCannon = new Cannon(node, cannon);
 	// 给cannon增加炮弹
-	mCannon->addBulletFactory(new TestBulletFactory());
+	ParamParser bulletParser = ParamParser("BulletDefine.xml");
+	bulletParser.parse();
+	bulletParser.moveToFirst();
+	while (bulletParser.hasNext())
+		mCannon->addBulletFactory(new BulletFactory(*bulletParser.getNext()));
+	//mCannon->addBulletFactory(new BulletFactory());
 
 	/// 加载迷宫地图
 	const int mapWidth = 16;
@@ -79,8 +84,8 @@ void StagePass1::onKeyPressed( const OIS::KeyEvent &arg )
 void StagePass1::onMouseMoved( const OIS::MouseEvent &arg )
 {
 	mCannon->rotate(-arg.state.X.rel, arg.state.Y.rel);
-	char buffX[255], buffY[255];
-	LogManager::getSingletonPtr()->logMessage(std::string("--->") + itoa(arg.state.X.rel,buffX,10) + "," + itoa(arg.state.Y.rel,buffY,10));
+	//char buffX[255], buffY[255];
+	//LogManager::getSingletonPtr()->logMessage(std::string("--->") + itoa(arg.state.X.rel,buffX,10) + "," + itoa(arg.state.Y.rel,buffY,10));
 }
 
 void StagePass1::onMousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id )

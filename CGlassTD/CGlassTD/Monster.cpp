@@ -7,7 +7,8 @@ Monster::Monster(void)
     mFace(Ogre::Vector3(0, 0, 1)),
 	mRadius(1),
     mKind(ORDINARY_MONSTER),
-	mHarmList(0, 0)
+	mHarmList(0, 0),
+	mIsDead(false)
 {
 	
 }
@@ -95,6 +96,42 @@ int Monster::getRadius()
 void Monster::monsterScale( float x, float y, float z )
 {
 	mNode->scale(x, y, z);
+}
+
+void Monster::harmCheck(float timeSinceLastFrame)
+{
+	if(mHarmList.fireHarmTime < 0)
+	{
+		mHarmList.fireHarm = 0;
+		mHarmList.fireHarmTime = HARM_TIME;
+	}
+	if(mHarmList.iceHarmTime < 0)
+	{
+		mHarmList.iceHarm = 0;
+		mHarmList.iceHarmTime = HARM_TIME;
+		mSpeed /= HARM_SPEED;
+	}
+	if(mHarmList.fireHarm != 0)
+	{
+		mBlood -= mHarmList.fireHarm;
+		mHarmList.fireHarmTime -= timeSinceLastFrame;
+	}
+	if(mHarmList.iceHarm != 0)
+	{
+		mSpeed *= HARM_SPEED;
+		mHarmList.iceHarmTime -= timeSinceLastFrame;
+	}
+
+	if(mBlood < 0 || mBlood == 0)
+	{
+		mIsDead = true;
+	}
+
+}
+
+bool Monster::isMonsterDead()
+{
+	return mIsDead;
 }
 
 //Ogre::String Monster::getName()

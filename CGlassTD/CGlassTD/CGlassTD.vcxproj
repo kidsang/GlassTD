@@ -132,6 +132,7 @@
     <ClInclude Include="MonsterManager.h" />
     <ClInclude Include="ObjectFactory.h" />
     <ClInclude Include="OrdinaryMonster.h" />
+    <ClInclude Include="ParamParser.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="res\Resource.h" />
     <ClInclude Include="Stage.h" />
@@ -141,10 +142,11 @@
     <ClInclude Include="TempStage.h" />
     <ClInclude Include="TestBullet.h" />
     <ClInclude Include="TestStage.h" />
+    <ClInclude Include="tinystr.h" />
+    <ClInclude Include="tinyxml.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="res\CGlassTD.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +165,7 @@
     <ClCompile Include="MonsterManager.cpp" />
     <ClCompile Include="ObjectFactory.cpp" />
     <ClCompile Include="OrdinaryMonster.cpp" />
+    <ClCompile Include="ParamParser.cpp" />
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StageManager.cpp" />
@@ -171,6 +174,10 @@
     <ClCompile Include="TempStage.cpp" />
     <ClCompile Include="TestBullet.cpp" />
     <ClCompile Include="TestStage.cpp" />
+    <ClCompile Include="tinystr.cpp" />
+    <ClCompile Include="tinyxml.cpp" />
+    <ClCompile Include="tinyxmlerror.cpp" />
+    <ClCompile Include="tinyxmlparser.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

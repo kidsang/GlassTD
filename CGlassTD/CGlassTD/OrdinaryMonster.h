@@ -12,6 +12,6 @@ public:
 	
 };
 
-const int LOW_SPEED = 1;
+const float LOW_SPEED = 1.0;
 
 #endif // OrdinaryMonster_h__
