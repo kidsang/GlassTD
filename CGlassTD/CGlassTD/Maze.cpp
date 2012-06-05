@@ -32,7 +32,7 @@ int* Maze::getMazeInfo()
 {
 	for(int i = 0; i < mWidth * mHeight; ++i)
 	{
-		this->pMapInfo[i] = 4;
+		this->pMapInfo[i] = this->mMap[i];
 	}
 	return pMapInfo;
 }
@@ -45,4 +45,9 @@ bool Maze::isStep( Monster& monster )
 int Maze::getHorizon()
 {
 	return this->horizon;
+}
+
+Ogre::Vector2* Maze::getMonsterPos()
+{
+	return new Vector2(Real(3),Real(0));
 }

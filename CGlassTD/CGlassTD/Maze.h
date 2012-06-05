@@ -46,6 +46,9 @@ public:
 	/// @param moster 指定的怪兽引用
 	/// @return 返回true表示成功，反之不成功
 	bool step(Monster& monster);
+	/// 获取怪兽出现的位置
+	/// @return 返回二维坐标
+	Ogre::Vector2* getMonsterPos();
 	~Maze(void);
 };
 #endif
