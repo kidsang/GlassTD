@@ -22,6 +22,9 @@ private:
 	/// 怪物序列管理器
 	MonsterManager* mMonsterManager;
 
+	/// 环境重力
+	Vector3 mGravity;
+
 public:
 	/// 构造函数
 	/// @param pSceneManager 场景管理器的指针

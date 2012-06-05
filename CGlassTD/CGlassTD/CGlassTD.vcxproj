@@ -124,6 +124,7 @@
     <ClInclude Include="CGlassTD.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="Direction.h" />
+    <ClInclude Include="LevelStage.h" />
     <ClInclude Include="Maze.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MonsterGenerator.h" />
@@ -153,6 +154,7 @@
     <ClCompile Include="Cannon.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CGlassTD.cpp" />
+    <ClCompile Include="LevelStage.cpp" />
     <ClCompile Include="Maze.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MonsterGenerator.cpp" />
