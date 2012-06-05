@@ -7,16 +7,16 @@
 #include "Maze.h"
 #include "MonsterManager.h"
 
+#include "List.hpp"
+
 /// 第一关场景
 class StagePass1 : public Stage
 {
-	typedef std::deque<Bullet*> BulletList;
-
 private:
 	/// 炮
 	Cannon* mCannon;
 	/// 场景中存在的炮弹的列表
-	BulletList mBulletList;
+	MyList<Bullet*> mBulletList;
 	/// 迷宫
 	Maze* mMaze;
 	/// 怪物序列管理器

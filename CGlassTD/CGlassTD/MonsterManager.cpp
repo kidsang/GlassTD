@@ -7,6 +7,8 @@ float MonsterManager::mTimeCount = 0.0f;
 
 MonsterManager::MonsterManager()
 {
+	mMonsterGen = new MonsterGenerator();
+
 	for(int i = 0; i < 100; i++)
 	{
 		mMonNames[i] = "monster" + i;
@@ -17,8 +19,9 @@ MonsterManager::~MonsterManager(void)
 {
 	if(mMonsterMgr != NULL)
 	    delete mMonsterMgr;
-	/*for (auto iter = mMonstersList.begin(); iter != mMonstersList.end(); ++iter)
-		delete (*iter);*/
+	
+	mMonstersList.clear();
+	delete mMonsterGen;
 }
 
 MonsterManager* MonsterManager::getMonsterManager(void)
@@ -44,22 +47,19 @@ void MonsterManager::monsterGenerate(Ogre::SceneManager* sceneManager, float tim
 	/// std::list<Monster*> monsterList = mMonsterMgr->getMonstersList();
 	if(mMonsterMgr->getTimeCount() > NEW_MONSTER_TIME)
 	{
-		MonsterGenerator* monsterGen = new MonsterGenerator();
 		Ogre::String mesh = "robot.mesh";
-		Monster* monster = monsterGen->createMonster(sceneManager, mesh);
+		Monster* monster = mMonsterGen->createMonster(sceneManager, mesh);
 		/// monster->monsterScale(0.1, 0.1, 0.1);
 		monster->setAnimate();
-		mMonstersList.push_back(monster);
+		mMonstersList.insertAhead(monster);
 		mMonsterMgr->MonsterNumPlus();
 		mMonsterMgr->setTimeCount(0.0f);
-
 	}
-	
 }
 
-std::list<Monster*> MonsterManager::getMonstersList( void )
+MyList<Monster*>* MonsterManager::getMonstersList( void )
 {
-	return mMonstersList;
+	return &mMonstersList;
 }
 
 //

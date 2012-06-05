@@ -1,8 +1,8 @@
 #ifndef MonsterManager_h__
 #define MonsterManager_h__
 #include "MonsterGenerator.h"
-#include <list>
 #include <windows.h>
+#include "List.hpp"
 
 class MonsterManager
 {
@@ -11,11 +11,13 @@ private:
 	static float mTimeCount;
 	/// std::list<SceneNode*> mMonsterNodes;
 	/// 怪物列表
-	std::list<Monster*> mMonstersList;
+	MyList<Monster*> mMonstersList;
 	/// 怪物数量
 	static int mMonsterNum;
 	/// 怪物管理器，单一
 	static MonsterManager* mMonsterMgr;
+	/// 怪物生成工厂
+	MonsterGenerator* mMonsterGen;
 
 	MonsterManager(Ogre::SceneManager* sceneManager);
 	MonsterManager();
@@ -43,7 +45,7 @@ public:
 	void setTimeCount(float timeCount);
 
 	/// 获取怪物列表
-	std::list<Monster*> getMonstersList(void);
+	MyList<Monster*>* getMonstersList(void);
 
 	/// 获取怪物管理器
 	static MonsterManager* getMonsterManager(void);
