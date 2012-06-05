@@ -20,7 +20,7 @@ const float TestBullet::getMass()
 TestBullet* TestBulletFactory::createInstance(SceneManager* mgr)
 {
 	SceneNode* node = mgr->getRootSceneNode()->createChildSceneNode();
-	node->setScale(0.1f, 0.1f, 0.1f);
+	//node->setScale(0.1f, 0.1f, 0.1f);
 	Entity* entity = mgr->createEntity("sphere10.mesh");
 	node->attachObject((MovableObject*)entity);
 	return new TestBullet(node, entity);
