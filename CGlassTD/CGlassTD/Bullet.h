@@ -107,7 +107,8 @@ private:
 	std::string mType;
 
 public:
-
+	/// 构造函数
+	/// @param params 构造子弹所需要的属性参数
 	BulletFactory(NameValueList params)
 		:mParams(params)
 	{
