@@ -6,11 +6,26 @@
 #include "ObjectFactory.h"
 #include "Position.h"
 
+const int ORDINARY_MONSTER = 0;
+const int FLY_MONSTER = 1;
+const int FULL_BLOOD = 100;
+const float BEGIN_POS_X = -100.0f;
+const float BEGIN_POS_Y = 0.f;
+const float BEGIN_POS_Z = -100.f;
+const float HARM_TIME = 4.0f;
+const float HARM_SPEED = 0.4f;
+
 struct HarmList
 {
 	int iceHarm;
+	float iceHarmTime;
 	int fireHarm;
-	HarmList(int iceHarmTemp, int fireHarmTemp):iceHarm(iceHarmTemp), fireHarm(fireHarmTemp){};
+	float fireHarmTime;
+	HarmList(int iceHarmTemp, int fireHarmTemp)
+		:iceHarm(iceHarmTemp), 
+		fireHarm(fireHarmTemp),
+		iceHarmTime(HARM_TIME),
+		fireHarmTime(HARM_TIME){};
 };
 
 class Monster
@@ -35,6 +50,8 @@ protected:
 	float mRadius;
 	/// …À∫¶¡–±Ì
 	HarmList mHarmList;
+	/// π÷ ﬁ «∑ÒÀ¿Õˆ
+    bool mIsDead;
 public:
 	Monster(void);
 	Monster(Ogre::SceneManager* sceneMgr, Ogre::SceneNode* parentNode);
@@ -60,12 +77,11 @@ public:
 	int getRadius();
 	/// Àı∑≈π÷ŒÔ
 	void monsterScale(float x, float y, float z);
+	/// …À∫¶ºÏ≤‚
+	void harmCheck(float timeSinceLastFrame);
+	/// π÷ ﬁÀ¿µÙ
+	bool isMonsterDead();
 };
 
-const int ORDINARY_MONSTER = 0;
-const int FLY_MONSTER = 1;
-const int FULL_BLOOD = 100;
-const float BEGIN_POS_X = -100.0f;
-const float BEGIN_POS_Y = 0.f;
-const float BEGIN_POS_Z = -100.f;
+
 #endif // Monster_h__

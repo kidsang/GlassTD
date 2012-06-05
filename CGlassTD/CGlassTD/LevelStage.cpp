@@ -1,75 +1,61 @@
 #include "LevelStage.h"
 
 LevelStage::LevelStage(Ogre::SceneManager* sceneManager, StageManager* stageManager)
-	: Stage(sceneManager, stageManager), mCurrentStep(FIRST_STEP)
+	: Stage(sceneManager, stageManager), mCurrentStep(-1)
 {
+	mSteps.clear();
 }
 
 LevelStage::~LevelStage()
 {
+	unsigned size = mSteps.size();
+	for (unsigned i = 0; i < size; ++i )
+	{
+		if (mSteps[i] != NULL)
+		{
+			delete mSteps[i];
+			mSteps[i] = NULL;
+		}
+	}
 }
 
-void LevelStage::setCurrentStep(LevelStage::Step step)
+void LevelStage::pushStep(Step* step)
 {
-	mCurrentStep = step;
+	mSteps.push_back(step);
+}
+
+void LevelStage::setStartStep(unsigned i)
+{
+	this->jumpToStep(i);
 }
 
 void LevelStage::run(float timeSinceLastFrame)
 {
-	if (mCurrentStep == FIRST_STEP)
-	{
-		this->step1Run(timeSinceLastFrame);
-	}
-	else if (mCurrentStep == SECOND_STEP)
-	{
-		this->step2Run(timeSinceLastFrame);
-	}
+	mSteps[mCurrentStep]->run(timeSinceLastFrame);
 }
 
 void LevelStage::onKeyPressed(const OIS::KeyEvent &arg)
 {
-	if (mCurrentStep == FIRST_STEP)
-	{
-		this->step1OnKeyPressed(arg);
-	}
-	else if (mCurrentStep == SECOND_STEP)
-	{
-		this->step2OnKeyPressed(arg);
-	}
+	mSteps[mCurrentStep]->onKeyPressed(arg);
 }
 
 void LevelStage::onMouseMoved(const OIS::MouseEvent &arg)
 {
-	if (mCurrentStep == FIRST_STEP)
-	{
-		this->step1OnMouseMoved(arg);
-	}
-	else if (mCurrentStep == SECOND_STEP)
-	{
-		this->step2OnMouseMoved(arg);
-	}
+	mSteps[mCurrentStep]->onMouseMoved(arg);
 }
 
 void LevelStage::onMousePressed(const OIS::MouseEvent &arg, OIS::MouseButtonID id)
 {
-	if (mCurrentStep == FIRST_STEP)
-	{
-		this->step1OnMousePressed(arg, id);
-	}
-	else if (mCurrentStep == SECOND_STEP)
-	{
-		this->step2OnMousePressed(arg, id);
-	}
+	mSteps[mCurrentStep]->onMousePressed(arg, id);
 }
 
 void LevelStage::onMouseReleased(const OIS::MouseEvent &arg, OIS::MouseButtonID id)
 {
-	if (mCurrentStep == FIRST_STEP)
-	{
-		this->step1OnMouseReleased(arg, id);
-	}
-	else if (mCurrentStep == SECOND_STEP)
-	{
-		this->step2OnMouseReleased(arg, id);
-	}
+	mSteps[mCurrentStep]->onMouseReleased(arg, id);
+}
+
+
+void LevelStage::jumpToStep(unsigned i)
+{
+	mCurrentStep = i;
 }
