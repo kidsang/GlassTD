@@ -137,9 +137,6 @@
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StageManager.h" />
     <ClInclude Include="StagePass1.h" />
-    <ClInclude Include="TempStage.h" />
-    <ClInclude Include="TestBullet.h" />
-    <ClInclude Include="TestStage.h" />
     <ClInclude Include="tinystr.h" />
     <ClInclude Include="tinyxml.h" />
   </ItemGroup>
@@ -169,9 +166,6 @@
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StageManager.cpp" />
     <ClCompile Include="StagePass1.cpp" />
-    <ClCompile Include="TempStage.cpp" />
-    <ClCompile Include="TestBullet.cpp" />
-    <ClCompile Include="TestStage.cpp" />
     <ClCompile Include="tinystr.cpp" />
     <ClCompile Include="tinyxml.cpp" />
     <ClCompile Include="tinyxmlerror.cpp" />
