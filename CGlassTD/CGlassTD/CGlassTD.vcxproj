@@ -156,6 +156,7 @@
     <ClCompile Include="Cannon.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CGlassTD.cpp" />
+    <ClCompile Include="Common.cpp" />
     <ClCompile Include="LevelStage.cpp" />
     <ClCompile Include="Maze.cpp" />
     <ClCompile Include="Monster.cpp" />

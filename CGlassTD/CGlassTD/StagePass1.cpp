@@ -7,15 +7,37 @@ StagePass1::StagePass1(Ogre::SceneManager* sceneManager, StageManager* stageMana
 	mGravity(Vector3(0, -200, 0))
 {
 	// 新增cannon
+	ParamParser cannonParser= ParamParser("CannonDefine.xml");
+	cannonParser.parse();
+	cannonParser.moveToFirst();
+	NameValueList* cannonParams = cannonParser.getNext(); 
 	SceneNode* node = sceneManager->getRootSceneNode()->createChildSceneNode();
-	SceneNode* node1 = sceneManager->getRootSceneNode()->createChildSceneNode();
-	Entity* cannon = sceneManager->createEntity("cannon.mesh");
+	Entity* cannon = sceneManager->createEntity((*cannonParams)["mesh"]);
 	node->attachObject((MovableObject*)cannon);
-	node->setPosition(0, 200, 550);
+	mCannon = new Cannon(node, cannon);
+	if (cannonParams->find("material") != cannonParams->end())
+		cannon->setMaterialName((*cannonParams)["material"]);
+	std::vector<std::string> nums;
+	if (cannonParams->find("position") != cannonParams->end())
+	{
+		nums = mysplit((*cannonParams)["position"]);
+		node->setPosition((float)atof(nums[0].c_str()), (float)atof(nums[1].c_str()), (float)atof(nums[2].c_str()));
+	}
+	if (cannonParams->find("strength") != cannonParams->end())
+		mCannon->setFireStrength((float)(atof((*cannonParams)["strength"].c_str())));
+	if (cannonParams->find("colddown") != cannonParams->end())
+		mCannon->setColdDown((float)(atof((*cannonParams)["colddown"].c_str())));
+	if (cannonParams->find("offset") != cannonParams->end())
+	{
+		nums = mysplit((*cannonParams)["offset"]);
+		mCannon->setFireOffset(Vector3((float)atof(nums[0].c_str()), (float)atof(nums[1].c_str()), (float)atof(nums[2].c_str())));
+	}
+	// 炮台?
+	SceneNode* node1 = sceneManager->getRootSceneNode()->createChildSceneNode();
 	Entity* fort = sceneManager->createEntity("fort.mesh");
 	node1->attachObject((MovableObject*)fort);
 	node1->setPosition(0, 200, 550);
-	mCannon = new Cannon(node, cannon);
+
 	// 给cannon增加炮弹
 	ParamParser bulletParser = ParamParser("BulletDefine.xml");
 	bulletParser.parse();
