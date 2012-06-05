@@ -1,6 +1,6 @@
 #include "StagePass1.h"
-#include "TestBullet.h"
 #include <OgreLogManager.h>
+#include "ParamParser.h"
 
 StagePass1::StagePass1(Ogre::SceneManager* sceneManager, StageManager* stageManager)
 	: Stage(sceneManager, stageManager),
@@ -13,7 +13,12 @@ StagePass1::StagePass1(Ogre::SceneManager* sceneManager, StageManager* stageMana
 	node->setPosition(0, 200, 550);
 	mCannon = new Cannon(node, cannon);
 	// 给cannon增加炮弹
-	mCannon->addBulletFactory(new TestBulletFactory());
+	ParamParser bulletParser = ParamParser("BulletDefine.xml");
+	bulletParser.parse();
+	bulletParser.moveToFirst();
+	while (bulletParser.hasNext())
+		mCannon->addBulletFactory(new BulletFactory(*bulletParser.getNext()));
+	//mCannon->addBulletFactory(new BulletFactory());
 
 	/// 加载迷宫地图
 	const int mapWidth = 20;
