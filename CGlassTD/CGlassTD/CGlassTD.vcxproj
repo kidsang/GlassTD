@@ -120,11 +120,11 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Cannon.h" />
     <ClInclude Include="Cell.h" />
+    <ClInclude Include="CellType.h" />
     <ClInclude Include="CGlassTD.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="Direction.h" />
     <ClInclude Include="LevelStage.h" />
-    <ClInclude Include="List.h" />
     <ClInclude Include="Maze.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MonsterGenerator.h" />
@@ -136,7 +136,6 @@
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StageManager.h" />
     <ClInclude Include="StagePass1.h" />
-    <ClInclude Include="Step.h" />
     <ClInclude Include="TempStage.h" />
     <ClInclude Include="TestBullet.h" />
     <ClInclude Include="TestStage.h" />
@@ -166,7 +165,6 @@
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StageManager.cpp" />
     <ClCompile Include="StagePass1.cpp" />
-    <ClCompile Include="Step.cpp" />
     <ClCompile Include="TempStage.cpp" />
     <ClCompile Include="TestBullet.cpp" />
     <ClCompile Include="TestStage.cpp" />

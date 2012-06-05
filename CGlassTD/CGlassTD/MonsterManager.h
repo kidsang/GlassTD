@@ -55,7 +55,7 @@ public:
 	
 };
 /// 新增怪物的时间间隔
-const float NEW_MONSTER_TIME = 3.0;
+const float NEW_MONSTER_TIME = 6.0;
 
 
 #endif // MonsterManager_h__

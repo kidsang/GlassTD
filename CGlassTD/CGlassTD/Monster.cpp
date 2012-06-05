@@ -1,11 +1,13 @@
 #include "Monster.h"
 
 Monster::Monster(void)
-	:mSpeed(0),
-	mPos(Ogre::Vector3(BEGIN_POS_X, 10, BEGIN_POS_Y)),
+	:mSpeed(1),
+	/*mPos(Ogre::Vector3(BEGIN_POS_X, 10, BEGIN_POS_Y)),*/
 	mBlood(FULL_BLOOD),
     mFace(Ogre::Vector3(0, 0, 1)),
-    mKind(ORDINARY_MONSTER)
+	mRadius(1),
+    mKind(ORDINARY_MONSTER),
+	mHarmList(0, 0)
 {
 	
 }
@@ -17,8 +19,8 @@ Monster::Monster(void)
 
 Monster::~Monster(void)
 {
-////	if(mNode != NULL)
-////		delete mNode;
+	/*if(mNode != NULL)
+		delete mNode;*/
 }
 
 //Ogre::SceneNode* Monster::getNode(Ogre::String mesh, Ogre::String name)
@@ -29,8 +31,7 @@ Monster::~Monster(void)
 
 void Monster::go(float timeSinceLastFrame, Ogre::Vector3& direction)
 {
-		mPos += direction * timeSinceLastFrame;
-		mNode->setPosition(mPos);
+		mNode->setPosition(mNode->getPosition() + direction * timeSinceLastFrame);
 }
 
 int Monster::getBlood(void)
@@ -45,14 +46,14 @@ int Monster::getKind(void)
 {
 	return mKind;
 }
-Ogre::Vector3 Monster::getPosition(void)
-{
-	return mPos;
-}
-void Monster::setPosition(Ogre::Vector3& mPos)
-{
-	this->mPos = mPos;
-}
+//Ogre::Vector3 Monster::getPosition(void)
+//{
+//	return mPos;
+//}
+//void Monster::setPosition(Ogre::Vector3& mPos)
+//{
+//	this->mPos = mPos;
+//}
 Ogre::Vector3 Monster::getFace()
 {
 	return mFace;
@@ -72,13 +73,37 @@ void Monster::setMesh( Ogre::String mesh )
 	mMesh = mesh;
 }
 
-Ogre::String Monster::getName()
+void Monster::setAnimate()
 {
-	return mName;
+	Ogre::Entity* entity;
+	entity = (Ogre::Entity*)mNode->getAttachedObject(0);
+	mAnimationState = entity->getAnimationState("Walk");
+	mAnimationState->setLoop(true);
+	mAnimationState->setEnabled(true);
 }
 
-void Monster::setName( Ogre::String name )
+void Monster::addTimeToAnimation( float timeSinceLastFrame )
 {
-	mName = name;
+	mAnimationState->addTime(timeSinceLastFrame);
 }
+
+int Monster::getRadius()
+{
+	return mRadius;
+}
+
+void Monster::monsterScale( float x, float y, float z )
+{
+	mNode->scale(x, y, z);
+}
+
+//Ogre::String Monster::getName()
+//{
+//	return mName;
+//}
+//
+//void Monster::setName( Ogre::String name )
+//{
+//	mName = name;
+//}
 

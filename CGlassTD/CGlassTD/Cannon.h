@@ -4,6 +4,7 @@
 #include <vector>
 #include "Bullet.h"
 #include "OgreQuaternion.h"
+#include <time.h>
 
 /// 炮台类
 /// @author: LiaoNanhao
@@ -19,6 +20,11 @@ private:
 
 	/// 大炮发射力度
 	float mFireStrenth;
+
+	/// 大炮的发射间隔,按秒计算
+	float mColdDown;
+	/// 上次发射的时间
+	clock_t mLastTime;
 
 	/// 大炮的节点
 	SceneNode* mNode;
@@ -36,7 +42,7 @@ public:
 	void addBulletFactory(BulletFactory* bulletFactory);
 
 	/// 发射当前装备的炮弹
-	/// @return 返回发射的炮弹
+	/// @return 返回发射的炮弹，如果发射失败(比如cd)则返回NULL
 	/// @note 外部的某个管理类应该接手发射出去的炮弹的管理工作，
 	///		  比如调用其fly()函数，释放资源等
 	Bullet* fire(SceneManager* mgr);
