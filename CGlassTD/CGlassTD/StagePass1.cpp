@@ -8,9 +8,13 @@ StagePass1::StagePass1(Ogre::SceneManager* sceneManager, StageManager* stageMana
 {
 	// 新增cannon
 	SceneNode* node = sceneManager->getRootSceneNode()->createChildSceneNode();
+	SceneNode* node1 = sceneManager->getRootSceneNode()->createChildSceneNode();
 	Entity* cannon = sceneManager->createEntity("cannon.mesh");
 	node->attachObject((MovableObject*)cannon);
 	node->setPosition(0, 200, 550);
+	Entity* fort = sceneManager->createEntity("fort.mesh");
+	node1->attachObject((MovableObject*)fort);
+	node1->setPosition(0, 200, 550);
 	mCannon = new Cannon(node, cannon);
 	// 给cannon增加炮弹
 	mCannon->addBulletFactory(new TestBulletFactory());
@@ -44,7 +48,7 @@ StagePass1::StagePass1(Ogre::SceneManager* sceneManager, StageManager* stageMana
 
 	/// 改变镜头视角
 	//mCamera->lookAt(Vector3(0, 0, -100s));//lookat 貌似没用
-	mCamera->setPosition(Vector3(0, 1000, 1000));
+	mCamera->setPosition(Vector3(0, 2000, 2000));
 	mCamera->setDirection(-mCamera->getPosition());
 
 	/// 设置天空盒
@@ -96,7 +100,10 @@ void StagePass1::run( float timeSinceLastFrame )
 	/// 遍历怪物列表
 	std::list<Monster*> monsterList = mMonsterManager->getMonstersList();
 	for (auto iter = monsterList.begin(); iter != monsterList.end(); ++iter)
-		(*iter)->go(timeSinceLastFrame, Vector3(0, 0, 10));
+	{		
+		(*iter)->addTimeToAnimation(timeSinceLastFrame);
+		(*iter)->go(timeSinceLastFrame, Vector3(4, 0, 0));
+	}
 	/// 使炮弹飞行
 	for (auto iter = mBulletList.begin(); iter != mBulletList.end(); ++iter)
 		(*iter)->fly(timeSinceLastFrame, Vector3(0, -200, 0));

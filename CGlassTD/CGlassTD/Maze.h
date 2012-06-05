@@ -49,6 +49,17 @@ public:
 	/// 获取怪兽出现的位置
 	/// @return 返回二维坐标
 	Ogre::Vector2* getMonsterPos();
+	/// 转换坐标：地图坐标-> 世界坐标
+	/// @params pos 地图坐标
+	/// @reutrn 世界坐标
+	Ogre::Vector2* translatePos(Ogre::Vector2* pos);
+	/// 获取地图的宽
+	/// @return 地图的宽
+	int getMapWidth();
+	/// 获取地图的高
+	/// @return 地图的高
+	int getMapHeight();
+	/// 析构函数
 	~Maze(void);
 };
 #endif
