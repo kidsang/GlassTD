@@ -21,7 +21,7 @@ private:
 	/// 速度
 	Vector3 mVelocity;
 	/// 位移
-	Vector3 mPosition;;
+	Vector3 mPosition;
 	/// 重力
 	//Vector3 mGravity;
 	/// 该炮弹是否已经被发射
