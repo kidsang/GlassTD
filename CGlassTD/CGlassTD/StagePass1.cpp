@@ -100,7 +100,10 @@ void StagePass1::run( float timeSinceLastFrame )
 	/// 遍历怪物列表
 	std::list<Monster*> monsterList = mMonsterManager->getMonstersList();
 	for (auto iter = monsterList.begin(); iter != monsterList.end(); ++iter)
-		(*iter)->go(timeSinceLastFrame, Vector3(0, 0, 10));
+	{	
+		(*iter)->addTimeToAnimation(timeSinceLastFrame);
+		(*iter)->go(timeSinceLastFrame, Vector3(4, 0, 0));
+	}
 	/// 使炮弹飞行
 	for (auto iter = mBulletList.begin(); iter != mBulletList.end(); ++iter)
 		(*iter)->fly(timeSinceLastFrame, Vector3(0, -200, 0));
