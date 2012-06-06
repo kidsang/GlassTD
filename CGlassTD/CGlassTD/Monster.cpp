@@ -2,12 +2,13 @@
 
 Monster::Monster(void)
 	:mSpeed(1),
+	mSpeedTemp(1),
 	/*mPos(Ogre::Vector3(BEGIN_POS_X, 10, BEGIN_POS_Y)),*/
 	mBlood(FULL_BLOOD),
     mFace(Ogre::Vector3(0, 0, 1)),
 	mRadius(1),
-    mKind(ORDINARY_MONSTER),
-	mHarmList(0, 0),
+	mKind(NORMAL),
+	mHarmList(),
 	mIsDead(false)
 {
 	
@@ -32,10 +33,11 @@ Monster::~Monster(void)
 
 void Monster::go(float timeSinceLastFrame, Ogre::Vector3& direction)
 {
-		mNode->setPosition(mNode->getPosition() + direction * timeSinceLastFrame);
+	harmCheck(timeSinceLastFrame);
+	mNode->setPosition(mNode->getPosition() + direction * timeSinceLastFrame * mSpeed);
 }
 
-int Monster::getBlood(void)
+float Monster::getBlood(void)
 {
 	return mBlood;
 }
@@ -88,7 +90,7 @@ void Monster::addTimeToAnimation( float timeSinceLastFrame )
 	mAnimationState->addTime(timeSinceLastFrame);
 }
 
-int Monster::getRadius()
+float Monster::getRadius()
 {
 	return mRadius;
 }
@@ -100,28 +102,52 @@ void Monster::monsterScale( float x, float y, float z )
 
 void Monster::harmCheck(float timeSinceLastFrame)
 {
+	/// 火属性伤害时间到，属性伤害消失
 	if(mHarmList.fireHarmTime < 0)
 	{
 		mHarmList.fireHarm = 0;
-		mHarmList.fireHarmTime = HARM_TIME;
+		mHarmList.fireHarmTime = FIRE_HARM_TIME;
 	}
+	/// 冰属性伤害时间到，属性伤害消失
 	if(mHarmList.iceHarmTime < 0)
 	{
 		mHarmList.iceHarm = 0;
-		mHarmList.iceHarmTime = HARM_TIME;
-		mSpeed /= HARM_SPEED;
+		mHarmList.iceHarmTime = ICE_HARM_TIME;
+		mSpeed = mSpeedTemp;
 	}
+	/// 火属性伤害运作
 	if(mHarmList.fireHarm != 0)
 	{
 		mBlood -= mHarmList.fireHarm;
 		mHarmList.fireHarmTime -= timeSinceLastFrame;
 	}
+	/// 冰属性伤害运作
 	if(mHarmList.iceHarm != 0)
 	{
-		mSpeed *= HARM_SPEED;
+		mSpeed = mSpeedTemp * ICE_HARM_SPEED;
 		mHarmList.iceHarmTime -= timeSinceLastFrame;
 	}
 
+	if(mHarmList.beCaught == true)
+	{	
+		mBlood = 0;
+	}
+
+	if(mHarmList.isOnSpikeweed)
+	{
+		mBlood -= mHarmList.spikeweedHarm;
+	}
+
+	if(mHarmList.isInSwamp)
+	{
+		mSpeed = mSpeedTemp * mHarmList.swampHarm;
+	}
+	else 
+	{
+		mSpeed = mSpeedTemp;
+	}
+
+	/// 判断是否死亡
 	if(mBlood < 0 || mBlood == 0)
 	{
 		mIsDead = true;
@@ -132,6 +158,41 @@ void Monster::harmCheck(float timeSinceLastFrame)
 bool Monster::isMonsterDead()
 {
 	return mIsDead;
+}
+
+void Monster::setHitByFire()
+{
+	mHarmList.fireHarm = FIRE_HARM_BLOOD;
+}
+
+void Monster::setHitByIce()
+{
+	mHarmList.iceHarm = ICE_HARM_SPEED;
+}
+
+void Monster::setBeCaughtByTrap()
+{
+	mHarmList.beCaught = true;
+}
+
+void Monster::setInsideSpikeweed()
+{
+    mHarmList.isOnSpikeweed = true;
+}
+
+void Monster::setOutsideSpikeweed()
+{
+	mHarmList.isOnSpikeweed = false;
+}
+
+void Monster::setInsideSwamp()
+{
+	mHarmList.isInSwamp = false;
+}
+
+void Monster::setOutsideSwamp()
+{
+	mHarmList.isInSwamp = false;
 }
 
 //Ogre::String Monster::getName()
