@@ -6,6 +6,7 @@
 #include "Cannon.h"
 #include "Maze.h"
 #include "MonsterManager.h"
+#include "BulletManager.h"
 
 #include "List.hpp"
 
@@ -16,12 +17,13 @@ private:
 	/// 炮
 	Cannon* mCannon;
 	/// 场景中存在的炮弹的列表
-	MyList<Bullet*> mBulletList;
+	//MyList<Bullet*> mBulletList;
 	/// 迷宫
 	Maze* mMaze;
 	/// 怪物序列管理器
 	MonsterManager* mMonsterManager;
 
+	BulletManager mBulletManager;
 	
 
 	/// 环境重力

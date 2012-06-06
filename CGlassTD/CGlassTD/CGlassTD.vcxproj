@@ -118,6 +118,7 @@
   <ItemGroup>
     <ClInclude Include="BaseApplication.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletManager.h" />
     <ClInclude Include="Cannon.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellType.h" />
@@ -149,6 +150,7 @@
   <ItemGroup>
     <ClCompile Include="BaseApplication.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="Cannon.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CGlassTD.cpp" />

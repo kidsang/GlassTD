@@ -106,7 +106,7 @@ StagePass1::~StagePass1(void)
 	// É¾³ýÅÚ
 	delete mCannon;
 	// É¾³ýÅÚµ¯
-	mBulletList.clear();
+	//mBulletList.clear();
 	// É¾³ýÃÔ¹¬
 	delete mMaze;
 }
@@ -117,7 +117,7 @@ void StagePass1::onKeyPressed( const OIS::KeyEvent &arg )
 	{
 		Bullet* bullet = mCannon->fire(mSceneManager);
 		if (bullet)
-			mBulletList.insertAhead(bullet);
+			mBulletManager.add(bullet);
 	}
 }
 
@@ -137,7 +137,7 @@ void StagePass1::onMouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID
 }
 
 void StagePass1::run( float timeSinceLastFrame )
-{
+{/*
 	/// MonsterManager* monsterMgr = MonsterManager::getMonsterManager();
 	/// ²úÉú¹ÖÎï
 	mMonsterManager->monsterGenerate(mSceneManager, timeSinceLastFrame);
@@ -156,5 +156,10 @@ void StagePass1::run( float timeSinceLastFrame )
 	while (mBulletList.forward())
 	{
 		mBulletList.getData()->fly(timeSinceLastFrame, Vector3(0, -200, 0));
-	}
+	}*/
+	mBulletManager.fly(timeSinceLastFrame, mGravity);
+	mMonsterManager->updateState(
+		mBulletManager.getAndRemoveExplodedBullets(mMaze->getHorizon()),
+		timeSinceLastFrame
+		);
 }
