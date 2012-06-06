@@ -13,7 +13,7 @@ Cell::Cell( Ogre::SceneManager* sceneManager,Ogre::SceneNode* parentNode,Ogre::V
 	int z = this->mEntity->getBoundingBox().getSize().z;
 	this->mSceneNode = ObjectFactory::createSceneNode(parentNode,this->mEntity, Vector3(x * pos->x,Real(0), z * pos->y));
 	this->mType = type;
-	if(this->mType == CellType::FREE)
+	if(this->mType == FREE)
 	{
 		this->mSceneNode->setVisible(false);
 	}
@@ -27,21 +27,21 @@ Cell::Cell( Ogre::SceneManager* sceneManager,Ogre::SceneNode* parentNode,Ogre::V
 	this->mSceneNode = ObjectFactory::createSceneNode(parentNode,this->mEntity, Vector3(x * pos->x,Real(0), z * pos->y));
 	switch(type){
 	case 0:
-		this->mType = CellType::FREE;
+		this->mType = FREE;
 		break;
 	case 1:
-		this->mType = CellType::WALL;
+		this->mType = WALL;
 		break;
 	case 2:
-		this->mType = CellType::SPIKEWEED;
+		this->mType = SPIKEWEED;
 		break;
 	case 3:
-		this->mType = CellType::SWAMP;
+		this->mType = SWAMP;
 		break;
 	default:
-		this->mType = CellType::FREE;
+		this->mType = FREE;
 	}
-	if(this->mType == CellType::FREE)
+	if(this->mType == FREE)
 	{
 		this->mSceneNode->setVisible(false);
 	}

@@ -10,10 +10,10 @@ StagePass1::StagePass1(Ogre::SceneManager* sceneManager, StageManager* stageMana
 	SceneNode* node = sceneManager->getRootSceneNode()->createChildSceneNode();
 	SceneNode* node1 = sceneManager->getRootSceneNode()->createChildSceneNode();
 	Entity* cannon = sceneManager->createEntity("cannon.mesh");
-	node->attachObject((MovableObject*)cannon);
+	//node->attachObject((MovableObject*)cannon);
 	node->setPosition(0, 200, 550);
 	Entity* fort = sceneManager->createEntity("fort.mesh");
-	node1->attachObject((MovableObject*)fort);
+	//node1->attachObject((MovableObject*)fort);
 	node1->setPosition(0, 200, 550);
 	mCannon = new Cannon(node, cannon);
 	// 给cannon增加炮弹
@@ -40,7 +40,7 @@ StagePass1::StagePass1(Ogre::SceneManager* sceneManager, StageManager* stageMana
 		1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 
 		1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 
 		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 
-		};
+	};
 	mMaze = new Maze(sceneManager, iMap, mapWidth, mapHeight);
 
 	/// 新增一个monster管理器

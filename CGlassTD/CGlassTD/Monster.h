@@ -4,7 +4,6 @@
 
 #include "BaseApplication.h"
 #include "ObjectFactory.h"
-#include "Position.h"
 
 struct HarmList
 {
@@ -25,11 +24,8 @@ protected:
 	Ogre::Vector3 mFace;
 	/// 怪物的种类
 	int mKind;
-	/*Ogre::Vector3 mPos;*/
 	Ogre::SceneNode* mNode;
-	/// Ogre::Entity* entity;
 	Ogre::String mMesh;
-	/*Ogre::String mName;*/
 	Ogre::AnimationState* mAnimationState;
 	/// 怪兽的半径范围
 	float mRadius;
@@ -43,14 +39,10 @@ public:
 	int getBlood(void);
 	void setBlood(int mBlood);
 	int getKind(void);
-	/*Ogre::Vector3 getPosition(void);
-	void setPosition(Ogre::Vector3& mPos);*/
 	Ogre::Vector3 getFace(void);
 	void setFace(Ogre::Vector3& mFace);
 	Ogre::String getMesh();
 	void setMesh(Ogre::String mesh);
-	/*Ogre::String getName();
-	void setName(Ogre::String name);*/
 
 	/// 设置动画
 	void setAnimate();
