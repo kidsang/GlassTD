@@ -17,6 +17,9 @@
 /// 供工厂类传递参数使用
 typedef std::map<std::string, std::string> NameValueList;
 
+///// 怪兽的属性
+//enum ATTRIBUTE{NORMAL = "normal", FIRE = "fire", ICE = "ice"};
+
 /// 将字符串拆分为单个单个词，以空格为分隔
 /// @param 需要被拆分的字符串
 /// @return 拆分后的数组

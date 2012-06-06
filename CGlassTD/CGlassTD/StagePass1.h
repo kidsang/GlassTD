@@ -22,6 +22,8 @@ private:
 	/// 怪物序列管理器
 	MonsterManager* mMonsterManager;
 
+	
+
 	/// 环境重力
 	Vector3 mGravity;
 

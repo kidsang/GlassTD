@@ -1,16 +1,17 @@
 #include "Monster.h"
 
-Monster::Monster(void)
+Monster::Monster(SceneNode* node)
 	:mSpeed(1),
+	mSpeedTemp(1),
 	/*mPos(Ogre::Vector3(BEGIN_POS_X, 10, BEGIN_POS_Y)),*/
-	mBlood(FULL_BLOOD),
+	mBlood(0),
     mFace(Ogre::Vector3(0, 0, 1)),
 	mRadius(1),
-    mKind(ORDINARY_MONSTER),
-	mHarmList(0, 0),
+	mType(),
+	mHarmList(),
 	mIsDead(false)
 {
-	
+	mNode = node;
 }
 //
 //Monster::Monster( Ogre::SceneManager* sceneMgr, Ogre::SceneNode* parentNode, Position& pos)
@@ -32,14 +33,15 @@ Monster::~Monster(void)
 
 void Monster::go(float timeSinceLastFrame, Ogre::Vector3& direction)
 {
-	mNode->setPosition(mNode->getPosition() + direction * timeSinceLastFrame);
+	harmCheck(timeSinceLastFrame);
+	mNode->setPosition(mNode->getPosition() + direction * timeSinceLastFrame * mSpeed);
 	int* mp = new int[256];
 	Ogre::Vector2* target = new Ogre::Vector2(Real(10), Real(10));
 	Ogre::Vector2* start = new Ogre::Vector2(Real(2), Real(1));
 	
 }
 
-int Monster::getBlood(void)
+float Monster::getBlood(void)
 {
 	return mBlood;
 }
@@ -47,10 +49,12 @@ void Monster::setBlood(int mBlood)
 {
 	this->mBlood = mBlood;
 }
-int Monster::getKind(void)
+std::string Monster::getType(void)
 {
-	return mKind;
+	return mType;
 }
+
+
 //Ogre::Vector3 Monster::getPosition(void)
 //{
 //	return mPos;
@@ -92,7 +96,7 @@ void Monster::addTimeToAnimation( float timeSinceLastFrame )
 	mAnimationState->addTime(timeSinceLastFrame);
 }
 
-int Monster::getRadius()
+float Monster::getRadius()
 {
 	return mRadius;
 }
@@ -104,28 +108,52 @@ void Monster::monsterScale( float x, float y, float z )
 
 void Monster::harmCheck(float timeSinceLastFrame)
 {
+	/// 火属性伤害时间到，属性伤害消失
 	if(mHarmList.fireHarmTime < 0)
 	{
 		mHarmList.fireHarm = 0;
-		mHarmList.fireHarmTime = HARM_TIME;
+		mHarmList.fireHarmTime = FIRE_HARM_TIME;
 	}
+	/// 冰属性伤害时间到，属性伤害消失
 	if(mHarmList.iceHarmTime < 0)
 	{
 		mHarmList.iceHarm = 0;
-		mHarmList.iceHarmTime = HARM_TIME;
-		mSpeed /= HARM_SPEED;
+		mHarmList.iceHarmTime = ICE_HARM_TIME;
+		mSpeed = mSpeedTemp;
 	}
+	/// 火属性伤害运作
 	if(mHarmList.fireHarm != 0)
 	{
 		mBlood -= mHarmList.fireHarm;
 		mHarmList.fireHarmTime -= timeSinceLastFrame;
 	}
+	/// 冰属性伤害运作
 	if(mHarmList.iceHarm != 0)
 	{
-		mSpeed *= HARM_SPEED;
+		mSpeed = mSpeedTemp * ICE_HARM_SPEED;
 		mHarmList.iceHarmTime -= timeSinceLastFrame;
 	}
 
+	if(mHarmList.beCaught == true)
+	{	
+		mBlood = 0;
+	}
+
+	if(mHarmList.isOnSpikeweed)
+	{
+		mBlood -= mHarmList.spikeweedHarm;
+	}
+
+	if(mHarmList.isInSwamp)
+	{
+		mSpeed = mSpeedTemp * mHarmList.swampHarm;
+	}
+	else 
+	{
+		mSpeed = mSpeedTemp;
+	}
+
+	/// 判断是否死亡
 	if(mBlood < 0 || mBlood == 0)
 	{
 		mIsDead = true;
@@ -138,6 +166,57 @@ bool Monster::isMonsterDead()
 	return mIsDead;
 }
 
+void Monster::setHitByFire()
+{
+	mHarmList.fireHarm = FIRE_HARM_BLOOD;
+}
+
+void Monster::setHitByIce()
+{
+	mHarmList.iceHarm = ICE_HARM_SPEED;
+}
+
+void Monster::setBeCaughtByTrap()
+{
+	mHarmList.beCaught = true;
+}
+
+void Monster::setInsideSpikeweed()
+{
+    mHarmList.isOnSpikeweed = true;
+}
+
+void Monster::setOutsideSpikeweed()
+{
+	mHarmList.isOnSpikeweed = false;
+}
+
+void Monster::setInsideSwamp()
+{
+	mHarmList.isInSwamp = false;
+}
+
+void Monster::setOutsideSwamp()
+{
+	mHarmList.isInSwamp = false;
+}
+
+void Monster::setSpeed( float speed )
+{
+	mSpeed = speed;
+	mSpeedTemp = speed;
+}
+
+void Monster::setRadius( float radius )
+{
+	mRadius = radius;
+}
+
+void Monster::setType( std::string type )
+{
+	mType = type;
+}
+
 //Ogre::String Monster::getName()
 //{
 //	return mName;
@@ -148,3 +227,29 @@ bool Monster::isMonsterDead()
 //	mName = name;
 //}
 
+
+Monster* MonsterFactory::createInstance(SceneManager* sceneMgr)
+{
+	Ogre::SceneNode* monsterNode = sceneMgr->getRootSceneNode()->createChildSceneNode();
+	Ogre::Entity* entity = sceneMgr->createEntity(mParams["mesh"]);
+	monsterNode->attachObject(entity);
+	Monster* mon;
+	mon = new Monster(monsterNode);
+	if (mParams.find("radius") != mParams.end())
+		mon->setRadius((float)atof(mParams["radius"].c_str()));
+
+	if (mParams.find("blood") != mParams.end())
+		mon->setBlood((float)atof(mParams["blood"].c_str()));
+
+	if (mParams.find("speed") != mParams.end())
+		mon->setSpeed((float)atof(mParams["speed"].c_str()));
+
+	if (mParams.find("spell") != mParams.end())
+		mon->setType((mParams["spell"].c_str()));
+	return mon;
+}
+
+std::string MonsterFactory::getType()
+{
+	return mType;
+}
