@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Cannons>
+   <Cannon name="NormalBullet"
+          mesh="cannon.mesh"
+          position="0 200 550"
+          strength="500"
+          offset="0 0 0"
+          colddown="0.5"
+          />
+</Cannons>

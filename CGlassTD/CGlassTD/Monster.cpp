@@ -35,6 +35,10 @@ void Monster::go(float timeSinceLastFrame, Ogre::Vector3& direction)
 {
 	harmCheck(timeSinceLastFrame);
 	mNode->setPosition(mNode->getPosition() + direction * timeSinceLastFrame * mSpeed);
+	int* mp = new int[256];
+	Ogre::Vector2* target = new Ogre::Vector2(Real(10), Real(10));
+	Ogre::Vector2* start = new Ogre::Vector2(Real(2), Real(1));
+	
 }
 
 float Monster::getBlood(void)

@@ -21,9 +21,7 @@ private:
 	/// 速度
 	Vector3 mVelocity;
 	/// 位移
-	Vector3 mPosition;
-	/// 重力
-	//Vector3 mGravity;
+	Vector3 mPosition;;
 	/// 该炮弹是否已经被发射
 	bool mIsFired;
 
@@ -31,6 +29,11 @@ private:
 	SceneNode* mNode;
 	/// 该炮弹的模型
 	Entity* mEntity;
+
+	float mMass;
+	float mDamage;
+	float mRange;
+	//int mSpell;
 
 public:
 	/// 构造函数
@@ -54,24 +57,75 @@ public:
 	// Get/Set
 public:
 	/// 获取炮弹的质量属性
-	/// 由子类提供
-	virtual const float getMass() = 0;
+	const float getMass()
+	{
+		return mMass;
+	}
 
+	/// 设置炮弹的质量属性
+	void setMass(float mass)
+	{
+		mMass = mass;
+	}
+	
+	/// 获取炮弹的伤害值
+	const float getDamage()
+	{
+		return mDamage;
+	}
+
+	/// 设置炮弹的伤害值
+	void setDamage(float damage)
+	{
+		mDamage = damage;
+	}
+
+	/// 获取炮弹的爆炸半径
+	const float getRange()
+	{
+		return mRange;
+	}
+
+	/// 设置炮弹的爆炸半径
+	void setRange(float range)
+	{
+		mRange = range;
+	}
+
+	/// 获取炮弹的元素类型(普通，冰，火)
+	//const std::string getSpell()
 };
 
 
 /// 炮弹工厂类
 class BulletFactory
 {
+private:
+	/// 工厂类所需要的参数列表
+	NameValueList mParams;
+	/// 工厂的类型，其实就是所生产的炮弹种类的名称
+	std::string mType;
+
 public:
+	/// 构造函数
+	/// @param params 构造子弹所需要的属性参数
+	BulletFactory(NameValueList params)
+		:mParams(params)
+	{
+		mType = params["name"];
+	}
+	~BulletFactory()
+	{
+	}
+
 	/// 创建一个子弹的实例
 	/// @param mgr 场景管理类
 	/// @param args 创建子类需要用到的参数
 	/// @return 返回创建好的子类，如果失败则返回NULL
-	virtual Bullet* createInstance(SceneManager* mgr) = 0;
+	virtual Bullet* createInstance(SceneManager* mgr);
 
 	/// 返回工厂的类型
-	virtual std::string getType() = 0;
+	virtual std::string getType();
 };
 
 
