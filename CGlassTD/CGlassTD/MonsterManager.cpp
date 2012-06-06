@@ -18,13 +18,13 @@ MonsterManager::MonsterManager()
 
 MonsterManager::~MonsterManager(void)
 {
-	/*if(mMonsterMgr != NULL)
+	if(mMonsterMgr != NULL)
 	    delete mMonsterMgr;
 	for (auto iter = mMonstersList.begin(); iter != mMonstersList.end(); ++iter)
 		delete (*iter);
 	for (auto iter = mMonsterFactoryList.begin(); iter != mMonsterFactoryList.end(); ++iter)
 		delete (*iter);
-	delete mCurrentMonsterFactory;*/
+	delete mCurrentMonsterFactory;
 }
 
 MonsterManager* MonsterManager::getMonsterManager(void)

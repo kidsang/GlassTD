@@ -127,10 +127,8 @@
     <ClInclude Include="LevelStage.h" />
     <ClInclude Include="Maze.h" />
     <ClInclude Include="Monster.h" />
-    <ClInclude Include="MonsterGenerator.h" />
     <ClInclude Include="MonsterManager.h" />
     <ClInclude Include="ObjectFactory.h" />
-    <ClInclude Include="OrdinaryMonster.h" />
     <ClInclude Include="ParamParser.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="res\Resource.h" />
@@ -157,10 +155,8 @@
     <ClCompile Include="LevelStage.cpp" />
     <ClCompile Include="Maze.cpp" />
     <ClCompile Include="Monster.cpp" />
-    <ClCompile Include="MonsterGenerator.cpp" />
     <ClCompile Include="MonsterManager.cpp" />
     <ClCompile Include="ObjectFactory.cpp" />
-    <ClCompile Include="OrdinaryMonster.cpp" />
     <ClCompile Include="ParamParser.cpp" />
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="Stage.cpp" />
