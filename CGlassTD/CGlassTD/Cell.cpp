@@ -6,8 +6,9 @@ Cell::Cell(void)
 }
 
 
-Cell::Cell( Ogre::SceneManager* sceneManager,Ogre::SceneNode* parentNode,Ogre::Vector2* pos, CellType type)
+Cell::Cell( Ogre::SceneManager* sceneManager,Ogre::SceneNode* parentNode,Ogre::Vector2* pos, CellType type, float harmValue)
 {
+	this->mHarmValue = harmValue;
 	this->mEntity = ObjectFactory::createEntity(sceneManager,"cubess.mesh");
 	int x = this->mEntity->getBoundingBox().getSize().x;
 	int z = this->mEntity->getBoundingBox().getSize().z;
@@ -19,8 +20,9 @@ Cell::Cell( Ogre::SceneManager* sceneManager,Ogre::SceneNode* parentNode,Ogre::V
 	}
 }
 
-Cell::Cell( Ogre::SceneManager* sceneManager,Ogre::SceneNode* parentNode,Ogre::Vector2* pos,int type )
+Cell::Cell( Ogre::SceneManager* sceneManager,Ogre::SceneNode* parentNode,Ogre::Vector2* pos,int type, float harmValue)
 {
+	this->mHarmValue = harmValue;
 	this->mEntity = ObjectFactory::createEntity(sceneManager,"cubess.mesh");
 	int x = this->mEntity->getBoundingBox().getSize().x;
 	int z = this->mEntity->getBoundingBox().getSize().z;
@@ -60,4 +62,9 @@ CellType Cell::getCellType()
 int Cell::getHeight()
 {
 	return this->mEntity->getBoundingBox().getSize().y;
+}
+
+float Cell::getHarmValue()
+{
+	return this->mHarmValue;
 }

@@ -4,7 +4,7 @@
 
 #include "BaseApplication.h"
 #include "ObjectFactory.h"
-
+#include <stack>
 const int ORDINARY_MONSTER = 0;
 const int FLY_MONSTER = 1;
 const int FULL_BLOOD = 100;
@@ -26,7 +26,22 @@ struct HarmList
 		iceHarmTime(HARM_TIME),
 		fireHarmTime(HARM_TIME){};
 };
-
+struct Pos
+{
+	int x;
+	int y;
+};
+struct CellNode
+{
+	Pos parent;
+	Pos self;
+	int dist;
+};
+struct Judge
+{
+	CellNode node;
+	Judge* next;
+};
 class Monster
 {
 protected:
@@ -73,6 +88,10 @@ public:
 	void harmCheck(float timeSinceLastFrame);
 	/// π÷ ﬁÀ¿µÙ
 	bool isMonsterDead();
+private:
+	void makeMap(Cell* cell);
+	bool isValid(Pos& pos);
+bool isTarget(Pos& pos);
 };
 
 
