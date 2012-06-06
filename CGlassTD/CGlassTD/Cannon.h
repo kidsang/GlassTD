@@ -19,10 +19,12 @@ private:
 	unsigned int mCurrentBullet;
 
 	/// 大炮发射力度
-	float mFireStrenth;
-
+	float mFireStrength;
+	/// 炮口的位置偏移量
+	Vector3 mFireOffset;
 	/// 大炮的发射间隔,按秒计算
 	float mColdDown;
+
 	/// 上次发射的时间
 	clock_t mLastTime;
 
@@ -58,6 +60,45 @@ public:
 
 	/// 修改炮台朝向
 	void rotate(int yaw, int pitch);
+
+	// Get/Set
+public:
+	/// 返回大炮发射力度
+	const float getFireStrenth()
+	{
+		return mFireStrength;
+	}
+
+	/// 设置大炮发射力度
+	void setFireStrength(float strength)
+	{
+		mFireStrength = strength;
+	}
+
+	/// 返回炮弹发射位置的偏移量(即炮口位置)
+	const Vector3& getFireOffset()
+	{
+		return mFireOffset;
+	}
+
+	/// 设置炮弹发射位置的偏移量(即炮口位置)
+	void setFireOffset(const Vector3& offset)
+	{
+		mFireOffset = offset;
+	}
+
+	/// 返回大炮发射间隔
+	const float getColdDown()
+	{
+		return mColdDown;
+	}
+
+	/// 设置大炮发射间隔
+	void setColdDown(float coldDown)
+	{
+		mColdDown = coldDown;
+	}
+
 };
 
 
