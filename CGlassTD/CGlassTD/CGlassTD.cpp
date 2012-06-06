@@ -1,6 +1,4 @@
 #include "CGlassTD.h"
-#include "TestBullet.h"
-#include "TestStage.h"
 #include "StagePass1.h"
 
 

@@ -59,6 +59,9 @@ public:
 	/// 获取地图的高
 	/// @return 地图的高
 	int getMapHeight();
+	/// 获取飞碟目标的位置
+	/// @return 返回飞碟的二维坐标
+	Ogre::Vector2* getTargetPos();
 	/// 析构函数
 	~Maze(void);
 };

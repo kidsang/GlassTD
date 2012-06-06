@@ -2,7 +2,7 @@
 
 Cannon::Cannon(SceneNode* node, Entity* entity)
 	: mNode(node), mEntity(entity),
-	mCurrentBullet(0), mFireStrenth(500), mColdDown(1.0f)
+	mCurrentBullet(0),mFireOffset(Vector3(0.f)), mFireStrength(0), mColdDown(0)
 {
 	/// 翻转大炮朝向
 	mNode->setOrientation(0, 0, 1, 0);
@@ -31,7 +31,7 @@ Bullet* Cannon::fire(SceneManager* mgr)
 	mNode->getOrientation().ToAxes(xAxis, yAxis, zAxis);
 	// 根据当前所选类型创建炮弹
 	Bullet* bul = mBulletFactoryList.at(mCurrentBullet)->createInstance(mgr);
-	bul->fire(mNode->getPosition(),zAxis * mFireStrenth);
+	bul->fire(mNode->getPosition() + mFireOffset,zAxis * mFireStrength);
 	mLastTime = clock();
 	return bul;
 }

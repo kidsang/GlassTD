@@ -7,21 +7,24 @@ float MonsterManager::mTimeCount = 0.0f;
 
 MonsterManager::MonsterManager()
 {
-	mMonsterGen = new MonsterGenerator();
-
-	for(int i = 0; i < 100; i++)
-	{
-		mMonNames[i] = "monster" + i;
-	}
+	ParamParser monsterParser = ParamParser("MonsterDefine.xml");
+	monsterParser.parse();
+	monsterParser.moveToFirst();
+	while (monsterParser.hasNext())
+		mMonsterFactoryList.push_back(new MonsterFactory(*monsterParser.getNext()));
+	if(mMonsterFactoryList.size() != 0)
+		mCurrentMonsterFactory = mMonsterFactoryList.at(0);
 }
 
 MonsterManager::~MonsterManager(void)
 {
-	if(mMonsterMgr != NULL)
+	/*if(mMonsterMgr != NULL)
 	    delete mMonsterMgr;
-	
-	mMonstersList.clear();
-	delete mMonsterGen;
+	for (auto iter = mMonstersList.begin(); iter != mMonstersList.end(); ++iter)
+		delete (*iter);
+	for (auto iter = mMonsterFactoryList.begin(); iter != mMonsterFactoryList.end(); ++iter)
+		delete (*iter);
+	delete mCurrentMonsterFactory;*/
 }
 
 MonsterManager* MonsterManager::getMonsterManager(void)
@@ -42,25 +45,26 @@ MonsterManager* MonsterManager::getMonsterManager(void)
 void MonsterManager::monsterGenerate(Ogre::SceneManager* sceneManager, float timeSinceLastFrame)
 {
 	//::CreateThread(NULL, 0, createMonstersThread, sceneManager, NULL, NULL);
-	
 	mMonsterMgr->setTimeCount(mMonsterMgr->getTimeCount() + timeSinceLastFrame);
 	/// std::list<Monster*> monsterList = mMonsterMgr->getMonstersList();
 	if(mMonsterMgr->getTimeCount() > NEW_MONSTER_TIME)
 	{
-		Ogre::String mesh = "robot.mesh";
-		Monster* monster = mMonsterGen->createMonster(sceneManager, mesh);
+		Monster* monster = mCurrentMonsterFactory->createInstance(sceneManager);
 		/// monster->monsterScale(0.1, 0.1, 0.1);
 		monster->setAnimate();
-		mMonstersList.insertAhead(monster);
+		mMonstersList.push_back(monster);
 		mMonsterMgr->MonsterNumPlus();
 		mMonsterMgr->setTimeCount(0.0f);
+
 	}
 }
-
-MyList<Monster*>* MonsterManager::getMonstersList( void )
+std::list<Monster*> MonsterManager::getMonstersList( void )
 {
-	return &mMonstersList;
+	return mMonstersList;
 }
+
+
+
 
 //
 //DWORD WINAPI MonsterManager::createMonstersThread(PVOID pVoid)
