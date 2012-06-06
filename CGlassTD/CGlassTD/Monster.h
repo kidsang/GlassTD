@@ -5,6 +5,7 @@
 #include "BaseApplication.h"
 #include "ObjectFactory.h"
 #include "Common.h"
+using namespace Ogre;
 
 const float FULL_BLOOD = 100.0f;
 const float BEGIN_POS_X = -100.0f;
@@ -14,7 +15,6 @@ const float FIRE_HARM_TIME = 1.0f;    ///火属性伤害持续时间
 const float ICE_HARM_TIME = 1.0f;     /// 冰属性伤害持续时间
 const float ICE_HARM_SPEED = 0.4f;    /// 冰属性影响的速度值
 const float FIRE_HARM_BLOOD = 0.01f;  /// 火属性伤害的血量值
-const float MONSTER_RADIUS = 1.0f;    /// 怪兽的区域半径
 const float SPIKEWEED_HARM_BLOOD = 1.0f;  /// 地刺伤害的血量值
 const float SWAMP_HARM_SPEED = 0.4f;  /// 沼泽影响的速度值
 
@@ -65,7 +65,7 @@ protected:
 	/// 怪物的面向（一个三维向量)
 	Ogre::Vector3 mFace;
 	/// 怪物的种类
-	int mKind;
+	std::string mType;
 	Ogre::SceneNode* mNode;
 	Ogre::String mMesh;
 	Ogre::AnimationState* mAnimationState;
@@ -77,18 +77,21 @@ protected:
     bool mIsDead;
 	
 public:
-	Monster(void);
+	Monster(){}
+	Monster(SceneNode* node);
 	Monster(Ogre::SceneManager* sceneMgr, Ogre::SceneNode* parentNode);
 	~Monster(void);
 	void go(float timeSinceLastFrame, Ogre::Vector3& direction);
 	float getBlood(void);
 	void setBlood(int mBlood);
-	int getKind(void);
+	std::string getType(void);
 	Ogre::Vector3 getFace(void);
 	void setFace(Ogre::Vector3& mFace);
 	Ogre::String getMesh();
 	void setMesh(Ogre::String mesh);
-
+	void setType(std::string type);
+	void setSpeed(float speed);
+	void setRadius(float radius);
 	/// 设置动画
 	void setAnimate();
 	/// 根据时间刷新动画状态
@@ -117,5 +120,26 @@ public:
 	void setOutsideSwamp();
 };
 
+
+class MonsterFactory
+{
+	NameValueList mParams;
+	std::string mType;
+
+public:
+	MonsterFactory(NameValueList params)
+		:mParams(params)
+	{
+		mType = params["name"];
+	}
+	~MonsterFactory()
+	{
+
+	}
+
+	Monster* createInstance(SceneManager* sceneMgr);
+	
+	std::string getType();
+};
 
 #endif // Monster_h__

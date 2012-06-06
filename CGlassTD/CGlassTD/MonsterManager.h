@@ -3,13 +3,19 @@
 #include "MonsterGenerator.h"
 #include <list>
 #include <windows.h>
+#include "Monster.h"
+#include "ParamParser.h"
 
 class MonsterManager
 {
 private:
 	/// 时间计数器
 	static float mTimeCount;
-	/// std::list<SceneNode*> mMonsterNodes;
+	/// std::list<SceneNode*> mMonsterNodes;\
+	/// 现在的怪物工厂
+	MonsterFactory* mCurrentMonsterFactory;
+	/// 怪兽工厂列表，用于生成不同种类的怪物
+	std::vector<MonsterFactory*> mMonsterFactoryList;
 	/// 怪物列表
 	std::list<Monster*> mMonstersList;
 	/// 怪物数量
@@ -19,14 +25,15 @@ private:
 
 	MonsterManager(Ogre::SceneManager* sceneManager);
 	MonsterManager();
-	~MonsterManager(void);
+	
 
 //protected:
 //	
 //	static DWORD WINAPI createMonstersThread(PVOID pVoid); 
 		
 public:
-	Ogre::String mMonNames[100];
+	~MonsterManager(void);
+    /// Ogre::String mMonNames[100];
 	/// 获取怪物数量
 	int getMonsterNum(void);
 
