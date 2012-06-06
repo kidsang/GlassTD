@@ -47,7 +47,7 @@ StagePass1::StagePass1(Ogre::SceneManager* sceneManager, StageManager* stageMana
 	//mCannon->addBulletFactory(new BulletFactory());
 
 	/// 加载迷宫地图
-	const int mapWidth = 16;
+	/*const int mapWidth = 16;
 	const int mapHeight = 16;
 	int iMap[mapHeight *mapWidth] =
 	{
@@ -67,8 +67,26 @@ StagePass1::StagePass1(Ogre::SceneManager* sceneManager, StageManager* stageMana
 		1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 
 		1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 
 		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 
-		};
-	mMaze = new Maze(sceneManager, iMap, mapWidth, mapHeight);
+		};*/
+	ParamParser mazeParser = ParamParser("MazeDefine.xml");
+	mazeParser.parse();
+	mazeParser.moveToFirst();
+	NameValueList* mazeParams = mazeParser.getNext();
+	int mapWidth = 2;
+	int mapHeight = 2;
+	if (mazeParams->find("width") != mazeParams->end())
+		mapWidth = atoi((*mazeParams)["width"].c_str());
+	if (mazeParams->find("height") != mazeParams->end())
+		mapHeight = atoi((*mazeParams)["height"].c_str());
+	int size = mapHeight * mapWidth;
+	int* map = new int[size]();
+	if (mazeParams->find("map") != mazeParams->end())
+	{
+		nums = mysplit((*mazeParams)["map"]);
+		for (int i=0; i<size; i++)
+			map[i] = atoi(nums[i].c_str());
+	}	
+	mMaze = new Maze(sceneManager, map, mapWidth, mapHeight);
 
 	/// 新增一个monster管理器
 	mMonsterManager = MonsterManager::getMonsterManager();
