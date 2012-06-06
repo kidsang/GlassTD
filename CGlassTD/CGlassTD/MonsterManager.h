@@ -5,12 +5,15 @@
 #include "Monster.h"
 #include "ParamParser.h"
 #include "Bullet.h"
+#include "Maze.h"
 class MonsterManager
 {
 private:
+	/// 地图
+	Maze* mMaze;
 	/// 时间计数器
 	static float mTimeCount;
-	/// std::list<SceneNode*> mMonsterNodes;\
+	/// std::list<SceneNode*> mMonsterNodes;
 	/// 现在的怪物工厂
 	MonsterFactory* mCurrentMonsterFactory;
 	/// 怪兽工厂列表，用于生成不同种类的怪物
@@ -60,7 +63,7 @@ public:
 	void monsterGenerate(Ogre::SceneManager* sceneManager, float timeSinceLastFrame);
 
 	
-	void updateState(std::vector<Bullet> explodedBullets, float timeSinceLastFrame);
+	void updateState(std::vector<Bullet> explodedBullets, float timeSinceLastFrame, Ogre::SceneManager* sceneManager);
 };
 /// 新增怪物的时间间隔
 const float NEW_MONSTER_TIME = 6.0;

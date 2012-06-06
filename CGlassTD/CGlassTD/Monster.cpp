@@ -1,5 +1,5 @@
 #include "Monster.h"
-
+#include "Cell.h"
 Monster::Monster(SceneNode* node)
 	:mSpeed(1),
 	mSpeedTemp(1),

@@ -122,7 +122,7 @@ void MonsterManager::MonsterNumPlus(void)
 	mMonsterNum++;
 }
 
-void MonsterManager::updateState( std::vector<Bullet> explodedBullets, float timeSinceLastFrame )
+void MonsterManager::updateState( std::vector<Bullet> explodedBullets, float timeSinceLastFrame, Ogre::SceneManager* sceneManager )
 {
-
+	mMonsterMgr->monsterGenerate(sceneManager, timeSinceLastFrame);
 }

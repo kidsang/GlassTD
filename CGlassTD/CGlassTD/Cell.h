@@ -21,6 +21,8 @@ private:
 	SceneNode* mSceneNode;
 	/// 此空间的类型
 	CellType mType;
+	/// 伤害值 
+	float mHarmValue;
 
 public:
 	Cell(void);
@@ -30,13 +32,15 @@ public:
 	/// @param state 此空间的当前容量属性
 	/// @param maxContain 此空间的最大容量属性
 	/// @param pos 此空间的坐标值引用
-	Cell(Ogre::SceneManager* sceneManager,Ogre::SceneNode* parentNode,Ogre::Vector2* pos,CellType type);
-	Cell(Ogre::SceneManager* sceneManager,Ogre::SceneNode* parentNode,Ogre::Vector2* pos,int type);
+	Cell(Ogre::SceneManager* sceneManager,Ogre::SceneNode* parentNode,Ogre::Vector2* pos,CellType type, float harmValue);
+	Cell(Ogre::SceneManager* sceneManager,Ogre::SceneNode* parentNode,Ogre::Vector2* pos,int type, float harmValue);
 	~Cell(void);
 	/// 获取空间的类型
 	CellType getCellType();
 	/// 获取空间的高度
 	int getHeight();
+	/// 获取伤害值
+	float getHarmValue();
 };
 
 #endif
