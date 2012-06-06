@@ -41,7 +41,7 @@ float Maze::getHorizon()
 
 std::vector<Ogre::Vector3> Maze::getStartPos()
 {
-	std::vector<Ogre::Vector3> startList = std::vector<Ogre::Vector3>();
+	return this->startPos;
 }
 
 int Maze::getMapWidth()

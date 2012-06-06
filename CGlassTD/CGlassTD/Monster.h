@@ -8,6 +8,8 @@
 using namespace Ogre;
 #include <stack>
 
+class Cell;
+
 const float FULL_BLOOD = 100.0f;
 const float BEGIN_POS_X = -100.0f;
 const float BEGIN_POS_Y = 0.f;
