@@ -1,11 +1,10 @@
 #ifndef MonsterManager_h__
 #define MonsterManager_h__
-#include "MonsterGenerator.h"
 #include <list>
 #include <windows.h>
 #include "Monster.h"
 #include "ParamParser.h"
-
+#include "Bullet.h"
 class MonsterManager
 {
 private:
@@ -59,7 +58,9 @@ public:
 
 	/// 怪物生成
 	void monsterGenerate(Ogre::SceneManager* sceneManager, float timeSinceLastFrame);
+
 	
+	void updateState(std::vector<Bullet> explodedBullets, float timeSinceLastFrame);
 };
 /// 新增怪物的时间间隔
 const float NEW_MONSTER_TIME = 6.0;

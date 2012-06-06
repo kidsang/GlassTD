@@ -121,3 +121,8 @@ void MonsterManager::MonsterNumPlus(void)
 {
 	mMonsterNum++;
 }
+
+void MonsterManager::updateState( std::vector<Bullet> explodedBullets, float timeSinceLastFrame )
+{
+
+}
