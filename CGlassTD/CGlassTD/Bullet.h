@@ -40,7 +40,7 @@ public:
 	/// @param node 子弹的节点
 	/// @param entity 子弹的实体
 	Bullet(SceneNode* node, Entity* entity);
-	virtual ~Bullet(void);
+	~Bullet(void);
 
 	/// 发射炮弹
 	/// @param position 发射初始位置
@@ -111,27 +111,39 @@ private:
 	NameValueList mParams;
 	/// 工厂的类型，其实就是所生产的炮弹种类的名称
 	std::string mType;
+	/// 炮弹的余量。
+	int mAmmo;
 
 public:
 	/// 构造函数
 	/// @param params 构造子弹所需要的属性参数
-	BulletFactory(NameValueList params)
-		:mParams(params)
-	{
-		mType = params["name"];
-	}
+	BulletFactory(NameValueList params);
 	~BulletFactory()
 	{
 	}
 
 	/// 创建一个子弹的实例
 	/// @param mgr 场景管理类
-	/// @param args 创建子类需要用到的参数
 	/// @return 返回创建好的子类，如果失败则返回NULL
-	virtual Bullet* createInstance(SceneManager* mgr);
+	Bullet* createInstance(SceneManager* mgr);
 
 	/// 返回工厂的类型
-	virtual std::string getType();
+	const std::string& getType()
+	{
+		return mType;
+	}
+
+	/// 返回弹药余量
+	int getAmmoCount()
+	{
+		return mAmmo;
+	}
+
+	/// 设置弹药余量
+	void setAmmoCount(int ammo)
+	{
+		mAmmo = ammo;
+	}
 };
 
 
