@@ -160,6 +160,7 @@ void StagePass1::run( float timeSinceLastFrame )
 	mBulletManager.fly(timeSinceLastFrame, mGravity);
 	mMonsterManager->updateState(
 		mBulletManager.getAndRemoveExplodedBullets(mMaze->getHorizon()),
-		timeSinceLastFrame
+		timeSinceLastFrame,
+		mSceneManager
 		);
 }
