@@ -128,8 +128,11 @@ public:
 	void harmCheck(float timeSinceLastFrame);
 	/// 怪兽死掉
 	bool isMonsterDead();
+	/// 检测怪物所在cell的类型
 private:
-	Maze* maze;
+	/// 地图
+	Maze* mMaze;
+
 	int* map;
 	void makeMap(Cell* cell);
 	bool isValid(Pos& pos);
@@ -139,6 +142,7 @@ private:
 	void pushPos(Pos&, std::stack<Pos>&);
 	bool findPath(Pos, Pos);
 	bool isTarget(Pos& pos);
+
 	/// 设置怪兽收到的火属性伤害
 	void setHitByFire();
 	/// 设置怪兽收到的冰属性伤害
@@ -153,6 +157,8 @@ private:
 	void setInsideSwamp();
 	/// 设置在沼泽外
 	void setOutsideSwamp();
+	/// 检查怪兽所在的cell的类型，根据类型修改参数
+	void checkCellType();
 };
 
 

@@ -1,9 +1,11 @@
 #include "HarmCheck.h"
+#include "Maze.h"
 
 void HarmCheck::bulletHarm( float harm, float& blood )
 {
 	
 }
+
 
 void HarmCheck::fireHarmCheck( float harm, float& time, float& blood, float timeSinceLastFrame )
 {
@@ -48,4 +50,9 @@ bool HarmCheck::checkIsDead( float blood )
 		return true;
 	else 
 		return false;
+}
+
+HarmCheck::HarmCheck( Maze* maze )
+{
+	mMaze = maze;
 }

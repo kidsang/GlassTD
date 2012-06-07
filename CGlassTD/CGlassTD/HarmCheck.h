@@ -1,10 +1,14 @@
 #ifndef HarmCheck_h__
 #define HarmCheck_h__
+class Maze;
 
 class HarmCheck
 {
+private:
+	Maze* mMaze;
 public:
 	HarmCheck(){};
+	HarmCheck(Maze* maze);
 	~HarmCheck(){};
 	void bulletHarm(float harm, float& blood);
 	void fireHarmCheck(float harm, float& time, float& blood, float timeSinceLastFrame);

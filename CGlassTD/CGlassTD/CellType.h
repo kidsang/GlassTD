@@ -3,6 +3,6 @@
 #define __CellType_h_
 enum CellType
 {
-	WALL,SWAMP,SPIKEWEED,MINE,MONSTER,FREE
+	WALL,SWAMP,SPIKEWEED,TRAP,MONSTER,FREE
 };
 #endif

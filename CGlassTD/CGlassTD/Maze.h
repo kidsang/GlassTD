@@ -54,7 +54,7 @@ public:
 	/// 通过世界坐标获取指定的Cell
 	/// @params pos 世界坐标的Ogre::Vector3 指针
 	/// @return 指定的Cell
-	Cell* getCellByPos(Ogre::Vector3* pos);
+	Cell* getCellByPos(Ogre::Vector3 pos);
 	/// 获取地图的宽
 	/// @return 地图的宽
 	int getMapWidth();

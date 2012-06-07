@@ -199,6 +199,16 @@ void Monster::setType( std::string type )
 	mType = type;
 }
 
+void Monster::checkCellType()
+{
+	switch(mMaze->getCellByPos(mNode->getPosition())->getCellType())
+	{
+	case SPIKEWEED: setInsideSpikeweed(); break;
+	case TRAP:  setBeCaughtByTrap(); break;
+	case SWAMP: setInsideSwamp(); break;
+	}
+}
+
 //Ogre::String Monster::getName()
 //{
 //	return mName;
