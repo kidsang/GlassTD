@@ -3,3 +3,10 @@
 /CGlassTD/ipch
 /CGlassTD/CGlassTD/obj
 /bin/ogre.cfg
+/CEGUI/Direct X2010
+/CEGUI-0.7.5/projects/premake/CEGUI.sdf
+/CEGUI-0.7.5/projects/premake/CEGUISamples.ncb
+/CEGUI-0.7.5/projects/premake/CEGUI.ncb
+/CEGUI-0.7.5/projects/premake/CEGUISamples.sdf
+*.pdb
+*.ilk
