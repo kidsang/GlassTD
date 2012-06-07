@@ -3,9 +3,10 @@
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
 #include <OgreEntity.h>
-#include "Cell.h"
 #include <vector>
 using namespace Ogre;
+
+class Cell;
 
 class Maze
 {
@@ -19,7 +20,7 @@ private:
 	/// 地图信息的一维数组
 	int* pMapInfo;
 	/// 地平线
-	int horizon;
+	float horizon;
 	/// 地图一位数组
 	int* mMap;
 	/// 地图的宽

@@ -20,22 +20,22 @@ Monster::Monster(SceneNode* node)
 	mNode = node;
 	mHarmCheck = new HarmCheck();
 }
-
-Monster::Monster( SceneNode* node, Maze* maze )
-	:mSpeed(1),
-	mSpeedTemp(1),
-	/*mPos(Ogre::Vector3(BEGIN_POS_X, 10, BEGIN_POS_Y)),*/
-	mBlood(0),
-	mFace(Ogre::Vector3(0, 0, 1)),
-	mRadius(1),
-	mType(),
-	mHarmList(),
-	mIsDead(false)
-{
-	mNode = node;
-	mHarmCheck = new HarmCheck();
-	mMaze = maze;
-}
+////
+////Monster::Monster( SceneNode* node, Maze* maze )
+////	:mSpeed(1),
+////	mSpeedTemp(1),
+////	/*mPos(Ogre::Vector3(BEGIN_POS_X, 10, BEGIN_POS_Y)),*/
+////	mBlood(0),
+////	mFace(Ogre::Vector3(0, 0, 1)),
+////	mRadius(1),
+////	mType(),
+////	mHarmList(),
+////	mIsDead(false)
+////{
+////	mNode = node;
+////	mHarmCheck = new HarmCheck();
+////	mMaze = maze;
+////}
 
 //
 //Monster::Monster( Ogre::SceneManager* sceneMgr, Ogre::SceneNode* parentNode, Position& pos)

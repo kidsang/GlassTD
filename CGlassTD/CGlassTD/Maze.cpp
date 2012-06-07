@@ -1,4 +1,6 @@
 #include "Maze.h"
+#include "Cell.h"
+
 Maze::Maze(void)
 {
 }

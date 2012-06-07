@@ -1,6 +1,6 @@
 
-#ifndef Monster_h__
-#define Monster_h__
+#ifndef __Monster_h_
+#define __Monster_h_
 
 #include "BaseApplication.h"
 #include "ObjectFactory.h"
@@ -10,8 +10,8 @@
 #include <stack>
 using namespace Ogre;
 
-
 class Cell;
+
 
 const float FULL_BLOOD = 100.0f;
 const float BEGIN_POS_X = -100.0f;
@@ -73,11 +73,10 @@ struct Judge
 	CellNode node;
 	Judge* next;
 };
+
 class Monster
 {
 protected:
-	/// 地图
-	Maze* mMaze;
 	/// 怪兽的速度
 	float mSpeed;
 	/// 怪兽的速度备份，以便还原速度
@@ -103,7 +102,7 @@ protected:
 public:
 	Monster(){}
 	Monster(SceneNode* node);
-	Monster(SceneNode* node, Maze* maze);
+	//Monster(SceneNode* node, Maze* maze);
 	Monster(Ogre::SceneManager* sceneMgr, Ogre::SceneNode* parentNode);
 	~Monster(void);
 	void go(float timeSinceLastFrame, Ogre::Vector3& direction);
@@ -130,6 +129,7 @@ public:
 	/// 怪兽死掉
 	bool isMonsterDead();
 private:
+	Maze* maze;
 	int* map;
 	void makeMap(Cell* cell);
 	bool isValid(Pos& pos);
