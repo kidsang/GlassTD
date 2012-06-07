@@ -123,9 +123,15 @@ public:
 	/// 怪兽死掉
 	bool isMonsterDead();
 private:
+	int* map;
 	void makeMap(Cell* cell);
 	bool isValid(Pos& pos);
-bool isTarget(Pos& pos);
+	bool isFinal(Pos& pos);
+	void MarkIt(Pos&);
+	void stepTo(Pos& pos);
+	void pushPos(Pos&, stack<Pos>&);
+	bool findPath(Pos, Pos);
+	bool isTarget(Pos& pos);
 	/// 设置怪兽收到的火属性伤害
 	void setHitByFire();
 	/// 设置怪兽收到的冰属性伤害
