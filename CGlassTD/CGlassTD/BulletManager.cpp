@@ -44,7 +44,7 @@ std::vector<NameValueList> BulletManager::getAndRemoveExplodedBullets(float floo
 				convertToString(bul->getPosition().x)
 				+ " " + convertToString(bul->getPosition().y)
 				+ " " + convertToString(bul->getPosition().z)));
-			//nvl.insert(std::make_pair("damage", bul->getDamage()));
+			exploded.push_back(nvl);
 			// É¾³ý±¬Õ¨µÄ½Úµã
 			delete bul;
 			mBulletList.deleteCurrentNode();
