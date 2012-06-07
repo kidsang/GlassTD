@@ -52,7 +52,3 @@ bool HarmCheck::checkIsDead( float blood )
 		return false;
 }
 
-HarmCheck::HarmCheck( Maze* maze )
-{
-	mMaze = maze;
-}

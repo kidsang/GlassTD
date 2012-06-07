@@ -19,7 +19,7 @@ MonsterManager::MonsterManager()
 MonsterManager::~MonsterManager(void)
 {
 	if(mMonsterMgr != NULL)
-	    delete mMonsterMgr;
+		delete mMonsterMgr;
 	for (auto iter = mMonstersList.begin(); iter != mMonstersList.end(); ++iter)
 		delete (*iter);
 	for (auto iter = mMonsterFactoryList.begin(); iter != mMonsterFactoryList.end(); ++iter)
@@ -123,7 +123,7 @@ void MonsterManager::MonsterNumPlus(void)
 	mMonsterNum++;
 }
 
-void MonsterManager::updateState( std::vector<Bullet> explodedBullets, float timeSinceLastFrame, Ogre::SceneManager* sceneManager )
+void MonsterManager::updateState( std::vector<NameValueList> explodedBullets, float timeSinceLastFrame, Ogre::SceneManager* sceneManager )
 {
 	mMonsterMgr->monsterGenerate(sceneManager, timeSinceLastFrame);
 }
