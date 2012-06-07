@@ -129,7 +129,7 @@ private:
 	bool isFinal(Pos& pos);
 	void MarkIt(Pos&);
 	void stepTo(Pos& pos);
-	void pushPos(Pos&, stack<Pos>&);
+	void pushPos(Pos&, std::stack<Pos>&);
 	bool findPath(Pos, Pos);
 	bool isTarget(Pos& pos);
 	/// 设置怪兽收到的火属性伤害
