@@ -62,6 +62,8 @@ public:
 	/// ¹ÖÎïÉú³É
 	void monsterGenerate(Ogre::SceneManager* sceneManager, float timeSinceLastFrame);
 
+	void setMaze(Maze* maze);
+
 	
 	void updateState(std::vector<Bullet> explodedBullets, float timeSinceLastFrame, Ogre::SceneManager* sceneManager);
 };

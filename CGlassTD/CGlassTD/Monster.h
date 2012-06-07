@@ -5,6 +5,8 @@
 #include "BaseApplication.h"
 #include "ObjectFactory.h"
 #include "Common.h"
+#include "HarmCheck.h"
+#include "Maze.h"
 using namespace Ogre;
 
 const float FULL_BLOOD = 100.0f;
@@ -55,7 +57,8 @@ struct HarmList
 class Monster
 {
 protected:
-	/// Maze maze;
+	/// 地图
+	Maze* mMaze;
 	/// 怪兽的速度
 	float mSpeed;
 	/// 怪兽的速度备份，以便还原速度
@@ -75,10 +78,13 @@ protected:
 	HarmList mHarmList;
 	/// 怪兽是否死亡
     bool mIsDead;
+	/// 伤害检测类
+	HarmCheck* mHarmCheck;
 	
 public:
 	Monster(){}
 	Monster(SceneNode* node);
+	Monster(SceneNode* node, Maze* maze);
 	Monster(Ogre::SceneManager* sceneMgr, Ogre::SceneNode* parentNode);
 	~Monster(void);
 	void go(float timeSinceLastFrame, Ogre::Vector3& direction);
