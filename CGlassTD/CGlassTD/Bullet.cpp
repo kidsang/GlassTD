@@ -54,7 +54,10 @@ Bullet* BulletFactory::createInstance( SceneManager* mgr )
 	return bullet;
 }
 
-std::string BulletFactory::getType()
+BulletFactory::BulletFactory( NameValueList params ) :mParams(params), mType("NormalBullet"), mAmmo(0)
 {
-	return mType;
+	if (params.find("name") != params.end())
+		mType = params["name"];
+	if (params.find("ammo") != params.end())
+		mAmmo = atoi(params["ammo"].c_str());
 }
