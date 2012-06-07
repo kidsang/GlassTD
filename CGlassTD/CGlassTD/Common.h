@@ -26,4 +26,6 @@ typedef std::map<std::string, std::string> NameValueList;
 /// @note 这是一个从stackoverflow上拿来的函数，我不懂它到底是如何做到的。。
 std::vector<std::string> mysplit(std::string str);
 
+std::string convertToString(double num);
+
 #endif // Common_h__

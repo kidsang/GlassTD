@@ -12,3 +12,11 @@ std::vector<std::string> mysplit( std::string str )
 
 	return outArr;
 }
+
+std::string convertToString( double num )
+{
+	std::ostringstream stream;
+	stream << num;
+
+	return stream.str();
+}

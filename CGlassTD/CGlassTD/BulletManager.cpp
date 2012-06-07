@@ -26,17 +26,27 @@ void BulletManager::fly( float timeSinceLastFrame, const Ogre::Vector3& gravity 
 		mBulletList.getData()->fly(timeSinceLastFrame, gravity);
 }
 
-std::vector<Bullet> BulletManager::getAndRemoveExplodedBullets(float floor)
+std::vector<NameValueList> BulletManager::getAndRemoveExplodedBullets(float floor)
 {
-	std::vector<Bullet> exploded;
+	std::vector<NameValueList> exploded;
 
 	mBulletList.start();
 	while (mBulletList.forward())
 		if (mBulletList.getData()->getPosition().y < floor)
 		{
-			//exploded.push_back(*mBulletList.getData());
-			// Todo:转化为namevaluelist
-			delete mBulletList.getData();
+			Bullet* bul = mBulletList.getData();
+			// 将爆炸节点的信息储存
+			NameValueList nvl;
+			nvl.insert(std::make_pair("damage", convertToString(bul->getDamage())));
+			nvl.insert(std::make_pair("range", convertToString(bul->getDamage())));
+			nvl.insert(std::make_pair("spell", bul->getSpell()));
+			nvl.insert(std::make_pair("position",
+				convertToString(bul->getPosition().x)
+				+ " " + convertToString(bul->getPosition().y)
+				+ " " + convertToString(bul->getPosition().z)));
+			//nvl.insert(std::make_pair("damage", bul->getDamage()));
+			// 删除爆炸的节点
+			delete bul;
 			mBulletList.deleteCurrentNode();
 		}
 

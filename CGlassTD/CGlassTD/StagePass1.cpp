@@ -158,9 +158,9 @@ void StagePass1::run( float timeSinceLastFrame )
 		mBulletList.getData()->fly(timeSinceLastFrame, Vector3(0, -200, 0));
 	}*/
 	mBulletManager.fly(timeSinceLastFrame, mGravity);
-	/*mMonsterManager->updateState(
+	mMonsterManager->updateState(
 		mBulletManager.getAndRemoveExplodedBullets(mMaze->getHorizon()),
 		timeSinceLastFrame,
 		mSceneManager
-		);*/
+		);
 }
