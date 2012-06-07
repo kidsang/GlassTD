@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Monsters>
+   <Monster name="NormalMonster"
+          mesh="robot.mesh"
+          blood="100"
+          speed="10"
+          radius="10"
+          spell="normal"
+          />
+</Monsters>

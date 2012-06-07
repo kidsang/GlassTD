@@ -4,6 +4,7 @@
 #include <vector>
 #include "Bullet.h"
 #include "OgreQuaternion.h"
+#include <time.h>
 
 /// 炮台类
 /// @author: LiaoNanhao
@@ -18,7 +19,14 @@ private:
 	unsigned int mCurrentBullet;
 
 	/// 大炮发射力度
-	float mFireStrenth;
+	float mFireStrength;
+	/// 炮口的位置偏移量
+	Vector3 mFireOffset;
+	/// 大炮的发射间隔,按秒计算
+	float mColdDown;
+
+	/// 上次发射的时间
+	clock_t mLastTime;
 
 	/// 大炮的节点
 	SceneNode* mNode;
@@ -36,7 +44,7 @@ public:
 	void addBulletFactory(BulletFactory* bulletFactory);
 
 	/// 发射当前装备的炮弹
-	/// @return 返回发射的炮弹
+	/// @return 返回发射的炮弹，如果发射失败(比如cd)则返回NULL
 	/// @note 外部的某个管理类应该接手发射出去的炮弹的管理工作，
 	///		  比如调用其fly()函数，释放资源等
 	Bullet* fire(SceneManager* mgr);
@@ -52,6 +60,45 @@ public:
 
 	/// 修改炮台朝向
 	void rotate(int yaw, int pitch);
+
+	// Get/Set
+public:
+	/// 返回大炮发射力度
+	const float getFireStrenth()
+	{
+		return mFireStrength;
+	}
+
+	/// 设置大炮发射力度
+	void setFireStrength(float strength)
+	{
+		mFireStrength = strength;
+	}
+
+	/// 返回炮弹发射位置的偏移量(即炮口位置)
+	const Vector3& getFireOffset()
+	{
+		return mFireOffset;
+	}
+
+	/// 设置炮弹发射位置的偏移量(即炮口位置)
+	void setFireOffset(const Vector3& offset)
+	{
+		mFireOffset = offset;
+	}
+
+	/// 返回大炮发射间隔
+	const float getColdDown()
+	{
+		return mColdDown;
+	}
+
+	/// 设置大炮发射间隔
+	void setColdDown(float coldDown)
+	{
+		mColdDown = coldDown;
+	}
+
 };
 
 

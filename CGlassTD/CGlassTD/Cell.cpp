@@ -5,36 +5,66 @@ Cell::Cell(void)
 
 }
 
-Cell::Cell(Ogre::SceneManager* sceneManager, Ogre::SceneNode* parentNode,int state,int maxContain,Position& pos )
-	:mState(state),mMaxContain(maxContain)
+
+Cell::Cell( Ogre::SceneManager* sceneManager,Ogre::SceneNode* parentNode,Ogre::Vector2* pos, CellType type, float harmValue)
 {
+	this->mHarmValue = harmValue;
 	this->mEntity = ObjectFactory::createEntity(sceneManager,"cubess.mesh");
 	int x = this->mEntity->getBoundingBox().getSize().x;
 	int z = this->mEntity->getBoundingBox().getSize().z;
-	this->mSceneNode = ObjectFactory::createSceneNode(parentNode,this->mEntity, Vector3(Real(x * pos.getX()),Real(0), Real(z * pos.getZ())));
-	if(state == 0)
+	this->mSceneNode = ObjectFactory::createSceneNode(parentNode,this->mEntity, Vector3(x * pos->x,Real(0), z * pos->y));
+	this->mType = type;
+	if(this->mType == FREE)
 	{
 		this->mSceneNode->setVisible(false);
 	}
-	this->mPos = pos;
 }
 
+Cell::Cell( Ogre::SceneManager* sceneManager,Ogre::SceneNode* parentNode,Ogre::Vector2* pos,int type, float harmValue)
+{
+	this->mHarmValue = harmValue;
+	this->mEntity = ObjectFactory::createEntity(sceneManager,"cubess.mesh");
+	int x = this->mEntity->getBoundingBox().getSize().x;
+	int z = this->mEntity->getBoundingBox().getSize().z;
+	this->mSceneNode = ObjectFactory::createSceneNode(parentNode,this->mEntity, Vector3(x * pos->x,Real(0), z * pos->y));
+	switch(type){
+	case 0:
+		this->mType = FREE;
+		break;
+	case 1:
+		this->mType = WALL;
+		break;
+	case 2:
+		this->mType = SPIKEWEED;
+		break;
+	case 3:
+		this->mType = SWAMP;
+		break;
+	default:
+		this->mType = FREE;
+	}
+	if(this->mType == FREE)
+	{
+		this->mSceneNode->setVisible(false);
+	}
+}
 
 Cell::~Cell(void)
 {
 }
 
-bool Cell::isContain(Monster& monster)
-{
-	return true;
-}
 
-int Cell::getContain()
+CellType Cell::getCellType()
 {
-	return mMaxContain - mState;
+	return this->mType;
 }
 
 int Cell::getHeight()
 {
 	return this->mEntity->getBoundingBox().getSize().y;
+}
+
+float Cell::getHarmValue()
+{
+	return this->mHarmValue;
 }

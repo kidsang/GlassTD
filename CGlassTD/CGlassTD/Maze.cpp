@@ -10,18 +10,17 @@ Maze::Maze(SceneManager* sceneManager, int* map, int width, int height)
 	this->mSceneNode = sceneManager->getRootSceneNode()->createChildSceneNode("mapSenenNode");
 	this->pZones = new Cell[mWidth * mHeight];
 	this->pMapInfo = new int[mWidth * mHeight];
+	this->startPos = std::vector<Ogre::Vector3>();
+	this->mSceneNode->setPosition(Ogre::Vector3(-mWidth / 2.0f * 100, 0, -mHeight / 2.0f * 100));
 
-	int halfWidth = mWidth / 2;
-	int halfHeight = mHeight / 2;
-	for(int j = -halfWidth; j < halfWidth; ++j)
+	for(int j = 0; j < width; ++j)
 	{
-		for(int i = -halfHeight; i < halfHeight; ++i)
+		for(int i = 0; i < height; ++i)
 		{
-			this->pZones[(i + halfWidth) * mWidth + j + halfHeight] = Cell(sceneManager, mSceneNode, map[(i + halfWidth) * mWidth + j + halfHeight], 10, Position(i,j));
+			this->pZones[j * width + i] = Cell(sceneManager, mSceneNode, new Ogre::Vector2(Real(i),Real(j)), map[j * width + i], 0.1f);
 		}
 	}
-	mSceneNode->setScale(Ogre::Vector3(0.1f));
-	this->horizon = this->pZones[0].getHeight() / 2;
+	this->horizon = this->pZones[1].getHeight() / 2.0f;
 }
 
 
@@ -30,21 +29,43 @@ Maze::~Maze(void)
 	delete this->pMapInfo;
 }
 
-int* Maze::getMazeInfo()
+Cell* Maze::getMazeInfo()
 {
-	for(int i = 0; i < mWidth * mHeight; ++i)
-	{
-		this->pMapInfo[i] = this->pZones[i].getContain();
-	}
-	return pMapInfo;
+	return this->pZones;
 }
 
-bool Maze::isStep( Monster& monster )
-{
-	return true;
-}
-
-int Maze::getHorizon()
+float Maze::getHorizon()
 {
 	return this->horizon;
+}
+
+std::vector<Ogre::Vector3> Maze::getStartPos()
+{
+	return this->startPos;
+}
+
+int Maze::getMapWidth()
+{
+	return this->mWidth;
+}
+
+int Maze::getMapHeight()
+{
+	return this->mHeight;
+
+}
+
+Ogre::Vector3* Maze::translatePos( Ogre::Vector3* pos )
+{
+	return new Ogre::Vector3(Real(pos->x - (this->mWidth / 2.0f * 100)),Real(0),Real(pos->y - (this->mHeight / 2.0f * 100)));
+}
+
+void Maze::addStartPos( Ogre::Vector3 pos )
+{
+	this->startPos.push_back(pos);
+}
+
+void Maze::setFinalPos( Ogre::Vector3 pos )
+{
+	this->finalPos = pos;
 }

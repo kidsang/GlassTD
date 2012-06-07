@@ -1,6 +1,4 @@
 #include "CGlassTD.h"
-#include "TestBullet.h"
-#include "TestStage.h"
 #include "StagePass1.h"
 
 
@@ -39,8 +37,6 @@ void CGlassTD::createScene(void)
 	mpStageManager = new StageManager(mSceneMgr);
 	//mpStageManager->setStage(new TestStage(mSceneMgr, mpStageManager));
 	mpStageManager->setStage(new StagePass1(mSceneMgr, mpStageManager));
-	mCamera->setPosition(0, 10, 10);
-	mCamera->lookAt(0, -10, -10);
 
 	
 	//// ≤‚ ‘by kid

@@ -1,0 +1,10 @@
+material Glass/Test
+{
+    technique
+    {
+        pass
+        {
+            ambient 1 0 0
+        }
+    }
+}

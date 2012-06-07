@@ -2,23 +2,29 @@
 
 MonsterManager* MonsterManager::mMonsterMgr = NULL;
 int MonsterManager::mMonsterNum = 0;
-float MonsterManager::mTimeCount = 0.0;
+float MonsterManager::mTimeCount = 0.0f;
 
 
 MonsterManager::MonsterManager()
 {
-	for(int i = 0; i < 100; i++)
-	{
-		mMonNames[i] = "monster" + i;
-	}
+	ParamParser monsterParser = ParamParser("MonsterDefine.xml");
+	monsterParser.parse();
+	monsterParser.moveToFirst();
+	while (monsterParser.hasNext())
+		mMonsterFactoryList.push_back(new MonsterFactory(*monsterParser.getNext()));
+	if(mMonsterFactoryList.size() != 0)
+		mCurrentMonsterFactory = mMonsterFactoryList.at(0);
 }
 
 MonsterManager::~MonsterManager(void)
 {
 	if(mMonsterMgr != NULL)
 	    delete mMonsterMgr;
-	/*for (auto iter = mMonstersList.begin(); iter != mMonstersList.end(); ++iter)
-		delete (*iter);*/
+	for (auto iter = mMonstersList.begin(); iter != mMonstersList.end(); ++iter)
+		delete (*iter);
+	for (auto iter = mMonsterFactoryList.begin(); iter != mMonsterFactoryList.end(); ++iter)
+		delete (*iter);
+	delete mCurrentMonsterFactory;
 }
 
 MonsterManager* MonsterManager::getMonsterManager(void)
@@ -39,24 +45,26 @@ MonsterManager* MonsterManager::getMonsterManager(void)
 void MonsterManager::monsterGenerate(Ogre::SceneManager* sceneManager, float timeSinceLastFrame)
 {
 	//::CreateThread(NULL, 0, createMonstersThread, sceneManager, NULL, NULL);
-	
 	mMonsterMgr->setTimeCount(mMonsterMgr->getTimeCount() + timeSinceLastFrame);
 	/// std::list<Monster*> monsterList = mMonsterMgr->getMonstersList();
 	if(mMonsterMgr->getTimeCount() > NEW_MONSTER_TIME)
 	{
-		MonsterGenerator* monsterGen = new MonsterGenerator();
-		Ogre::String mesh = "robot.mesh";
-		mMonstersList.push_back(monsterGen->createMonster(sceneManager, mesh));
+		Monster* monster = mCurrentMonsterFactory->createInstance(sceneManager);
+		/// monster->monsterScale(0.1, 0.1, 0.1);
+		monster->setAnimate();
+		mMonstersList.push_back(monster);
 		mMonsterMgr->MonsterNumPlus();
 		mMonsterMgr->setTimeCount(0.0f);
-	}
-	
-}
 
+	}
+}
 std::list<Monster*> MonsterManager::getMonstersList( void )
 {
 	return mMonstersList;
 }
+
+
+
 
 //
 //DWORD WINAPI MonsterManager::createMonstersThread(PVOID pVoid)
@@ -112,4 +120,9 @@ void MonsterManager::setMonsterNum(int num)
 void MonsterManager::MonsterNumPlus(void)
 {
 	mMonsterNum++;
+}
+
+void MonsterManager::updateState( std::vector<Bullet> explodedBullets, float timeSinceLastFrame, Ogre::SceneManager* sceneManager )
+{
+	mMonsterMgr->monsterGenerate(sceneManager, timeSinceLastFrame);
 }

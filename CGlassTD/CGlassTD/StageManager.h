@@ -2,7 +2,7 @@
 #define __StageManager_h_
 
 
-#include "BaseApplication.h"
+#include <OgreSceneManager.h>
 class Stage;
 
 /// ÎèÌ¨¹ÜÀíÆ÷

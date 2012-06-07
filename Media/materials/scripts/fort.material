@@ -1,0 +1,29 @@
+material 01-Default
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			diffuse 0.588235 0.772549 0.607843 1
+		}
+
+	}
+
+}
+
+
+
+material 02-Default
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			diffuse 0.592157 0.611765 0.0784314 1
+		}
+
+	}
+
+}

@@ -1,5 +1,4 @@
 #include "StageManager.h"
-#include "TestStage.h"
 #include "Stage.h"
 
 StageManager::StageManager(Ogre::SceneManager* pSceneManager)
