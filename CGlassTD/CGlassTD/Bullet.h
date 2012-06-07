@@ -56,6 +56,12 @@ public:
 
 	// Get/Set
 public:
+	/// 获取炮弹当前位置
+	const Vector3& getPosition()
+	{
+		return mNode->getPosition();
+	}
+
 	/// 获取炮弹的质量属性
 	const float getMass()
 	{
