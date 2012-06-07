@@ -30,16 +30,23 @@ private:
 	/// 该炮弹的模型
 	Entity* mEntity;
 
+	/// 炮弹的质量
 	float mMass;
+	/// 炮弹的伤害值
 	float mDamage;
+	/// 炮弹的伤害范围
 	float mRange;
-	//int mSpell;
+	/// 炮弹的元素类型
+	std::string mSpell;
+
+	/// 炮弹删除自己需要用到，真tmd蛋疼
+	SceneManager* mSceneManager;
 
 public:
 	/// 构造函数
 	/// @param node 子弹的节点
 	/// @param entity 子弹的实体
-	Bullet(SceneNode* node, Entity* entity);
+	Bullet(SceneManager* manager, SceneNode* node, Entity* entity);
 	~Bullet(void);
 
 	/// 发射炮弹
@@ -56,6 +63,18 @@ public:
 
 	// Get/Set
 public:
+	/// 获取炮弹的元素类型
+	const std::string& getSpell()
+	{
+		return mSpell;
+	}
+
+	/// 设置炮弹的元素类型
+	void setSpell(const std::string& spell)
+	{
+		mSpell = spell;
+	}
+
 	/// 获取炮弹当前位置
 	const Vector3& getPosition()
 	{
