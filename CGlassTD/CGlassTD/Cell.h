@@ -1,14 +1,14 @@
+#ifndef __Cell_h_
+#define __Cell_h_
+
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
 #include <OgreEntity.h>
 #include "ObjectFactory.h"
-#include "Monster.h"
 #include "CellType.h"
 using namespace std;
 using namespace Ogre;
 
-#ifndef __Cell_h_
-#define __Cell_h_
 
 class Cell
 {
@@ -38,7 +38,7 @@ public:
 	/// 获取空间的类型
 	CellType getCellType();
 	/// 获取空间的高度
-	int getHeight();
+	float getHeight();
 	/// 获取伤害值
 	float getHarmValue();
 };

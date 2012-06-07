@@ -18,7 +18,25 @@ Monster::Monster(SceneNode* node)
 	mIsDead(false)
 {
 	mNode = node;
+	mHarmCheck = new HarmCheck();
 }
+////
+////Monster::Monster( SceneNode* node, Maze* maze )
+////	:mSpeed(1),
+////	mSpeedTemp(1),
+////	/*mPos(Ogre::Vector3(BEGIN_POS_X, 10, BEGIN_POS_Y)),*/
+////	mBlood(0),
+////	mFace(Ogre::Vector3(0, 0, 1)),
+////	mRadius(1),
+////	mType(),
+////	mHarmList(),
+////	mIsDead(false)
+////{
+////	mNode = node;
+////	mHarmCheck = new HarmCheck();
+////	mMaze = maze;
+////}
+
 //
 //Monster::Monster( Ogre::SceneManager* sceneMgr, Ogre::SceneNode* parentNode, Position& pos)
 //{	
@@ -29,6 +47,7 @@ Monster::~Monster(void)
 {
 	/*if(mNode != NULL)
 		delete mNode;*/
+	delete mHarmCheck;
 }
 
 //Ogre::SceneNode* Monster::getNode(Ogre::String mesh, Ogre::String name)
@@ -114,56 +133,13 @@ void Monster::monsterScale( float x, float y, float z )
 
 void Monster::harmCheck(float timeSinceLastFrame)
 {
-	/// 火属性伤害时间到，属性伤害消失
-	if(mHarmList.fireHarmTime < 0)
-	{
-		mHarmList.fireHarm = 0;
-		mHarmList.fireHarmTime = FIRE_HARM_TIME;
-	}
-	/// 冰属性伤害时间到，属性伤害消失
-	if(mHarmList.iceHarmTime < 0)
-	{
-		mHarmList.iceHarm = 0;
-		mHarmList.iceHarmTime = ICE_HARM_TIME;
-		mSpeed = mSpeedTemp;
-	}
-	/// 火属性伤害运作
-	if(mHarmList.fireHarm != 0)
-	{
-		mBlood -= mHarmList.fireHarm;
-		mHarmList.fireHarmTime -= timeSinceLastFrame;
-	}
-	/// 冰属性伤害运作
-	if(mHarmList.iceHarm != 0)
-	{
-		mSpeed = mSpeedTemp * ICE_HARM_SPEED;
-		mHarmList.iceHarmTime -= timeSinceLastFrame;
-	}
-
-	if(mHarmList.beCaught == true)
-	{	
-		mBlood = 0;
-	}
-
-	if(mHarmList.isOnSpikeweed)
-	{
-		mBlood -= mHarmList.spikeweedHarm;
-	}
-
-	if(mHarmList.isInSwamp)
-	{
-		mSpeed = mSpeedTemp * mHarmList.swampHarm;
-	}
-	else 
-	{
-		mSpeed = mSpeedTemp;
-	}
-
+	/// mHarmCheck->bulletHarm(mHarmList.h)
+	mHarmCheck->fireHarmCheck(mHarmList.fireHarm, mHarmList.fireHarmTime, mBlood, timeSinceLastFrame);
+	mHarmCheck->iceHarmCheck(mHarmList.iceHarm, mHarmList.iceHarmTime, mSpeed, mSpeedTemp, timeSinceLastFrame);
+	mHarmCheck->spikeweedHarmCheck(mHarmList.spikeweedHarm, mBlood, mHarmList.isOnSpikeweed);
+	mHarmCheck->swampHarmCheck(mHarmList.swampHarm, mSpeed, mSpeedTemp, mHarmList.isInSwamp);
 	/// 判断是否死亡
-	if(mBlood < 0 || mBlood == 0)
-	{
-		mIsDead = true;
-	}
+	mIsDead = mHarmCheck->checkIsDead(mBlood);
 
 }
 
@@ -221,6 +197,16 @@ void Monster::setRadius( float radius )
 void Monster::setType( std::string type )
 {
 	mType = type;
+}
+
+void Monster::checkCellType()
+{
+	switch(mMaze->getCellByPos(mNode->getPosition())->getCellType())
+	{
+	case SPIKEWEED: setInsideSpikeweed(); break;
+	case TRAP:  setBeCaughtByTrap(); break;
+	case SWAMP: setInsideSwamp(); break;
+	}
 }
 
 //Ogre::String Monster::getName()
