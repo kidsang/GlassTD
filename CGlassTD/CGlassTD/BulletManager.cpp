@@ -34,7 +34,8 @@ std::vector<Bullet> BulletManager::getAndRemoveExplodedBullets(float floor)
 	while (mBulletList.forward())
 		if (mBulletList.getData()->getPosition().y < floor)
 		{
-			exploded.push_back(*mBulletList.getData());
+			//exploded.push_back(*mBulletList.getData());
+			// Todo:×ª»¯Îªnamevaluelist
 			delete mBulletList.getData();
 			mBulletList.deleteCurrentNode();
 		}
