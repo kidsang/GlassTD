@@ -106,8 +106,7 @@ StagePass1::~StagePass1(void)
 	// 删除炮
 	delete mCannon;
 	// 删除炮弹
-	for (auto iter = mBulletList.begin(); iter != mBulletList.end(); ++iter)
-		delete (*iter);
+	//mBulletList.clear();
 	// 删除迷宫
 	delete mMaze;
 }
@@ -118,7 +117,7 @@ void StagePass1::onKeyPressed( const OIS::KeyEvent &arg )
 	{
 		Bullet* bullet = mCannon->fire(mSceneManager);
 		if (bullet)
-			mBulletList.push_back(bullet);
+			mBulletManager.add(bullet);
 	}
 }
 
@@ -138,18 +137,30 @@ void StagePass1::onMouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID
 }
 
 void StagePass1::run( float timeSinceLastFrame )
-{
+{/*
 	/// MonsterManager* monsterMgr = MonsterManager::getMonsterManager();
 	/// 产生怪物
 	mMonsterManager->monsterGenerate(mSceneManager, timeSinceLastFrame);
 	/// 遍历怪物列表
-	std::list<Monster*> monsterList = mMonsterManager->getMonstersList();
-	for (auto iter = monsterList.begin(); iter != monsterList.end(); ++iter)
-	{		
-		(*iter)->addTimeToAnimation(timeSinceLastFrame);
-		(*iter)->go(timeSinceLastFrame, Vector3(4, 0, 0));
+	MyList<Monster*>* monsterList = mMonsterManager->getMonstersList();
+	monsterList->start();
+	while (monsterList->forward())
+	{
+		Monster* monster = monsterList->getData();
+		
+		monster->addTimeToAnimation(timeSinceLastFrame);
+		monster->go(timeSinceLastFrame, Vector3(4, 0, 0));
 	}
 	/// 使炮弹飞行
-	for (auto iter = mBulletList.begin(); iter != mBulletList.end(); ++iter)
-		(*iter)->fly(timeSinceLastFrame, Vector3(0, -200, 0));
+	mBulletList.start();
+	while (mBulletList.forward())
+	{
+		mBulletList.getData()->fly(timeSinceLastFrame, Vector3(0, -200, 0));
+	}*/
+	mBulletManager.fly(timeSinceLastFrame, mGravity);
+	mMonsterManager->updateState(
+		mBulletManager.getAndRemoveExplodedBullets(mMaze->getHorizon()),
+		timeSinceLastFrame,
+		mSceneManager
+		);
 }

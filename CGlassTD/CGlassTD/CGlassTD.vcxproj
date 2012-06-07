@@ -118,6 +118,7 @@
   <ItemGroup>
     <ClInclude Include="BaseApplication.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletManager.h" />
     <ClInclude Include="Cannon.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellType.h" />
@@ -136,6 +137,7 @@
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StageManager.h" />
     <ClInclude Include="StagePass1.h" />
+    <ClInclude Include="Step.h" />
     <ClInclude Include="tinystr.h" />
     <ClInclude Include="tinyxml.h" />
   </ItemGroup>
@@ -149,6 +151,7 @@
   <ItemGroup>
     <ClCompile Include="BaseApplication.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="Cannon.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CGlassTD.cpp" />
@@ -164,6 +167,7 @@
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StageManager.cpp" />
     <ClCompile Include="StagePass1.cpp" />
+    <ClCompile Include="Step.cpp" />
     <ClCompile Include="tinystr.cpp" />
     <ClCompile Include="tinyxml.cpp" />
     <ClCompile Include="tinyxmlerror.cpp" />
