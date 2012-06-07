@@ -15,7 +15,7 @@ public:
 
 	void add(Bullet* bullet);
 	void fly(float timeSinceLastFrame, const Ogre::Vector3& gravity);
-	std::vector<Bullet> getAndRemoveExplodedBullets(float floor);
+	std::vector<NameValueList> getAndRemoveExplodedBullets(float floor);
 };
 
 

@@ -128,7 +128,6 @@ public:
 	void harmCheck(float timeSinceLastFrame);
 	/// 怪兽死掉
 	bool isMonsterDead();
-	/// 检测怪物所在cell的类型
 private:
 	/// 地图
 	Maze* mMaze;

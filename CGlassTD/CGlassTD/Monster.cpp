@@ -48,6 +48,7 @@ Monster::~Monster(void)
 	/*if(mNode != NULL)
 		delete mNode;*/
 	delete mHarmCheck;
+	delete mMaze;
 }
 
 //Ogre::SceneNode* Monster::getNode(Ogre::String mesh, Ogre::String name)
@@ -203,9 +204,10 @@ void Monster::checkCellType()
 {
 	switch(mMaze->getCellByPos(mNode->getPosition())->getCellType())
 	{
-	case SPIKEWEED: setInsideSpikeweed(); break;
+	case SPIKEWEED: setInsideSpikeweed(); setOutsideSwamp(); break;
 	case TRAP:  setBeCaughtByTrap(); break;
-	case SWAMP: setInsideSwamp(); break;
+	case SWAMP: setInsideSwamp(); setOutsideSpikeweed(); break;
+	default: setOutsideSpikeweed(); setOutsideSwamp(); break;
 	}
 }
 

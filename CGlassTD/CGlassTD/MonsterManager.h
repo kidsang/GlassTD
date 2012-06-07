@@ -65,7 +65,7 @@ public:
 	void setMaze(Maze* maze);
 
 	
-	void updateState(std::vector<Bullet> explodedBullets, float timeSinceLastFrame, Ogre::SceneManager* sceneManager);
+	void updateState(std::vector<NameValueList> explodedBullets, float timeSinceLastFrame, Ogre::SceneManager* sceneManager);
 };
 /// 新增怪物的时间间隔
 const float NEW_MONSTER_TIME = 6.0;
