@@ -10,17 +10,17 @@ Maze::Maze(SceneManager* sceneManager, int* map, int width, int height)
 	this->mSceneNode = sceneManager->getRootSceneNode()->createChildSceneNode("mapSenenNode");
 	this->pZones = new Cell[mWidth * mHeight];
 	this->pMapInfo = new int[mWidth * mHeight];
-
+	this->startPos = std::vector<Ogre::Vector3>();
 	this->mSceneNode->setPosition(Ogre::Vector3(-mWidth / 2.0f * 100, 0, -mHeight / 2.0f * 100));
 
 	for(int j = 0; j < width; ++j)
 	{
 		for(int i = 0; i < height; ++i)
 		{
-			this->pZones[j * width + i] = Cell(sceneManager, mSceneNode, new Ogre::Vector2(Real(i),Real(j)), map[j * width + i]);
+			this->pZones[j * width + i] = Cell(sceneManager, mSceneNode, new Ogre::Vector2(Real(i),Real(j)), map[j * width + i], 0.1f);
 		}
 	}
-	this->horizon = this->pZones[1].getHeight() / 2;
+	this->horizon = this->pZones[1].getHeight() / 2.0f;
 }
 
 
@@ -29,28 +29,19 @@ Maze::~Maze(void)
 	delete this->pMapInfo;
 }
 
-int* Maze::getMazeInfo()
+Cell* Maze::getMazeInfo()
 {
-	for(int i = 0; i < mWidth * mHeight; ++i)
-	{
-		this->pMapInfo[i] = this->mMap[i];
-	}
-	return pMapInfo;
+	return this->pZones;
 }
 
-bool Maze::isStep( Monster& monster )
-{
-	return true;
-}
-
-int Maze::getHorizon()
+float Maze::getHorizon()
 {
 	return this->horizon;
 }
 
-Ogre::Vector2* Maze::getMonsterPos()
+std::vector<Ogre::Vector3> Maze::getStartPos()
 {
-	return new Vector2(Real(3),Real(0));
+	return this->startPos;
 }
 
 int Maze::getMapWidth()
@@ -64,7 +55,17 @@ int Maze::getMapHeight()
 
 }
 
-Ogre::Vector2* Maze::translatePos( Ogre::Vector2* pos )
+Ogre::Vector3* Maze::translatePos( Ogre::Vector3* pos )
 {
-	return new Ogre::Vector2(Real(pos->x - (this->mWidth / 2.0f * 100)), Real(pos->y - (this->mHeight / 2.0f * 100)));
+	return new Ogre::Vector3(Real(pos->x - (this->mWidth / 2.0f * 100)),Real(0),Real(pos->y - (this->mHeight / 2.0f * 100)));
+}
+
+void Maze::addStartPos( Ogre::Vector3 pos )
+{
+	this->startPos.push_back(pos);
+}
+
+void Maze::setFinalPos( Ogre::Vector3 pos )
+{
+	this->finalPos = pos;
 }

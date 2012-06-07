@@ -8,6 +8,9 @@
 #include "HarmCheck.h"
 #include "Maze.h"
 using namespace Ogre;
+#include <stack>
+
+class Cell;
 
 const float FULL_BLOOD = 100.0f;
 const float BEGIN_POS_X = -100.0f;
@@ -53,7 +56,22 @@ struct HarmList
 		iceHarmTime(ICE_HARM_TIME),
 		fireHarmTime(FIRE_HARM_TIME){};
 };
-
+struct Pos
+{
+	int x;
+	int y;
+};
+struct CellNode
+{
+	Pos parent;
+	Pos self;
+	int dist;
+};
+struct Judge
+{
+	CellNode node;
+	Judge* next;
+};
 class Monster
 {
 protected:
@@ -110,6 +128,16 @@ public:
 	void harmCheck(float timeSinceLastFrame);
 	/// 怪兽死掉
 	bool isMonsterDead();
+private:
+	int* map;
+	void makeMap(Cell* cell);
+	bool isValid(Pos& pos);
+	bool isFinal(Pos& pos);
+	void MarkIt(Pos&);
+	void stepTo(Pos& pos);
+	void pushPos(Pos&, stack<Pos>&);
+	bool findPath(Pos, Pos);
+	bool isTarget(Pos& pos);
 	/// 设置怪兽收到的火属性伤害
 	void setHitByFire();
 	/// 设置怪兽收到的冰属性伤害
