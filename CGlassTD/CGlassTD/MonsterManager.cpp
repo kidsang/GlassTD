@@ -25,6 +25,7 @@ MonsterManager::~MonsterManager(void)
 	for (auto iter = mMonsterFactoryList.begin(); iter != mMonsterFactoryList.end(); ++iter)
 		delete (*iter);
 	delete mCurrentMonsterFactory;
+	delete mMaze;
 }
 
 MonsterManager* MonsterManager::getMonsterManager(void)
@@ -125,4 +126,9 @@ void MonsterManager::MonsterNumPlus(void)
 void MonsterManager::updateState( std::vector<Bullet> explodedBullets, float timeSinceLastFrame, Ogre::SceneManager* sceneManager )
 {
 	mMonsterMgr->monsterGenerate(sceneManager, timeSinceLastFrame);
+}
+
+void MonsterManager::setMaze( Maze* maze )
+{
+	mMaze = maze;
 }

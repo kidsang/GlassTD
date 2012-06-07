@@ -6,6 +6,15 @@
           mass="1"
           damage="10"
           range="10"
+          ammo="100"
           spell="normal"
           />
-</Bullets>
+   <Bullet name="IceBullet"
+          mesh="sphere.mesh"
+          mass="1"
+          damage="10"
+          range="10"
+          ammo="10"
+          spell="ice"
+          />
+  </Bullets>

@@ -29,10 +29,18 @@ Bullet* Cannon::fire(SceneManager* mgr)
 	// 计算发射方向
 	Vector3 xAxis, yAxis, zAxis;
 	mNode->getOrientation().ToAxes(xAxis, yAxis, zAxis);
+	// 获取当前类型的炮弹工厂
+	BulletFactory* bf = mBulletFactoryList.at(mCurrentBullet);
+	// 判断当前弹药是否还有余量
+	if (bf->getAmmoCount() <= 0)
+		return NULL;
 	// 根据当前所选类型创建炮弹
-	Bullet* bul = mBulletFactoryList.at(mCurrentBullet)->createInstance(mgr);
+	Bullet* bul = bf->createInstance(mgr);
 	bul->fire(mNode->getPosition() + mFireOffset,zAxis * mFireStrength);
+
 	mLastTime = clock();
+	bf->setAmmoCount(bf->getAmmoCount() - 1);
+
 	return bul;
 }
 

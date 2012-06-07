@@ -1,4 +1,6 @@
 #include "Maze.h"
+#include "Cell.h"
+
 Maze::Maze(void)
 {
 }
@@ -68,4 +70,10 @@ void Maze::addStartPos( Ogre::Vector3 pos )
 void Maze::setFinalPos( Ogre::Vector3 pos )
 {
 	this->finalPos = pos;
+}
+
+Cell* Maze::getCellByPos( Ogre::Vector3 pos )
+{
+	Cell* cell;
+	return cell;
 }

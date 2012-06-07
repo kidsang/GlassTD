@@ -1,16 +1,21 @@
 #include "Bullet.h"
 #include <OgreEntity.h>
 
-Bullet::Bullet(SceneNode* node, Entity* entity)
-	: mNode(node), mEntity(entity),
+Bullet::Bullet(SceneManager* manager, SceneNode* node, Entity* entity)
+	: mSceneManager(manager), mNode(node), mEntity(entity),
 	mIsFired(false),
-	mMass(1), mDamage(0), mRange(0)
+	mMass(1), mDamage(0), mRange(0), mSpell("normal")
 {
 }
 
 
 Bullet::~Bullet(void)
 {
+	// É¾³ýÅÚµ¯mesh
+	mNode->detachObject(mEntity);
+	delete mEntity;
+	// É¾³ýÅÚµ¯µÄ³¡¾°½Úµã
+	mNode->getParentSceneNode()->removeAndDestroyChild(mNode->getName());
 }
 
 void Bullet::fire(const Vector3& position, const Vector3& velocity)
@@ -40,7 +45,7 @@ Bullet* BulletFactory::createInstance( SceneManager* mgr )
 		entity->setMaterialName(mParams["material"]);
 	node->attachObject((MovableObject*)entity);
 
-	Bullet* bullet = new Bullet(node, entity);
+	Bullet* bullet = new Bullet(mgr, node, entity);
 
 	if (mParams.find("mass") != mParams.end())
 		bullet->setMass((float)atof(mParams["mass"].c_str()));
@@ -51,10 +56,16 @@ Bullet* BulletFactory::createInstance( SceneManager* mgr )
 	if (mParams.find("range") != mParams.end())
 		bullet->setRange((float)atof(mParams["range"].c_str()));
 
+	if (mParams.find("spell") != mParams.end())
+		bullet->setSpell(mParams["spell"]);
+
 	return bullet;
 }
 
-std::string BulletFactory::getType()
+BulletFactory::BulletFactory( NameValueList params ) :mParams(params), mType("NormalBullet"), mAmmo(0)
 {
-	return mType;
+	if (params.find("name") != params.end())
+		mType = params["name"];
+	if (params.find("ammo") != params.end())
+		mAmmo = atoi(params["ammo"].c_str());
 }

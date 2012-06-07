@@ -10,8 +10,8 @@ Cell::Cell( Ogre::SceneManager* sceneManager,Ogre::SceneNode* parentNode,Ogre::V
 {
 	this->mHarmValue = harmValue;
 	this->mEntity = ObjectFactory::createEntity(sceneManager,"cubess.mesh");
-	int x = this->mEntity->getBoundingBox().getSize().x;
-	int z = this->mEntity->getBoundingBox().getSize().z;
+	float x = this->mEntity->getBoundingBox().getSize().x;
+	float z = this->mEntity->getBoundingBox().getSize().z;
 	this->mSceneNode = ObjectFactory::createSceneNode(parentNode,this->mEntity, Vector3(x * pos->x,Real(0), z * pos->y));
 	this->mType = type;
 	if(this->mType == FREE)
@@ -24,8 +24,8 @@ Cell::Cell( Ogre::SceneManager* sceneManager,Ogre::SceneNode* parentNode,Ogre::V
 {
 	this->mHarmValue = harmValue;
 	this->mEntity = ObjectFactory::createEntity(sceneManager,"cubess.mesh");
-	int x = this->mEntity->getBoundingBox().getSize().x;
-	int z = this->mEntity->getBoundingBox().getSize().z;
+	float x = this->mEntity->getBoundingBox().getSize().x;
+	float z = this->mEntity->getBoundingBox().getSize().z;
 	this->mSceneNode = ObjectFactory::createSceneNode(parentNode,this->mEntity, Vector3(x * pos->x,Real(0), z * pos->y));
 	switch(type){
 	case 0:
@@ -59,7 +59,7 @@ CellType Cell::getCellType()
 	return this->mType;
 }
 
-int Cell::getHeight()
+float Cell::getHeight()
 {
 	return this->mEntity->getBoundingBox().getSize().y;
 }

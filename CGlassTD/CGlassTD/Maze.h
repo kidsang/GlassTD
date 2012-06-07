@@ -3,9 +3,10 @@
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
 #include <OgreEntity.h>
-#include "Cell.h"
 #include <vector>
 using namespace Ogre;
+
+class Cell;
 
 class Maze
 {
@@ -19,7 +20,7 @@ private:
 	/// 地图信息的一维数组
 	int* pMapInfo;
 	/// 地平线
-	int horizon;
+	float horizon;
 	/// 地图一位数组
 	int* mMap;
 	/// 地图的宽
@@ -50,6 +51,10 @@ public:
 	/// @params pos 地图坐标
 	/// @reutrn 世界坐标
 	Ogre::Vector3* translatePos(Ogre::Vector3* pos);
+	/// 通过世界坐标获取指定的Cell
+	/// @params pos 世界坐标的Ogre::Vector3 指针
+	/// @return 指定的Cell
+	Cell* getCellByPos(Ogre::Vector3 pos);
 	/// 获取地图的宽
 	/// @return 地图的宽
 	int getMapWidth();

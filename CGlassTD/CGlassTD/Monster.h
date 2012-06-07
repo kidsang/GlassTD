@@ -1,14 +1,17 @@
 
-#ifndef Monster_h__
-#define Monster_h__
+#ifndef __Monster_h_
+#define __Monster_h_
 
 #include "BaseApplication.h"
 #include "ObjectFactory.h"
 #include "Common.h"
-using namespace Ogre;
+#include "HarmCheck.h"
+#include "Maze.h"
 #include <stack>
+using namespace Ogre;
 
 class Cell;
+
 
 const float FULL_BLOOD = 100.0f;
 const float BEGIN_POS_X = -100.0f;
@@ -70,10 +73,10 @@ struct Judge
 	CellNode node;
 	Judge* next;
 };
+
 class Monster
 {
 protected:
-	/// Maze maze;
 	/// 怪兽的速度
 	float mSpeed;
 	/// 怪兽的速度备份，以便还原速度
@@ -93,10 +96,13 @@ protected:
 	HarmList mHarmList;
 	/// 怪兽是否死亡
     bool mIsDead;
+	/// 伤害检测类
+	HarmCheck* mHarmCheck;
 	
 public:
 	Monster(){}
 	Monster(SceneNode* node);
+	//Monster(SceneNode* node, Maze* maze);
 	Monster(Ogre::SceneManager* sceneMgr, Ogre::SceneNode* parentNode);
 	~Monster(void);
 	void go(float timeSinceLastFrame, Ogre::Vector3& direction);
@@ -122,10 +128,21 @@ public:
 	void harmCheck(float timeSinceLastFrame);
 	/// 怪兽死掉
 	bool isMonsterDead();
+	/// 检测怪物所在cell的类型
 private:
+	/// 地图
+	Maze* mMaze;
+
+	int* map;
 	void makeMap(Cell* cell);
 	bool isValid(Pos& pos);
-bool isTarget(Pos& pos);
+	bool isFinal(Pos& pos);
+	void MarkIt(Pos&);
+	void stepTo(Pos& pos);
+	void pushPos(Pos&, std::stack<Pos>&);
+	bool findPath(Pos, Pos);
+	bool isTarget(Pos& pos);
+
 	/// 设置怪兽收到的火属性伤害
 	void setHitByFire();
 	/// 设置怪兽收到的冰属性伤害
@@ -140,6 +157,8 @@ bool isTarget(Pos& pos);
 	void setInsideSwamp();
 	/// 设置在沼泽外
 	void setOutsideSwamp();
+	/// 检查怪兽所在的cell的类型，根据类型修改参数
+	void checkCellType();
 };
 
 
