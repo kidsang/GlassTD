@@ -7,8 +7,9 @@
 #include "Common.h"
 #include "HarmCheck.h"
 #include "Maze.h"
-using namespace Ogre;
 #include <stack>
+using namespace Ogre;
+
 
 class Cell;
 
@@ -135,7 +136,7 @@ private:
 	bool isFinal(Pos& pos);
 	void MarkIt(Pos&);
 	void stepTo(Pos& pos);
-	void pushPos(Pos&, stack<Pos>&);
+	void pushPos(Pos&, std::stack<Pos>&);
 	bool findPath(Pos, Pos);
 	bool isTarget(Pos& pos);
 	/// 设置怪兽收到的火属性伤害
