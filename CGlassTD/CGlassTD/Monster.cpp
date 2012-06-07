@@ -1,5 +1,11 @@
 #include "Monster.h"
 #include "Cell.h"
+
+#define CAN_STEP 0
+#define NOT_STEP 1
+#define HAS_STEP 2
+#define SET_STEP 3
+
 Monster::Monster(SceneNode* node)
 	:mSpeed(1),
 	mSpeedTemp(1),
